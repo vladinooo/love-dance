@@ -1,0 +1,240 @@
+.btn {
+    text-transform: uppercase;
+    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open .dropdown-toggle& {
+      outline: none !important;
+  }
+}
+
+ul.button-list {
+    li {
+        padding: 0;
+        &:first-child {
+            margin-bottom: 10px;
+            padding-right: 0;
+        }
+    }
+}
+
+@media(min-width:767px) {
+    ul.button-list {
+        li {
+            &:first-child {
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+// Main Buttons
+
+.btn-default {
+  .button-variant(@spectrum-dark; @spectrum-light; darken(@spectrum-light, 15%););
+}
+
+.btn-primary {
+  .button-variant(@spectrum-light; @spectrum-primary; darken(@spectrum-primary, 5%););
+}
+
+.btn-success {
+  .button-variant(@spectrum-light; @spectrum-success; darken(@spectrum-success, 5%););
+}
+
+.btn-info {
+  .button-variant(@spectrum-light; @spectrum-info; darken(@spectrum-info, 5%););
+}
+
+.btn-warning {
+  .button-variant(@spectrum-light; @spectrum-warning; darken(@spectrum-warning, 5%););
+}
+
+.btn-danger {
+  .button-variant(@spectrum-light; @spectrum-danger; darken(@spectrum-danger, 5%););
+}
+
+// Raised Buttons
+
+.btn-raised {
+    border-bottom-width: 4px;
+    transition: none;
+
+    &:active,
+    &.active,
+    .open .dropdown-toggle {
+        outline: none;
+        border-bottom-width: 3px;
+        margin-top: 1px;
+    }
+}
+
+// Outline Buttons
+
+.btn-outline.btn-light,
+.btn-outline.btn-dark,
+.btn-outline.btn-primary,
+.btn-outline.btn-secondary,
+.btn-outline.btn-success,
+.btn-outline.btn-info,
+.btn-outline.btn-warning,
+.btn-outline.btn-danger {
+    background-color: transparent;
+    .button-transition;
+}
+
+.btn-outline.btn-light {
+    border: 1px solid @spectrum-light;
+    color: @spectrum-light;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-light;
+        color: @spectrum-dark;
+        background-color: @spectrum-light;
+    }
+}
+
+.btn-outline.btn-dark {
+    border: 1px solid @spectrum-dark;
+    color: @spectrum-dark;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-dark;
+        outline: none;
+        color: @spectrum-light;
+        background-color: @spectrum-dark;
+    }
+}
+
+.btn-outline.btn-primary {
+    border: 1px solid @spectrum-primary;
+    color: @spectrum-primary;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-primary;
+        outline: none;
+        color: @spectrum-light;
+        background-color: @spectrum-primary;
+    }
+}
+
+.btn-outline.btn-success {
+    border: 1px solid @spectrum-success;
+    color: @spectrum-success;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-success;
+        outline: none;
+        color: @spectrum-light;
+        background-color: @spectrum-success;
+    }
+}
+
+.btn-outline.btn-info {
+    border: 1px solid @spectrum-info;
+    color: @spectrum-info;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-info;
+        outline: none;
+        color: @spectrum-light;
+        background-color: @spectrum-info;
+    }
+}
+
+.btn-outline.btn-warning {
+    border: 1px solid @spectrum-warning;
+    color: @spectrum-warning;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-warning;
+        outline: none;
+        color: @spectrum-light;
+        background-color: @spectrum-warning;
+    }
+}
+
+.btn-outline.btn-danger {
+    border: 1px solid @spectrum-danger;
+    color: @spectrum-danger;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        border: 1px solid @spectrum-danger;
+        outline: none;
+        color: @spectrum-light;
+        background-color: @spectrum-danger;
+    }
+}
+
+// Rounded Buttons
+
+.btn-rounded {
+  border-radius: 5em;
+}
+
+// Square Buttons
+
+.btn-square {
+  border-radius: 0;
+}
+
+// Social Buttons
+
+.btn-social-dark {
+    background-color: transparent;
+    color: @spectrum-dark;
+}
+
+.btn-social-light {
+    background-color: transparent;
+    color: @spectrum-light;
+}
+
+.btn-android {.btn-social(#a4c639)}
+.btn-apple {.btn-social(#b9bfc1)}
+.btn-bitcoin {.btn-social(#f7931a)}
+.btn-css3 {.btn-social(#0170ba)}
+.btn-dribbble {.btn-social(#ea4c89)}
+.btn-dropbox {.btn-social(#2281cf)}
+.btn-facebook {.btn-social(#3b5998)}
+.btn-flickr {.btn-social(#0063db)}
+.btn-foursquare {.btn-social(#2398c9)}
+.btn-github {.btn-social(#4183c4)}
+.btn-google-plus {.btn-social(#d14836)}
+.btn-html5 {.btn-social(#f06529)}
+.btn-instagram {.btn-social(#3f729b)}
+.btn-linkedin {.btn-social(#007fb1)}
+.btn-linux {.btn-social(#dd4814)}
+.btn-maxcdn {.btn-social(#ff7514)}
+.btn-pagelines {.btn-social(#1996fc)}
+.btn-pinterest {.btn-social(#cb2027)}
+.btn-renren {.btn-social(#005eac)}
+.btn-skype {.btn-social(#00aff0)}
+.btn-stack-exchange {.btn-social(#1f5196)}
+.btn-stack-overflow {.btn-social(#f47920)}
+.btn-trello {.btn-social(#2a79a6)}
+.btn-tumblr {.btn-social(#2c4762)}
+.btn-twitter {.btn-social(#39a9e0)}
+.btn-vimeo {.btn-social(#44bbff)}
+.btn-vk {.btn-social(#54769a)}
+.btn-weibo {.btn-social(#e43037)}
+.btn-windows {.btn-social(#00bdf6)}
+.btn-xing {.btn-social(#006464)}
+.btn-youtube {.btn-social(#cd332d)}

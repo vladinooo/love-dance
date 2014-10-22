@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+    <!DOCTYPE tiles-definitions PUBLIC
+           "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+           "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- Templates -->
+
+	<definition name="template.default" template="/WEB-INF/tiles/template/default.jsp">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="some title"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/tiles/view/common/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="template.user" template="/WEB-INF/tiles/template/user.jsp">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value=""></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value=""></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/tiles/view/common/footer.jsp"></put-attribute>
+	</definition>
+
+	<!-- Pages -->
+	
+	<definition name="home" extends="template.default">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Welcome"></put-attribute>
+            </definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="login" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Login"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="signup" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Signup"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/signup.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="forgot-password" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Forgot Password"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/forgot-password.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reset-password" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Reset Password"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/reset-password.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="view_profile" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Profile"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/view_profile.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="edit_profile" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Edit Profile"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/edit_profile.jsp"></put-attribute>
+	</definition>
+	
+	
+
+</tiles-definitions>

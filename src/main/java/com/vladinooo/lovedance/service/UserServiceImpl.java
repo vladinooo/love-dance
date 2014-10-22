@@ -1,0 +1,177 @@
+package com.vladinooo.lovedance.service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.mail.MessagingException;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+import org.springframework.validation.BindingResult;
+
+import com.vladinooo.lovedance.dto.ForgotPasswordForm;
+import com.vladinooo.lovedance.dto.ResetPasswordForm;
+import com.vladinooo.lovedance.dto.SignupForm;
+import com.vladinooo.lovedance.dto.UserDetailsImpl;
+import com.vladinooo.lovedance.dto.UserEditForm;
+import com.vladinooo.lovedance.entity.User;
+import com.vladinooo.lovedance.entity.User.Role;
+import com.vladinooo.lovedance.mail.MailSender;
+import com.vladinooo.lovedance.mail.MockMailSender;
+import com.vladinooo.lovedance.repository.UserRepository;
+import com.vladinooo.lovedance.util.Util;
+
+@Service
+@Transactional(propagation=Propagation.SUPPORTS, readOnly = true)
+public class UserServiceImpl implements UserService, UserDetailsService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MockMailSender.class);
+	
+	private UserRepository userRepository;
+	private PasswordEncoder passwordEncoder;
+	private MailSender mailSender;
+	
+	@Autowired
+	public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, MailSender mailSender) {
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
+		this.mailSender = mailSender;
+	}
+	
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly = false)
+	public void signup(SignupForm signupForm) {
+		final User user = new User();
+		user.setEmail(signupForm.getEmail());
+		user.setPassword(passwordEncoder.encode(signupForm.getPassword()));
+		Date datetimeRegistered = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		user.setDatetimeRegistered(dateFormat.format(datetimeRegistered));
+		user.setEnabled(true);
+		user.getRoles().add(Role.UNVERIFIED);
+		user.setVerificationCode(RandomStringUtils.randomAlphanumeric(16));
+		userRepository.save(user);
+		TransactionSynchronizationManager.registerSynchronization(
+			    new TransactionSynchronizationAdapter() {
+			        @Override
+			        public void afterCommit() {
+			    		try {
+			    			String verifyLink = Util.hostUrl() + "/users/" + user.getVerificationCode() + "/verify";
+			    			mailSender.send(user.getEmail(), Util.getMessage("verifySubject"), Util.getMessage("verifyEmail", verifyLink));
+			    			logger.info("Verification mail to " + user.getEmail() + " queued.");
+						} catch (MessagingException e) {
+							logger.error(ExceptionUtils.getStackTrace(e));
+						}
+			        }
+		    });
+	}
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	public void verify(String verificationCode) {
+		long loggedInUserId = Util.getSessionUser().getId();
+		User user = userRepository.findOne(loggedInUserId);
+		Util.validate(user.getRoles().contains(Role.UNVERIFIED), "alreadyVerified");
+		Util.validate(user.getVerificationCode().equals(verificationCode), "incorrect", "verification code");
+		user.getRoles().remove(Role.UNVERIFIED);
+		user.setVerificationCode(null);
+		userRepository.save(user);
+	}
+
+
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		User user = userRepository.findByEmail(username);
+		if (user == null)
+			throw new UsernameNotFoundException(username);
+		
+		return new UserDetailsImpl(user);
+	}
+	
+	@Override
+	public User findOne(long userId) {
+		User loggedIn = Util.getSessionUser();
+		User user = userRepository.findOne(userId);
+		if (loggedIn == null ||
+			loggedIn.getId() != user.getId() && !loggedIn.isAdmin())
+			user.setEmail("Confidential");
+		return user;
+
+	}
+
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	public void forgotPassword(ForgotPasswordForm forgotPasswordForm) {
+		final User user = userRepository.findByEmail(forgotPasswordForm.getEmail());
+		final String forgotPasswordCode = RandomStringUtils.randomAlphanumeric(User.RANDOM_CODE_LENGTH);
+		user.setForgotPasswordCode(forgotPasswordCode);
+		final User savedUser = userRepository.save(user);
+		TransactionSynchronizationManager.registerSynchronization(
+			    new TransactionSynchronizationAdapter() {
+			        @Override
+			        public void afterCommit() {
+			        	try {
+							mailForgotPasswordLink(savedUser);
+						} catch (MessagingException e) {
+							logger.error(ExceptionUtils.getStackTrace(e));
+						}
+			        }
+
+		    });				
+
+	}
+	
+	private void mailForgotPasswordLink(User user) throws MessagingException {
+		String forgotPasswordLink =  Util.hostUrl() + "/reset-password/" + user.getForgotPasswordCode();
+		mailSender.send(user.getEmail(),
+				Util.getMessage("forgotPasswordSubject"),
+				Util.getMessage("forgotPasswordEmail", forgotPasswordLink));
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	public void resetPassword(String forgotPasswordCode, ResetPasswordForm resetPasswordForm,
+		BindingResult result) {
+		
+		User user = userRepository.findByForgotPasswordCode(forgotPasswordCode);
+		
+		if (user == null) {
+			result.reject("invalidForgotPassword");
+		}
+		if (result.hasErrors()) {
+			return;
+		}
+		user.setForgotPasswordCode(null);
+		user.setPassword(passwordEncoder.encode(resetPasswordForm.getPassword().trim()));
+		userRepository.save(user);
+	}
+
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	public void update(long userId, UserEditForm userEditForm) {
+		User loggedIn = Util.getSessionUser();
+		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
+		User user = userRepository.findOne(userId);
+		user.setFirstname(userEditForm.getFirstname());
+		user.setSurname(userEditForm.getSurname());
+		userRepository.save(user);
+	}
+	
+
+}
