@@ -49,7 +49,7 @@ public class User {
 	private String surname;
 	
 	@Column
-	private int phone;
+	private String phone;
 	
 	@Column(nullable = false)
 	private String datetimeRegistered;
@@ -107,11 +107,11 @@ public class User {
 		this.surname = surname;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

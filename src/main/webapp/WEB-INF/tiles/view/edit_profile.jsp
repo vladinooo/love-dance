@@ -20,40 +20,46 @@
 		
 			<h2 class="page-header">Edit Profile</h2>
 			
-			<div class="col-sm-3">
-				<img class="img-responsive center-block" src="${pageContext.request.contextPath}/static/images/profile-picture.jpg" alt="Profile Picture">
-			</div>
-
-			<div class="col-sm-9">
-			
-			
 			<form:form modelAttribute="userEditForm" class="form-horizontal" role="form">
 			
-					<div class="form-group">
-						<label class="control-label col-md-2" for="firstname">Firstname</label>
-						<div class="col-md-6">
-							<form:input path="firstname" class="form-control" placeholder="Firstname" />
-							<form:errors cssClass="error" path="firstname" />
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-md-2" for="surname">Surname</label>
-						<div class="col-md-6">
-							<form:input path="surname" class="form-control" placeholder="Surname" />
-							<form:errors cssClass="error" path="surname" />
-						</div>
-					</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td colspan="3">
+								<img class="profile-picture" src="${pageContext.request.contextPath}/static/images/profile-picture.jpg" alt="Profile Picture">
+							</td>
+						</tr>
+						<tr>
+							<td width="150px">User:</td>
+							<td colspan="2">vladh</td>
+						</tr>
+						<tr>
+							<td>Firstname:</td>
+							<td><form:input path="firstname" class="form-control" placeholder="Firstname" /></td>
+							<td width="350px"><form:errors cssClass="error" path="firstname" /></td>
+						</tr>
+						<tr>
+							<td>Surname:</td>
+							<td><form:input path="surname" class="form-control" placeholder="Surname" /></td>
+							<td><form:errors cssClass="error" path="surname" /></td>
+						</tr>
+						<tr>
+							<td>Email:</td>
+							<td><form:input path="email" class="form-control" placeholder="Email" /></td>
+							<td><form:errors cssClass="error" path="email" /></td>
+						</tr>
+						<tr>
+							<td>Phone:</td>
+							<td><form:input path="phone" class="form-control" placeholder="Phone" /></td>
+							<td><form:errors cssClass="error" path="phone" /></td>
+						</tr>
+					</tbody>
+				</table>
 				
-					<div class="form-group">
-						<div class="col-md-6 col-md-offset-2">
-							<button type="submit" class="btn btn-default">Update</button>
-						</div>
-					</div>
-            
-        	</form:form>
+				<button type="submit" class="btn btn-default pull-right">Update</button>
 
-			</div>
+        	</form:form>
+				
 		</div>
 	</div>
 </div>

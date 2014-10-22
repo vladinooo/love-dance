@@ -4,3 +4,8 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 	background-color: #3e444d;
 	border-color: #3e444d;
 }
+
+.profile-picture {
+	width: 110px;
+	height: 110px;
+}

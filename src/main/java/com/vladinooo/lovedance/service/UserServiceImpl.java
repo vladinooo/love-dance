@@ -170,6 +170,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		User user = userRepository.findOne(userId);
 		user.setFirstname(userEditForm.getFirstname());
 		user.setSurname(userEditForm.getSurname());
+		user.setEmail(userEditForm.getEmail());
+		user.setPhone(userEditForm.getPhone());
 		userRepository.save(user);
 	}
 	
