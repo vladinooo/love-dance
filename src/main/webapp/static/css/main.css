@@ -9,3 +9,8 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 	width: 110px;
 	height: 110px;
 }
+
+.fieldValidationError {
+	color: #F40A0A;
+	margin-bottom: 0;
+}

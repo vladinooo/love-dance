@@ -9,11 +9,11 @@ public class ResetPasswordForm {
 	
 	@NotNull
 	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	private String password = "";
+	private String password;
 	
 	@NotNull
 	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	private String retypePassword = "";
+	private String retypePassword;
 
 	public String getPassword() {
 		return password;

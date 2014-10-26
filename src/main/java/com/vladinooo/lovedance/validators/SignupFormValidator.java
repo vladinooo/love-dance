@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import com.vladinooo.lovedance.dto.ResetPasswordForm;
 import com.vladinooo.lovedance.dto.SignupForm;
 import com.vladinooo.lovedance.entity.User;
 import com.vladinooo.lovedance.repository.UserRepository;
@@ -31,9 +32,12 @@ public class SignupFormValidator extends LocalValidatorFactoryBean {
 
 		if (!errors.hasErrors()) {
 			SignupForm signupForm = (SignupForm) obj;
-			User user = userRepository.findByEmail(signupForm.getEmail());
+			User user = userRepository.findByUsername(signupForm.getUsername());
 			if (user != null) {
-				errors.rejectValue("email", "emailNotUnique");
+				errors.rejectValue("username", "usernameNotUnique");
+			}
+			if (!signupForm.getPassword().equals(signupForm.getRetypePassword())) {
+				errors.reject("passwordsDoNotMatch");
 			}
 		}
 	}

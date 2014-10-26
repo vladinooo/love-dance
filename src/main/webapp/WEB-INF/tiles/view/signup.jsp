@@ -9,37 +9,31 @@
 				<h3 class="first-child">Create New Account</h3>
 				<hr>
 		
-				<form:form id="create-user-form" modelAttribute="signupForm" method="POST" role="form">
+				<form:form id="signup-form" modelAttribute="signupForm" method="POST" role="form">
+				
+					<div class="form-group">
+						<form:input class="form-control" type="text" name="username" placeholder="Username" path="username" />
+						<form:errors path="username" cssClass="fieldValidationError"></form:errors>
+					</div>
 		
 					<div class="form-group">
-						<form:input class="form-control" type="text" name="email" id="email"
-							placeholder="Your email" path="email" data-toggle="popover"
-							data-placement="left" data-trigger="focus"
-							data-content="Enter a valid email here."
-							data-original-title="Email" />
+						<form:input class="form-control" type="text" name="email" placeholder="Email" path="email"/>
 						<form:errors path="email" cssClass="fieldValidationError"></form:errors>
 					</div>
 		
 					<div class="form-group">
-						<form:input class="form-control margin-bottom-xs" type="password"
-							name="password" id="password" placeholder="Password"
-							path="password" data-toggle="popover" data-placement="left"
-							data-trigger="focus" data-content="Between 5 - 10 characters"
-							data-original-title="Password" />
+						<form:input class="form-control" type="password" name="password" placeholder="Password" path="password" />
 						<form:errors path="password" cssClass="fieldValidationError"></form:errors>
 					</div>
 		
 					<div class="form-group">
-						<input class="form-control" type="password" id="confirm_password"
-							name="confirm_password" placeholder="Re-type password"
-							data-toggle="popover" data-placement="left" data-trigger="focus"
-							data-content="Between 5 - 10 characters"
-							data-original-title="Re-type password">
+						<form:input class="form-control" type="password" name="retype-password" placeholder="Re-type Password" path="retypePassword" />
+						<form:errors path="retypePassword" cssClass="fieldValidationError"></form:errors>
+						<form:errors cssClass="fieldValidationError"></form:errors>
 					</div>
 		
 					<div class="form-group">
-						<button type="submit" id="createUserBtn" class="btn btn-color">Create
-							account</button>
+						<button type="submit" id="createUserBtn" class="btn btn-color">Create account</button>
 					</div>
 					
 					<hr>

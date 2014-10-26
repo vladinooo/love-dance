@@ -49,7 +49,7 @@ public class UserController {
 	@RequestMapping(value = "/{userId}")
     public String getById(@PathVariable("userId") long userId, Model model) {
     	model.addAttribute(userService.findOne(userId));
-	  	return "view_profile";
+	  	return "view-profile";
     }
 	
     
@@ -59,8 +59,10 @@ public class UserController {
 		UserEditForm form = new UserEditForm();
 		form.setFirstname(user.getFirstname());
 		form.setSurname(user.getSurname());
+		form.setEmail(user.getEmail());
+		form.setPhone(user.getPhone());
     	model.addAttribute(form);
-		return "edit_profile";
+		return "edit-profile";
     }
 
 	@RequestMapping(value = "/{userId}/edit", method = RequestMethod.POST)
@@ -70,7 +72,7 @@ public class UserController {
 			HttpServletRequest request) throws ServletException {
 
 		if (result.hasErrors()) {
-			return "edit_profile";
+			return "edit-profile";
 		}
 		userService.update(userId, userEditForm);
 		Util.flash(redirectAttributes, "success", "editSuccessful");

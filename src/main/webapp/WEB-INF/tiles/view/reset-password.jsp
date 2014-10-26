@@ -2,11 +2,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-
-<script>
-	$(".topic").show();
-</script>
-
       
 <div class="container">
 	<div class="row">
@@ -17,24 +12,15 @@
 
 				<form:form role="form" modelAttribute="resetPasswordForm">
 
-					<form:errors cssClass="fieldValidationError"></form:errors>
-
 					<div class="form-group">
-						<form:password class="form-control margin-bottom-xs"
-							name="password" id="password" placeholder="Password"
-							path="password" data-toggle="popover" data-placement="left"
-							data-trigger="focus" data-content="Between 5 - 20 characters"
-							data-original-title="Password" />
+						<form:input class="form-control" type="password" name="password" placeholder="Password" path="password" />
 						<form:errors path="password" cssClass="fieldValidationError"></form:errors>
 					</div>
 		
 					<div class="form-group">
-						<form:password class="form-control" id="confirm_password"
-							name="confirm_password" placeholder="Re-type password"
-							path="retypePassword" data-toggle="popover" data-placement="left"
-							data-trigger="focus" data-content="Between 5 - 20 characters"
-							data-original-title="Re-type password" />
+						<form:input class="form-control" type="password" name="retype-password" placeholder="Re-type Password" path="retypePassword" />
 						<form:errors path="retypePassword" cssClass="fieldValidationError"></form:errors>
+						<form:errors cssClass="fieldValidationError"></form:errors>
 					</div>
 
 					<button type="submit" class="btn btn-color">Submit</button>

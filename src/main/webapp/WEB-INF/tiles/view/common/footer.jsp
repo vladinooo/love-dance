@@ -170,7 +170,6 @@
     </div>
 
     <!-- Core JavaScript Files -->
-    <script src="/static/spectrum/assets/js/jquery-1.10.2.js"></script>
     <script src="/static/spectrum/assets/js/bootstrap/bootstrap.min.js"></script>
     <script src="/static/spectrum/assets/js/modernizr.custom.js"></script>
 
@@ -191,6 +190,9 @@
     <!-- Spectrum JavaScript Files -->
     <script src="/static/spectrum/assets/js/spectrum.nav.js"></script>
     <script src="/static/spectrum/assets/js/spectrum.js"></script>
+    
+    <!-- Custom JavaScript Files -->
+    <script src="/static/js/formValidation.js"></script>
 
 </body>
 

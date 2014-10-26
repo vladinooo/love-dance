@@ -27,8 +27,8 @@
 				<form:form role="form" id="login-form" method="POST">
 		
 					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-at"></i></span> <input
-							class="form-control" type="text" name="username" id="email" placeholder="Email">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span> <input
+							class="form-control" type="text" name="username" id="email" placeholder="Username">
 					</div>
 		
 					<br>

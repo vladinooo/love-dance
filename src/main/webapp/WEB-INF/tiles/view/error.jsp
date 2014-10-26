@@ -1,8 +1,3 @@
-<script>
-	$(".topic").show();
-</script>
-
-
 <!-- Main Content -->
 <div class="container">
 	<div class="row">

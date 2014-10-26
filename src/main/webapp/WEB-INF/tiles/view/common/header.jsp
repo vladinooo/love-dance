@@ -16,6 +16,9 @@
     <meta name="author" content="">
 
     <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
+    
+    <!-- jQuery -->
+    <script src="/static/spectrum/assets/js/jquery-1.10.2.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/spectrum/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -155,7 +158,7 @@
 						
 						<sec:authorize access="isAuthenticated()">
 						<li>
-							<a href="/users/<sec:authentication property='principal.user.id' />"><span class="fa fa-user"></span> Profile</a>
+							<a style="text-transform:lowercase;" href="/users/<sec:authentication property='principal.user.id' />"><span class="fa fa-user"></span> <sec:authentication property="principal.user.username" /></a>
 						</li>
 						<li>
 						  	<c:url var="logoutUrl" value="/logout" />

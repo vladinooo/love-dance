@@ -2,23 +2,19 @@ package com.vladinooo.lovedance.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import com.vladinooo.lovedance.entity.User;
 
 public class ForgotPasswordForm {
 	
 	@NotNull
-	@Size(min=1, max=User.EMAIL_MAX, message="{emailSizeError}")
-	@Pattern(regexp=User.EMAIL_PATTERN, message="{emailPatternError}")
-	private String email = "";
-
-	public String getEmail() {
-		return email;
+	@Pattern(regexp = "^[a-z0-9]{4,20}$", message = "{usernamePatternError}")
+	private String username;
+	
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

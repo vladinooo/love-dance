@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Transactional(propagation=Propagation.REQUIRED, readOnly = false)
 	public void signup(SignupForm signupForm) {
 		final User user = new User();
+		user.setUsername(signupForm.getUsername());
 		user.setEmail(signupForm.getEmail());
 		user.setPassword(passwordEncoder.encode(signupForm.getPassword()));
 		Date datetimeRegistered = new Date();
@@ -95,7 +96,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(username);
+		User user = userRepository.findByUsername(username);
 		if (user == null)
 			throw new UsernameNotFoundException(username);
 		
@@ -117,7 +118,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	public void forgotPassword(ForgotPasswordForm forgotPasswordForm) {
-		final User user = userRepository.findByEmail(forgotPasswordForm.getEmail());
+		final User user = userRepository.findByUsername(forgotPasswordForm.getUsername());
 		final String forgotPasswordCode = RandomStringUtils.randomAlphanumeric(User.RANDOM_CODE_LENGTH);
 		user.setForgotPasswordCode(forgotPasswordCode);
 		final User savedUser = userRepository.save(user);

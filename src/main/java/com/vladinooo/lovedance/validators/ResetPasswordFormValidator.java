@@ -21,8 +21,9 @@ public class ResetPasswordFormValidator extends LocalValidatorFactoryBean {
 		
 		if (!errors.hasErrors()) {
 			ResetPasswordForm resetPasswordForm = (ResetPasswordForm) obj;
-			if (!resetPasswordForm.getPassword().equals(resetPasswordForm.getRetypePassword()))
+			if (!resetPasswordForm.getPassword().equals(resetPasswordForm.getRetypePassword())) {
 				errors.reject("passwordsDoNotMatch");
+			}
 		}
 	}
 

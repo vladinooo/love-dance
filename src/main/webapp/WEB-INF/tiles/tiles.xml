@@ -71,24 +71,41 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/view/reset-password.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="view_profile" extends="template.user">
+	<definition name="view-profile" extends="template.user">
 		<put-attribute name="header">
 			<definition template="/WEB-INF/tiles/view/common/header.jsp">
                 <put-attribute name="title" value="Love Dance - Profile"></put-attribute>
             </definition>
 		</put-attribute>
-		<put-attribute name="content" value="/WEB-INF/tiles/view/view_profile.jsp"></put-attribute>
+		<put-attribute name="content">
+			<definition template="/WEB-INF/tiles/view/view-profile.jsp">
+                <put-attribute name="navigation" value="/WEB-INF/tiles/view/common/navigation.jsp"></put-attribute>
+            </definition>
+		</put-attribute>
 	</definition>
 	
-	<definition name="edit_profile" extends="template.user">
+	<definition name="edit-profile" extends="template.user">
 		<put-attribute name="header">
 			<definition template="/WEB-INF/tiles/view/common/header.jsp">
                 <put-attribute name="title" value="Love Dance - Edit Profile"></put-attribute>
             </definition>
 		</put-attribute>
-		<put-attribute name="content" value="/WEB-INF/tiles/view/edit_profile.jsp"></put-attribute>
+		<put-attribute name="content">
+			<definition template="/WEB-INF/tiles/view/edit-profile.jsp">
+                <put-attribute name="navigation" value="/WEB-INF/tiles/view/common/navigation.jsp"></put-attribute>
+            </definition>
+		</put-attribute>
 	</definition>
 	
+	
+	<definition name="error" extends="template.user">
+		<put-attribute name="header">
+			<definition template="/WEB-INF/tiles/view/common/header.jsp">
+                <put-attribute name="title" value="Love Dance - Error"></put-attribute>
+            </definition>
+		</put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/view/error.jsp"></put-attribute>
+	</definition>
 	
 
 </tiles-definitions>

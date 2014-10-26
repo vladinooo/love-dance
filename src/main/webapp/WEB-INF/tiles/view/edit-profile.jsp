@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -8,13 +7,7 @@
 <div class="container portfolio-modal">
 	<div class="row">
 	
-		<div class="col-sm-3">
-			<h2 class="page-header">Pages</h2>
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">Profile</a>
-                    <a href="#" class="list-group-item">Gallery</a>
-                </div>
-		</div>
+		<tiles:insertAttribute name="navigation"></tiles:insertAttribute>
 
 		<div class="col-sm-9">
 		
@@ -31,7 +24,7 @@
 						</tr>
 						<tr>
 							<td width="150px">User:</td>
-							<td colspan="2">vladh</td>
+							<td colspan="2"><sec:authentication property="principal.user.username" /></td>
 						</tr>
 						<tr>
 							<td>Firstname:</td>

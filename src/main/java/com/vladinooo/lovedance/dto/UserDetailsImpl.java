@@ -36,15 +36,15 @@ public class UserDetailsImpl implements UserDetails {
 		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		return authorities;
 	}
+	
+	@Override
+	public String getUsername() {
+		return user.getUsername();
+	}
 
 	@Override
 	public String getPassword() {
 		return user.getPassword();
-	}
-
-	@Override
-	public String getUsername() {
-		return user.getEmail();
 	}
 
 	@Override
