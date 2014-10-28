@@ -6,12 +6,8 @@ import javax.validation.constraints.Size;
 
 import com.vladinooo.lovedance.entity.User;
 
-public class SignupForm {
-	
-	@NotNull
-	@Size(min=5, max=User.USERNAME_MAX, message="{usernameSizeError}")
-	@Pattern(regexp = "^[a-z0-9]{4,20}$", message = "{usernamePatternError}")
-	private String username;
+
+public class AccountEditForm {
 
 	@NotNull
 	@Size(min=5, max=User.EMAIL_MAX, message="{emailSizeError}")
@@ -20,20 +16,14 @@ public class SignupForm {
 	
 	@NotNull
 	@Size(min=5, max=User.PASSWORD_MAX, message="{passwordSizeError}")
+	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String password;
 	
 	@NotNull
 	@Size(min=5, max=User.PASSWORD_MAX, message="{passwordSizeError}")
+	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String retypePassword;
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -41,7 +31,7 @@ public class SignupForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -58,11 +48,5 @@ public class SignupForm {
 		this.retypePassword = retypePassword;
 	}		
 
-	
-	
-	@Override
-	public String toString() {
-		return "SignupForm [email=" + email + ", username=" + ", password="
-				+ password + "]";
-	}
+
 }

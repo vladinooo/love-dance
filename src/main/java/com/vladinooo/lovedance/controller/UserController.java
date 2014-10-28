@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.vladinooo.lovedance.dto.UserEditForm;
+import com.vladinooo.lovedance.dto.AccountEditForm;
+import com.vladinooo.lovedance.dto.ProfileEditForm;
 import com.vladinooo.lovedance.entity.User;
 import com.vladinooo.lovedance.service.UserService;
 import com.vladinooo.lovedance.util.Util;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -33,6 +34,7 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
+	
 	
 	@RequestMapping("/{verificationCode}/verify")
 	public String verify(@PathVariable("verificationCode") String verificationCode,
@@ -46,37 +48,67 @@ public class UserController {
 		return "redirect:/login";
 	}
 	
-	@RequestMapping(value = "/{userId}")
-    public String getById(@PathVariable("userId") long userId, Model model) {
-    	model.addAttribute(userService.findOne(userId));
-	  	return "view-profile";
+	@RequestMapping(value = "/profile")
+    public String getProfileById(Model model) {
+    	model.addAttribute(userService.findOne(Util.getSessionUser().getId()));
+	  	return "profile";
     }
 	
     
-    @RequestMapping(value = "/{userId}/edit")
-    public String edit(@PathVariable("userId") long userId, Model model) {
-		User user = userService.findOne(userId);
-		UserEditForm form = new UserEditForm();
+    @RequestMapping(value = "/profile/edit")
+    public String profileEdit(Model model) {
+		User user = userService.findOne(Util.getSessionUser().getId());
+		ProfileEditForm form = new ProfileEditForm();
 		form.setFirstname(user.getFirstname());
 		form.setSurname(user.getSurname());
-		form.setEmail(user.getEmail());
 		form.setPhone(user.getPhone());
+    	model.addAttribute(user);
     	model.addAttribute(form);
-		return "edit-profile";
+		return "profile-edit";
     }
 
-	@RequestMapping(value = "/{userId}/edit", method = RequestMethod.POST)
-	public String edit(@PathVariable("userId") long userId,
-			@ModelAttribute("userEditForm") @Valid UserEditForm userEditForm,
+	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
+	public String profileEdit(@ModelAttribute("profileEditForm") @Valid ProfileEditForm profileEditForm,
 			BindingResult result, RedirectAttributes redirectAttributes,
 			HttpServletRequest request) throws ServletException {
 
 		if (result.hasErrors()) {
-			return "edit-profile";
+			return "profile-edit";
 		}
-		userService.update(userId, userEditForm);
+		userService.profileUpdate(Util.getSessionUser().getId(), profileEditForm);
 		Util.flash(redirectAttributes, "success", "editSuccessful");
-		return "redirect:/users/{userId}";
+		return "redirect:/user/profile";
+	}
+	
+	@RequestMapping(value = "/account")
+    public String getAccountById(Model model) {
+    	model.addAttribute(userService.findOne(Util.getSessionUser().getId()));
+	  	return "account";
+    }
+	
+    
+    @RequestMapping(value = "/account/edit")
+    public String accountEdit(Model model) {
+		User user = userService.findOne(Util.getSessionUser().getId());
+		AccountEditForm form = new AccountEditForm();
+		form.setEmail(user.getEmail());
+		form.setPassword(user.getPassword());
+		form.setRetypePassword(user.getPassword());
+    	model.addAttribute(form);
+		return "account-edit";
+    }
+
+	@RequestMapping(value = "/account/edit", method = RequestMethod.POST)
+	public String accountEdit(@ModelAttribute("accountEditForm") @Valid AccountEditForm accountEditForm,
+			BindingResult result, RedirectAttributes redirectAttributes,
+			HttpServletRequest request) throws ServletException {
+
+		if (result.hasErrors()) {
+			return "account-edit";
+		}
+		userService.accountUpdate(Util.getSessionUser().getId(), accountEditForm);
+		Util.flash(redirectAttributes, "success", "editSuccessful");
+		return "redirect:/user/account";
 	}
 
 }

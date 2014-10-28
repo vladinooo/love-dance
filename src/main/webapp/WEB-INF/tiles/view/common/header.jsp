@@ -158,7 +158,7 @@
 						
 						<sec:authorize access="isAuthenticated()">
 						<li>
-							<a style="text-transform:lowercase;" href="/users/<sec:authentication property='principal.user.id' />"><span class="fa fa-user"></span> <sec:authentication property="principal.user.username" /></a>
+							<a style="text-transform:lowercase;" href="/user/profile"><span class="fa fa-user"></span> <sec:authentication property="principal.user.username" /></a>
 						</li>
 						<li>
 						  	<c:url var="logoutUrl" value="/logout" />

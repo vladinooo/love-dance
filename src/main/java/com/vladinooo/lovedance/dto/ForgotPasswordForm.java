@@ -3,10 +3,12 @@ package com.vladinooo.lovedance.dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.vladinooo.lovedance.entity.User;
+
 public class ForgotPasswordForm {
 	
 	@NotNull
-	@Pattern(regexp = "^[a-z0-9]{4,20}$", message = "{usernamePatternError}")
+	@Pattern(regexp = User.USERNAME_PATTERN, message = "{usernamePatternError}")
 	private String username;
 	
 	public String getUsername() {

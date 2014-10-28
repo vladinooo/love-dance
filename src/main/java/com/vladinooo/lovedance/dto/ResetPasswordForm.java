@@ -1,6 +1,7 @@
 package com.vladinooo.lovedance.dto;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.vladinooo.lovedance.entity.User;
@@ -9,10 +10,12 @@ public class ResetPasswordForm {
 	
 	@NotNull
 	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
+	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String password;
 	
 	@NotNull
 	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
+	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String retypePassword;
 
 	public String getPassword() {

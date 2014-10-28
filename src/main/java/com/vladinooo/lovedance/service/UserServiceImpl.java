@@ -21,11 +21,12 @@ import org.springframework.transaction.support.TransactionSynchronizationAdapter
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.validation.BindingResult;
 
+import com.vladinooo.lovedance.dto.AccountEditForm;
 import com.vladinooo.lovedance.dto.ForgotPasswordForm;
+import com.vladinooo.lovedance.dto.ProfileEditForm;
 import com.vladinooo.lovedance.dto.ResetPasswordForm;
 import com.vladinooo.lovedance.dto.SignupForm;
 import com.vladinooo.lovedance.dto.UserDetailsImpl;
-import com.vladinooo.lovedance.dto.UserEditForm;
 import com.vladinooo.lovedance.entity.User;
 import com.vladinooo.lovedance.entity.User.Role;
 import com.vladinooo.lovedance.mail.MailSender;
@@ -146,9 +147,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public void resetPassword(String forgotPasswordCode, ResetPasswordForm resetPasswordForm,
-		BindingResult result) {
-		
+	public void resetPassword(String forgotPasswordCode, ResetPasswordForm resetPasswordForm, BindingResult result) {
 		User user = userRepository.findByForgotPasswordCode(forgotPasswordCode);
 		
 		if (user == null) {
@@ -165,15 +164,27 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public void update(long userId, UserEditForm userEditForm) {
+	public void profileUpdate(long userId, ProfileEditForm profileEditForm) {
 		User loggedIn = Util.getSessionUser();
 		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
 		User user = userRepository.findOne(userId);
-		user.setFirstname(userEditForm.getFirstname());
-		user.setSurname(userEditForm.getSurname());
-		user.setEmail(userEditForm.getEmail());
-		user.setPhone(userEditForm.getPhone());
+		user.setFirstname(profileEditForm.getFirstname());
+		user.setSurname(profileEditForm.getSurname());
+		user.setPhone(profileEditForm.getPhone());
+		user.setBiography(profileEditForm.getBiography());
 		userRepository.save(user);
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	public void accountUpdate(long userId, AccountEditForm accountEditForm) {
+		User loggedIn = Util.getSessionUser();
+		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
+		User user = userRepository.findOne(userId);
+		user.setFirstname(accountEditForm.getEmail());
+		user.setSurname(accountEditForm.getPassword());
+		userRepository.save(user);
+		
 	}
 	
 

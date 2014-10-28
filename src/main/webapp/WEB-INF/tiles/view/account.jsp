@@ -11,40 +11,23 @@
 
 		<div class="col-sm-9">
 		
-			<h2 class="page-header">Profile</h2>
+			<h2 class="page-header">Account</h2>
 			
 			
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<td colspan="2">
-								<img class="profile-picture" src="${pageContext.request.contextPath}/static/images/profile-picture.jpg" alt="Profile Picture">
-							</td>
-						</tr>
-						<tr>
-							<td width="150px">User:</td>
-							<td>vladh</td>
-						</tr>
-						<tr>
-							<td>Firstname:</td>
-							<td><c:out value="${user.firstname}" /></td>
-						</tr>
-						<tr>
-							<td>Surname:</td>
-							<td><c:out value="${user.surname}" /></td>
-						</tr>
-						<tr>
 							<td>Email:</td>
 							<td><c:out value="${user.email}" /></td>
 						</tr>
 						<tr>
-							<td>Phone:</td>
-							<td><c:out value="${user.phone}" /></td>
+							<td>Password:</td>
+							<td><c:out value="${user.password}" /></td>
 						</tr>
 					</tbody>
 				</table>
 
-                <button type="submit" class="btn btn-default pull-right" onclick="window.location.href='/users/${user.id}/edit'"> Edit </button>
+                <button type="submit" class="btn btn-default pull-right" onclick="window.location.href='/user/account/edit'"> Edit </button>
                 
 		</div>
 	</div>

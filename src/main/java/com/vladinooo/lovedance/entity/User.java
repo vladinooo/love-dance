@@ -23,10 +23,25 @@ import com.vladinooo.lovedance.util.Util;
 public class User {
 	
 	public static final int USERNAME_MAX = 20;
+	public static final String USERNAME_PATTERN = "^[a-z0-9]{4,20}$";
+	
 	public static final int EMAIL_MAX = 256;
-	public static final String EMAIL_PATTERN = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-	public static final int RANDOM_CODE_LENGTH = 16;
+	public static final String EMAIL_PATTERN = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,256}";
+	
 	public static final int PASSWORD_MAX = 20;
+	public static final String PASSWORD_PATTERN = "[a-zA-Z0-9+-.!@#$%*()]";
+	
+	public static final int FIRSTNAME_MAX = 50;
+	public static final String FIRSTNAME_PATTERN = "[a-zA-Z]{0,50}";
+	
+	public static final int SURNAME_MAX = 50;
+	public static final String SURNAME_PATTERN = "[a-zA-Z]{0,50}";
+	
+	public static final int PHONE_MAX = 30;
+	public static final String PHONE_PATTERN = "[0-9()-]{0,30}";
+	
+	public static final int BIOGRAPHY_MAX = 2000;
+	public static final int RANDOM_CODE_LENGTH = 16;
 
 	public static enum Role {
 		UNVERIFIED, BLOCKED, ADMIN
@@ -45,14 +60,17 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-	@Column
+	@Column(length = FIRSTNAME_MAX)
 	private String firstname;
 	
-	@Column
+	@Column(length = SURNAME_MAX)
 	private String surname;
 	
-	@Column
+	@Column(length = PHONE_MAX)
 	private String phone;
+	
+	@Column(length = BIOGRAPHY_MAX)
+	private String biography;
 	
 	@Column(nullable = false)
 	private String datetimeRegistered;
@@ -124,6 +142,14 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
 	}
 
 	public String getDatetimeRegistered() {
