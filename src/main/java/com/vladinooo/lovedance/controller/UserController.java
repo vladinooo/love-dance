@@ -93,8 +93,6 @@ public class UserController {
 		User user = userService.findOne(Util.getSessionUser().getId());
 		AccountEditForm form = new AccountEditForm();
 		form.setEmail(user.getEmail());
-		form.setPassword(user.getPassword());
-		form.setRetypePassword(user.getPassword());
     	model.addAttribute(form);
 		return "account-edit";
     }

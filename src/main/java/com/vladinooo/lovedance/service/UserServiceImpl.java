@@ -181,10 +181,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		User loggedIn = Util.getSessionUser();
 		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
 		User user = userRepository.findOne(userId);
-		user.setFirstname(accountEditForm.getEmail());
-		user.setSurname(accountEditForm.getPassword());
-		userRepository.save(user);
-		
+		user.setEmail(accountEditForm.getEmail());
+		user.setPassword(accountEditForm.getPassword());
+		userRepository.save(user);	
 	}
 	
 

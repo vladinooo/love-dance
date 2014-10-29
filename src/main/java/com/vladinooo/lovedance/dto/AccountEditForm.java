@@ -16,12 +16,10 @@ public class AccountEditForm {
 	
 	@NotNull
 	@Size(min=5, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String password;
 	
 	@NotNull
 	@Size(min=5, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String retypePassword;
 
 	public String getEmail() {
