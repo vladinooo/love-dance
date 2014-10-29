@@ -37,7 +37,7 @@ public class SignupFormValidator extends LocalValidatorFactoryBean {
 				errors.rejectValue("username", "usernameNotUnique");
 			}
 			if (!signupForm.getPassword().equals(signupForm.getRetypePassword())) {
-				errors.reject("passwordsDoNotMatch");
+				errors.rejectValue("retypePassword", "passwordsDoNotMatch");
 			}
 		}
 	}

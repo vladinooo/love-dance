@@ -62,6 +62,7 @@ public class UserController {
 		form.setFirstname(user.getFirstname());
 		form.setSurname(user.getSurname());
 		form.setPhone(user.getPhone());
+		form.setBiography(user.getBiography());
     	model.addAttribute(user);
     	model.addAttribute(form);
 		return "profile-edit";

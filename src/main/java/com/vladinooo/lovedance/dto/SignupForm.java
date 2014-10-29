@@ -10,7 +10,7 @@ public class SignupForm {
 	
 	@NotNull
 	@Size(min=5, max=User.USERNAME_MAX, message="{usernameSizeError}")
-	@Pattern(regexp = "^[a-z0-9]{4,20}$", message = "{usernamePatternError}")
+	@Pattern(regexp=User.USERNAME_PATTERN, message="{usernamePatternError}")
 	private String username;
 
 	@NotNull
@@ -57,8 +57,6 @@ public class SignupForm {
 	public void setRetypePassword(String retypePassword) {
 		this.retypePassword = retypePassword;
 	}		
-
-	
 	
 	@Override
 	public String toString() {

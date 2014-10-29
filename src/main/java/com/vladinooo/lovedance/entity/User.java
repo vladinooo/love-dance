@@ -26,16 +26,16 @@ public class User {
 	public static final String USERNAME_PATTERN = "^[a-z0-9]{4,20}$";
 	
 	public static final int EMAIL_MAX = 256;
-	public static final String EMAIL_PATTERN = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,256}";
+	public static final String EMAIL_PATTERN = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
 	
 	public static final int PASSWORD_MAX = 20;
-	public static final String PASSWORD_PATTERN = "[a-zA-Z0-9+-.!@#$%*()]";
+	public static final String PASSWORD_PATTERN = "/^[a-z0-9_-]{4,20}$/";
 	
 	public static final int FIRSTNAME_MAX = 50;
-	public static final String FIRSTNAME_PATTERN = "[a-zA-Z]{0,50}";
+	public static final String FIRSTNAME_PATTERN = "[a-zA-Z ]{0,50}";
 	
 	public static final int SURNAME_MAX = 50;
-	public static final String SURNAME_PATTERN = "[a-zA-Z]{0,50}";
+	public static final String SURNAME_PATTERN = "[a-zA-Z ]{0,50}";
 	
 	public static final int PHONE_MAX = 30;
 	public static final String PHONE_PATTERN = "[0-9()-]{0,30}";

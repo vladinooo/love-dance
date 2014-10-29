@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vladinooo.lovedance.dto.ForgotPasswordForm;
@@ -55,6 +57,22 @@ public class RootController {
 	@InitBinder("resetPasswordForm") 
 	protected void initResetPasswordBinder(WebDataBinder binder) {
 		binder.setValidator(resetPasswordFormValidator);
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout,
+			RedirectAttributes redirectAttributes) {
+
+		if (error != null) {
+			Util.flash(redirectAttributes, "danger", "loginError");
+			return "redirect:/login";
+		}
+		if (logout != null) {
+			Util.flash(redirectAttributes, "success", "logoutSuccess");
+			return "redirect:/login";
+		}
+		return "login";
 	}
 	
 	@RequestMapping(value="/signup", method = RequestMethod.GET)

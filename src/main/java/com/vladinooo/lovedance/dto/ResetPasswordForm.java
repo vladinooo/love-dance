@@ -10,12 +10,10 @@ public class ResetPasswordForm {
 	
 	@NotNull
 	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String password;
 	
 	@NotNull
 	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	@Pattern(regexp=User.PASSWORD_PATTERN, message="{passwordPatternError}")
 	private String retypePassword;
 
 	public String getPassword() {
