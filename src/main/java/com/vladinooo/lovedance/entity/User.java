@@ -87,6 +87,8 @@ public class User {
 	@Column(length = RANDOM_CODE_LENGTH)
 	private String forgotPasswordCode;
 	
+	@Column
+	private String photoPath;
 
 	public long getId() {
 		return id;
@@ -195,6 +197,14 @@ public class User {
 
 	public void setForgotPasswordCode(String forgotPasswordCode) {
 		this.forgotPasswordCode = forgotPasswordCode;
+	}
+	
+	public String getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
 	}
 
 	public boolean isEditable() {

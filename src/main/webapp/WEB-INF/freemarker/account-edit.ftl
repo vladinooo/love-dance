@@ -1,7 +1,7 @@
 <#import "common/default.ftl" as layout>
 <#import "/spring.ftl" as spring />
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
-<@layout.default "Edit account">  
+<@layout.default "Edit Account">  
 <section class="portfolio-1 bg-lighter">
 	<div class="container">
     	<div class="row">

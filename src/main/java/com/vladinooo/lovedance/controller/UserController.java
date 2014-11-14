@@ -81,6 +81,13 @@ public class UserController {
 		return "redirect:/user/profile";
 	}
 	
+	@RequestMapping(value = "/photo/upload")
+    public String profilePhotoUpload(Model model) {
+		User user = userService.findOne(Util.getSessionUser().getId());
+    	model.addAttribute(user);
+		return "photo-upload";
+    }
+	
 	@RequestMapping(value = "/account")
     public String getAccountById(Model model) {
     	model.addAttribute(userService.findOne(Util.getSessionUser().getId()));

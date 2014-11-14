@@ -1,7 +1,7 @@
 <#import "common/default.ftl" as layout>
 <#import "/spring.ftl" as spring />
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
-<@layout.default "Edit profile">  
+<@layout.default "Edit Profile">  
 <section class="portfolio-1 bg-lighter">
 	<div class="container">
     	<div class="row">
@@ -19,14 +19,6 @@
 						
 							<table class="table table-striped wrap-table">
 								<tbody>
-									<tr>
-										<td>
-											<div class="row">
-												<div class="col-sm-2"><img class="profile-picture" src="/static/images/profile-picture.jpg" alt="Profile Picture"></div>
-												<div class="col-sm-10"></div>
-											</div>
-										</td>
-									</tr>
 									<tr>
 										<td>
 											<div class="row">
