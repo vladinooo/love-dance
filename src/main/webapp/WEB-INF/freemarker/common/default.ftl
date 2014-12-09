@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>${title}</title>
-    
+
     <!-- jQuery -->
     <script src="/static/spectrum/assets/js/jquery-1.10.2.js"></script>
 
@@ -22,6 +22,11 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic|Slabo+27px|Architects+Daughter|Gentium+Book+Basic:400,400italic,700,700italic|Lusitana:400,700'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic|Lato:300,400,700,300italic,400italic,700italic|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
 
     <!-- Retina Images Plugin -->
     <script src="/static/spectrum/assets/js/plugins/retina/retina.min.js"></script>
@@ -36,7 +41,7 @@
 
     <!-- Spectrum CSS -->
     <!-- Note: spectrum.css is the default blue theme. To use another theme, uncomment the one you want and delete the rest, including the default spectrum.css! -->
-    <link href="/static/spectrum/assets/css/spectrum.css" rel="stylesheet">
+    <link href="/static/spectrum/assets/css/spectrum-lovedance2.css" rel="stylesheet">
     <!-- <link href="assets/css/spectrum-aqua.css" rel="stylesheet"> -->
     <!-- <link href="assets/css/spectrum-coffee.css" rel="stylesheet"> -->
     <!-- <link href="assets/css/spectrum-coral.css" rel="stylesheet"> -->
@@ -57,7 +62,7 @@
       <script src="assets/js/html5shiv.js"></script>
       <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-    
+
     <!-- Custom CSS -->
 	<link rel="stylesheet" href="/static/css/main.css">
 
@@ -66,7 +71,7 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <div id="wrapper">
-		
+
 		<#include "header.ftl"/>
 		
 		<#nested/>
@@ -96,7 +101,7 @@
     <!-- Spectrum JavaScript Files -->
     <script src="/static/spectrum/assets/js/spectrum.nav.js"></script>
     <script src="/static/spectrum/assets/js/spectrum.js"></script>
-    
+
     <!-- Custom JavaScript Files -->
     <script src="/static/js/formValidation.js"></script>
 

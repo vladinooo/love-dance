@@ -1,16 +1,14 @@
 <#import "common/default.ftl" as layout>
 <@layout.default "Welcome to Love Dance">
-<header class="intro-img intro-dark-bg" style="background-image: url(/static/spectrum/assets/img/demo-bgs/demo-bg-1.jpg)" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="50">
+<header class="intro-img intro-dark-bg" style="background-image: url(/static/spectrum/assets/img/demo-bgs/demo-bg-4.jpg)" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="50">
     <div class="overlay"></div>
     <div class="intro-body" data-scrollreveal="move 0 over 1.5s">
         <div class="container">
-            <div class="intro-welcome">Welcome to <h2 class="intro-welcome">Love Dance</h2></div>
-            <br>
             <h1 class="brand-heading">
-                <span class="text-primary">WEDDING DANCE</span><br>WITH LOVE<span class="text-primary"> FOR THOSE WHO ARE</span> IN LOVE
+                <span class="text-primary">WEDDING DANCE</span><br>WITH LOVE FOR THOSE WHO ARE IN LOVE
             </h1>
             <hr class="light">
-            <h3>Tell your love story with the dance</h3>
+            <h3 class="text-dark-shadow">Tell your love story with the dance</h3>
             <div class="page-scroll" data-scrollreveal="enter bottom after .6s">
                 <a href="#about" class="btn btn-scroll-light sink">
                     <i class="fa fa-angle-double-down"></i>
@@ -26,8 +24,15 @@
             <div class="col-md-8 col-md-offset-2">
                 <h2>About LOVE DANCE</h2>
                 <hr class="primary">
-                <p>Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </p>
-                <p class="demo-text">Love Dance is pure fun!</p>
+                <div class="alert lovedance-info" role="alert">Have you ever wanted to move easily, softly, fly on the dancing floor and enjoy every step? Then you are in a right place.</div>
+                <div class="alert lovedance-info" role="alert">LOVE DANCE is a project which helps people not only to learn dancing movements but actually start dancing naturally and magically</div>
+                <div class="alert lovedance-info" role="alert">LOVE DANCE offers wedding dance classes as well as drop-in BODY-workshops <br />"Strong, Sexy, Flexible, Free"</div>
+                <div class="alert lovedance-info" role="alert">LOVE DANCE also specialises on dancing lessons for LGBT couples so feel free to read about it in our blog</div>
+                <div class="alert lovedance-info" role="alert">LOVE DANCE is extremely friendly so don't hesitate to call, ask questions, subscribe and leave your comments</div>
+                <div class="alert lovedance-info" role="alert">Lessons can be run in various places in Brighton and Hove</div>
+                <div class="alert lovedance-info" role="alert">И мы говорим по-русски тоже;)</div>
+                <br />
+                <h2>Build it your way - Love Dance is pure fun!</h2>
             </div>
         </div>
     </div>
@@ -37,12 +42,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-1">
-                <img src="/static/spectrum/assets/img/demo-portraits/portrait-2.jpg" class="img-circle img-responsive img-centered dark-faded-border" alt="">
+                <img src="/static/spectrum/assets/img/demo-portraits/portrait-8.jpg" class="img-circle img-responsive img-centered dark-faded-border" alt="">
             </div>
             <div class="col-lg-5 text-center">
-                <h2>About ME</h2>
+                <h2 class="text-dark">About ME</h2>
                 <hr class="primary">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, necessitatibus, inventore, nam quidem quasi expedita ab magnam maxime optio officiis dicta dolorem exercitationem sunt. Modi, quaerat impedit voluptatem aspernatur praesentium.</p>
+                <p>I'm a choreographer with 10 year of experience, fitness coach and actress. I found myself passionate about
+                    making WEDDING DANCE because seeing two people in love and help them to make their
+                    special day really exiting and unforgettable is amazing. Born in Ukraine I brought all my knowledge to Brighton
+                    - the most creative and adorable city I have ever seen. So now is the time for making happy people
+                    here.</p>
                 <ul class="list-inline">
                     <li>
                         <a href="#" class="btn btn-social-dark btn-facebook">
@@ -77,7 +86,9 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>I taught more than 100 couples</h2>
                     <hr class="light">
-                    <p style="font-size:24px">Every couple is unique, so every need a unique dance. I never know for sure what dance should it be before I meet and talk to couple - this is where the beautiful wedding dance starts.</p>
+                    <p style="font-size:24px">Every couple is unique, and therefore each need a unique dance. I never know for
+                        sure what dance should it be before I meet and talk to couple - this is where the beautiful
+                        wedding dance starts.</p>
                 </div>
             </div>
         </div>
@@ -98,22 +109,22 @@
                     <li class="item">
                         <span class="icon icon-code"></span>
                         <h3>Love Improving</h3>
-                        <p>Wedding dance can be first big cooperative challenge of your couple.</p>
+                        <p>Wedding dance can be a first big cooperative challenge of the couple. See how well you know each other!</p>
                     </li>
                     <li class="item">
                         <span class="icon icon-envelope-o"></span>
                         <h3>Fun</h3>
-                        <p>Learn something new is always exiting and I promise you will enjoy your time!</p>
+                        <p>Learning something new is always exiting and I promise you will enjoy your time!</p>
                     </li>
                     <li class="item">
                         <span class="icon icon-mobile"></span>
                         <h3>It's quick!</h3>
-                        <p>Only 5 lessons and you will be dancing  amazing wedding first dance!</p>
+                        <p>Only 5 lessons and you will be dancing amazing wedding dance!</p>
                     </li>
                     <li class="item">
                         <span class="icon icon-info-circle"></span>
                         <h3>Memory</h3>
-                        <p>You will get the- video from lessons to remember this good time forever or even have a look to refresh it before wedding.</p>
+                        <p>You will get a video after each lesson to remember the good time or even have a look to refresh it before the big day.</p>
                     </li>
                 </ul>
             </div>
@@ -337,68 +348,67 @@
             <div class="col-md-8 col-md-offset-2">
                 <h2>Pricing</h2>
                 <hr class="primary">
-                <p>Three licensing options are availalbe for the Spectrum Template. A single application license, a multiple application license, and an extended license are the three options availalbe.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
                     <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
-                        <h2>Single</h2>
+                        <h2>Single WD</h2>
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">15</span>
+                            <span class="amount">£ 35</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
-                            <li class="item">Pay buy each every lesson</li>
-                            <li class="item">Have as much lessons as you need</li>
-                            <li class="item">One lesson - 60 min</li>
+                            <li class="item">Pay As You Go</li>
+                            <li class="item">1 lesson / 60 min</li>
+                            <li class="item">Have as many lessons as you need</li>
                             <li class="pricing-button">
-                                <a href="#" class="btn btn-primary btn-square btn-raised">Contact Me</a>
+                                <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 pricing-col" data-scrollreveal="enter bottom over 1.5s">
-                <div class="pricing-table featured">
-                    <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/2.jpg')">
-                        <h2>5 lessons package</h2>
-                    </div>
-                    <div class="content">
-                        <div class="price">
-                            <span class="amount">55</span>
-                            <span class="period">one time</span>
-                        </div>
-                        <ul class="pricing-items list-unstyled text-center">
-                            <li class="item">Pay by card for your complete Wedding dance in 5 lessons</li>
-                            <li class="item">Package: 5 lessons, 60 min each.</li>
-                            <li class="item">Contact me to arrange comfortable time and see you in dancing class!</li>
-                            <li class="pricing-button">
-                                <a href="#" class="btn btn-primary btn-square btn-raised">Buy Now</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 pricing-col" data-scrollreveal="enter right over 1.5s">
+            <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
                     <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
-                        <h2>Gift 6 lessons package</h2>
+                        <h2>5 Lessons WD</h2>
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">65</span>
+                            <span class="amount">£ 155</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
-                            <li class="item">Pay by card for certificate "Wedding dance in 6 lessons"</li>
-                            <li class="item">This is a perfect gift for your friends who are getting married</li>
-                            <li class="item">Package: 6 lessons, 60 min each</li>
+                            <li class="item">Complete Wedding Dance package</li>
+                            <li class="item">5 lessons / 60 min</li>
+                            <li class="item">Save £20</li>
                             <li class="pricing-button">
-                                <a href="#" class="btn btn-primary btn-square btn-raised">Buy Now</a>
+                                <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
+                <div class="pricing-table">
+                    <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                        <h2>Body Workshop</h2>
+                    </div>
+                    <div class="content">
+                        <div class="price">
+                            <span class="amount">£ 5</span>
+                            <span class="period">one time</span>
+                        </div>
+                        <ul class="pricing-items list-unstyled text-center">
+                            <li class="item">Body Workshop "Strong, Sexy, Flexible, Free"</li>
+                            <li class="item">1 session / 60 min</li>
+                            <li class="item">Save £2</li>
+                            <li class="pricing-button">
+                                <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
                             </li>
                         </ul>
                     </div>
@@ -424,9 +434,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6" data-scrollreveal="enter left over 1.5s">
-                <h2>Contact Us</h2>
-                <p>Spectrum comes loaded with a working contact form! Just follow the instructions in the documentation to get your form working. All you need to do is change an email address, no code writing required!</p>
-                <p>The contact form to the right is a demo form and will not send email to Start Bootstrap. If you have a question about the theme, please contact us through our WrapBootstrap profile.</p>
+                <h2>Contact Me</h2>
+                <p>Contact me to arrange comfortable time and see you in dancing class!</p>
             </div>
             <div class="col-lg-5 col-lg-offset-1" data-scrollreveal="enter right over 1.5s">
                 <br>
