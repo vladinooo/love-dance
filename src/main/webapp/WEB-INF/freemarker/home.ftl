@@ -8,7 +8,7 @@
                 <span class="text-primary">WEDDING DANCE</span><br>WITH LOVE FOR THOSE WHO ARE IN LOVE
             </h1>
             <hr class="light">
-            <h3 class="text-dark-shadow">Tell your love story with the dance</h3>
+            <h2 class="text-dark-shadow">Tell your love story with the dance</h2>
             <div class="page-scroll" data-scrollreveal="enter bottom after .6s">
                 <a href="#about" class="btn btn-scroll-light sink">
                     <i class="fa fa-angle-double-down"></i>
@@ -99,7 +99,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2>Benefits</h2>
+                <h2 class="text-dark">Benefits</h2>
                 <hr class="primary">
                 <p>If you still haven't decided yet whether you need learn wedding dance or not here is some advantages that you will have for sure if you will join my lessons!</p>
             </div>
@@ -107,22 +107,22 @@
                 <ul id="services-1-carousel" class="icon-effect list-inline">
                     <!-- ICON USAGE: The icons in this example are generated using Font Awesome unicodes. To use different icons you will need to create a custom CSS class like the ones used below (ex. icon-code, or icon-envelope-o). -->
                     <li class="item">
-                        <span class="icon icon-code"></span>
+                        <span class="icon icon-heart"></span>
                         <h3>Love Improving</h3>
                         <p>Wedding dance can be a first big cooperative challenge of the couple. See how well you know each other!</p>
                     </li>
                     <li class="item">
-                        <span class="icon icon-envelope-o"></span>
+                        <span class="icon icon-smile"></span>
                         <h3>Fun</h3>
                         <p>Learning something new is always exiting and I promise you will enjoy your time!</p>
                     </li>
                     <li class="item">
-                        <span class="icon icon-mobile"></span>
+                        <span class="icon icon-clock"></span>
                         <h3>It's quick!</h3>
                         <p>Only 5 lessons and you will be dancing amazing wedding dance!</p>
                     </li>
                     <li class="item">
-                        <span class="icon icon-info-circle"></span>
+                        <span class="icon icon-image"></span>
                         <h3>Memory</h3>
                         <p>You will get a video after each lesson to remember the good time or even have a look to refresh it before the big day.</p>
                     </li>
@@ -136,27 +136,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Experience</h2>
+                <h2 class="text-dark">Experience</h2>
                 <hr class="primary">
                 <ul class="list-inline hidden-xs" id="filters">
                     <li>
                         <button data-filter="*" type="button" class="btn btn-primary btn-square btn-raised">All</button>
                     </li>
                     <li>
-                        <button data-filter=".web" type="button" class="btn btn-primary btn-square btn-raised">Website</button>
+                        <button data-filter=".photos" type="button" class="btn btn-primary btn-square btn-raised">Photos</button>
                     </li>
                     <li>
-                        <button data-filter=".graphic" type="button" class="btn btn-primary btn-square btn-raised">Graphic</button>
-                    </li>
-                    <li>
-                        <button data-filter=".print" type="button" class="btn btn-primary btn-square btn-raised">Print</button>
+                        <button data-filter=".videos" type="button" class="btn btn-primary btn-square btn-raised">Videos</button>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="row" data-scrollreveal="enter bottom over 1.5s">
             <div class="isotope">
-                <div class="col-sm-4 portfolio-item web">
+                <div class="col-sm-4 portfolio-item photos">
                     <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -167,7 +164,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/1.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item graphic">
+                <div class="col-sm-4 portfolio-item photos">
                     <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -178,7 +175,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/2.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item print">
+                <div class="col-sm-4 portfolio-item videos">
                     <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -189,7 +186,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/3.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item web">
+                <div class="col-sm-4 portfolio-item photos">
                     <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -200,7 +197,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/4.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item graphic">
+                <div class="col-sm-4 portfolio-item videos">
                     <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -211,7 +208,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/5.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item print">
+                <div class="col-sm-4 portfolio-item photos">
                     <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -222,7 +219,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/6.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item web">
+                <div class="col-sm-4 portfolio-item photos">
                     <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -233,7 +230,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/7.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item graphic">
+                <div class="col-sm-4 portfolio-item photos">
                     <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -244,7 +241,7 @@
                         <img src="/static/spectrum/assets/img/demo-portfolio/8.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item print">
+                <div class="col-sm-4 portfolio-item videos">
                     <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -346,7 +343,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-8 col-md-offset-2">
-                <h2>Pricing</h2>
+                <h2 class="text-dark">Pricing</h2>
                 <hr class="primary">
             </div>
         </div>
@@ -422,7 +419,10 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2 class="allcaps">LOVE DANCE - WEDDING DANCE WITH LOVE FOR THOSE WHO ARE IN LOVE</h2>
+	            <span class="logo">
+	                <img src="/static/spectrum/assets/img/logo.png" alt="">
+	            </span>
+                <h2 class="text-yellow">WEDDING DANCE WITH LOVE <br />FOR THOSE WHO ARE IN LOVE</h2>
                 <br>
                 <h2>Phone: 07476 495494</h2>
             </div>
@@ -434,7 +434,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6" data-scrollreveal="enter left over 1.5s">
-                <h2>Contact Me</h2>
+                <h2 class="text-dark">Contact Me</h2>
                 <p>Contact me to arrange comfortable time and see you in dancing class!</p>
             </div>
             <div class="col-lg-5 col-lg-offset-1" data-scrollreveal="enter right over 1.5s">
