@@ -373,10 +373,10 @@
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
-                            <li class="item">Wedding dance in 6 lessons gift</li>
+                            <li class="item">Wedding Dance Gift Voucher</li>
                             <li class="item">6 lessons</li>
                             <li class="item">60 min / lesson</li>
-                            <li class="item">Certificate on completion</li>
+                            <li class="item">Perfect gift for your friends and family</li>
                             <li class="pricing-button">
                                 <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
                             </li>

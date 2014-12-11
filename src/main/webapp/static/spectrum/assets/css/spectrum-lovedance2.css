@@ -2988,6 +2988,7 @@ p.demo-text {
     border-radius: 10px;
     padding: 20px;
     border: solid 5px #fff;
+    font-size: large;
 }
 
 a.light-link {
