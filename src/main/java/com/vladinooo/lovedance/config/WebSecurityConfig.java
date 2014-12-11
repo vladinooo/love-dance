@@ -53,6 +53,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 		"/user/account/edit",
                 		"/user/photo/upload",
                 		"/uploadProfilePhoto",
+                        "/blog/articles",
+                        "/blog/articles/article",
                 		"/error").permitAll()
                 .anyRequest().authenticated();
         http

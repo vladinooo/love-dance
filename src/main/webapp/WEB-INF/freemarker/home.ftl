@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring />
 <#import "common/default.ftl" as layout>
 <@layout.default "Welcome to Love Dance">
 <header class="intro-img intro-dark-bg" style="background-image: url(/static/spectrum/assets/img/demo-bgs/demo-bg-4.jpg)" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="50">
@@ -232,7 +233,7 @@
         </div>
         <div class="row blog-row">
             <div class="col-md-4 blog-col" data-scrollreveal="enter left over 1.5s">
-                <a href="#" class="blog-preview-img">
+                <a href="<@spring.url '/blog/articles/article'/>" class="blog-preview-img">
                     <div class="caption">
                         <div class="caption-content">
                             <i class="fa fa-search fa-3x"></i>
@@ -242,10 +243,10 @@
                 </a>
                 <div class="blog-preview-content">
                     <h3>
-                        <a href="#">Blog Post Title</a>
+                        <a href="<@spring.url '/blog/articles/article'/>">Blog Post Title</a>
                     </h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quisquam, sunt, corporis.</p>
-                    <div class="continue"><a href="#">Continue Reading &rarr;</a>
+                    <div class="continue"><a href="<@spring.url '/blog/articles/article'/>">Continue Reading &rarr;</a>
                     </div>
                     <ul class="meta list-inline">
                         <li>February 31, 2014</li>
@@ -255,7 +256,7 @@
                 </div>
             </div>
             <div class="col-md-4 blog-col" data-scrollreveal="enter bottom over 1.5s">
-                <a href="#" class="blog-preview-img">
+                <a href="<@spring.url '/blog/articles/article'/>" class="blog-preview-img">
                     <div class="caption">
                         <div class="caption-content">
                             <i class="fa fa-search fa-3x"></i>
@@ -265,10 +266,10 @@
                 </a>
                 <div class="blog-preview-content">
                     <h3>
-                        <a href="#">Blog Post Title</a>
+                        <a href="<@spring.url '/blog/articles/article'/>">Blog Post Title</a>
                     </h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quisquam, sunt, corporis.</p>
-                    <div class="continue"><a href="#">Continue Reading &rarr;</a>
+                    <div class="continue"><a href="<@spring.url '/blog/articles/article'/>">Continue Reading &rarr;</a>
                     </div>
                     <ul class="meta list-inline">
                         <li>February 31, 2014</li>
@@ -278,7 +279,7 @@
                 </div>
             </div>
             <div class="col-md-4 blog-col" data-scrollreveal="enter right over 1.5s">
-                <a href="#" class="blog-preview-img">
+                <a href="<@spring.url '/blog/articles/article'/>" class="blog-preview-img">
                     <div class="caption">
                         <div class="caption-content">
                             <i class="fa fa-search fa-3x"></i>
@@ -288,10 +289,10 @@
                 </a>
                 <div class="blog-preview-content">
                     <h3>
-                        <a href="#">Blog Post Title</a>
+                        <a href="<@spring.url '/blog/articles/article'/>">Blog Post Title</a>
                     </h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quisquam, sunt, corporis.</p>
-                    <div class="continue"><a href="#">Continue Reading &rarr;</a>
+                    <div class="continue"><a href="<@spring.url '/blog/articles/article'/>">Continue Reading &rarr;</a>
                     </div>
                     <ul class="meta list-inline">
                         <li>February 31, 2014</li>
@@ -303,7 +304,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="pull-right"><a href="#" class="light-link">All Articles ></a></h2>
+                <h2 class="pull-right"><a href="<@spring.url '/blog/articles'/>" class="light-link">All Articles ></a></h2>
             </div>
         </div>
     </div>
