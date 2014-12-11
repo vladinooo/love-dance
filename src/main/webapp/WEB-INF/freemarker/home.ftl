@@ -47,11 +47,14 @@
             <div class="col-lg-5 text-center">
                 <h2 class="text-dark">About ME</h2>
                 <hr class="primary">
-                <p>I'm a choreographer with 10 year of experience, fitness coach and actress. I found myself passionate about
+                <p>I'm a choreographer with 10 year of experience, fitness coach and actress. I found myself passionate
+                    about
                     making WEDDING DANCE because seeing two people in love and help them to make their
-                    special day really exiting and unforgettable is amazing. Born in Ukraine I brought all my knowledge to Brighton
+                    special day really exiting and unforgettable is amazing. I brought all my knowledge from Ukraine,
+                    where I was born, to Brighton
                     - the most creative and adorable city I have ever seen. So now is the time for making happy people
-                    here.</p>
+                    here. I've been a bride recently myself and know what it takes to make an ideal wedding and dance -
+                    so I do understand how you feel!</p>
                 <ul class="list-inline">
                     <li>
                         <a href="#" class="btn btn-social-dark btn-facebook">
@@ -132,9 +135,10 @@
     </div>
 </section>
 
+
 <section id="experience" class="portfolio-1">
     <div class="container">
-        <div class="row">
+        <div class="row" data-scrollreveal="move 0 over 1s" data-sr-init="true" data-sr-complete="true">
             <div class="col-lg-12 text-center">
                 <h2 class="text-dark">Experience</h2>
                 <hr class="primary">
@@ -143,113 +147,74 @@
                         <button data-filter="*" type="button" class="btn btn-primary btn-square btn-raised">All</button>
                     </li>
                     <li>
-                        <button data-filter=".photos" type="button" class="btn btn-primary btn-square btn-raised">Photos</button>
+                        <button data-filter=".photo" type="button" class="btn btn-primary btn-square btn-raised">Photos</button>
                     </li>
                     <li>
-                        <button data-filter=".videos" type="button" class="btn btn-primary btn-square btn-raised">Videos</button>
+                        <button data-filter=".video" type="button" class="btn btn-primary btn-square btn-raised">Videos</button>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="row" data-scrollreveal="enter bottom over 1.5s">
+        <div class="row" data-scrollreveal="enter bottom over 1s" data-sr-init="true" data-sr-complete="true">
             <div class="isotope">
-                <div class="col-sm-4 portfolio-item photos">
-                    <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item photo">
+                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-1.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
+                                <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/1.jpg" class="img-centered" alt="">
+                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-1.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item photos">
-                    <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item photo">
+                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-2.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
+                                <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/2.jpg" class="img-centered" alt="">
+                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-2.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item videos">
-                    <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item photo">
+                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-3.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
+                                <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/3.jpg" class="img-centered" alt="">
+                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-3.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item photos">
-                    <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item photo">
+                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-4.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
+                                <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/4.jpg" class="img-centered" alt="">
+                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-4.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item videos">
-                    <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item photo">
+                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-5.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
+                                <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/5.jpg" class="img-centered" alt="">
+                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-5.jpg" class="img-centered" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item photos">
-                    <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item video">
+                    <a href="https://www.youtube.com/watch?v=oorzvPmjmjw" class="portfolio-link popup-youtube">
                         <div class="caption">
                             <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
+                                <i class="fa fa-play-circle-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/6.jpg" class="img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item photos">
-                    <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
-                            </div>
-                        </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/7.jpg" class="img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item photos">
-                    <a href="#portfolio-modal-1" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
-                            </div>
-                        </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/8.jpg" class="img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item videos">
-                    <a href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3><i class="fa fa-search fa-2x"></i>
-                                </h3>
-                            </div>
-                        </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/9.jpg" class="img-centered" alt="">
+                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-6.jpg" class="img-centered" alt="" />
                     </a>
                 </div>
             </div>
@@ -336,6 +301,11 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="pull-right"><a href="#" class="light-link">All Articles ></a></h2>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -351,7 +321,7 @@
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
                     <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
-                        <h2>Single WD</h2>
+                        <h2>Single</h2>
                     </div>
                     <div class="content">
                         <div class="price">
@@ -360,7 +330,8 @@
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
                             <li class="item">Pay As You Go</li>
-                            <li class="item">1 lesson / 60 min</li>
+                            <li class="item">1 lesson</li>
+                            <li class="item">60 min / lesson</li>
                             <li class="item">Have as many lessons as you need</li>
                             <li class="pricing-button">
                                 <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
@@ -372,17 +343,18 @@
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
                     <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
-                        <h2>5 Lessons WD</h2>
+                        <h2>5 Lessons</h2>
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">£ 155</span>
+                            <span class="amount">£ 145</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
                             <li class="item">Complete Wedding Dance package</li>
-                            <li class="item">5 lessons / 60 min</li>
-                            <li class="item">Save £20</li>
+                            <li class="item">5 lessons</li>
+                            <li class="item">60 min / lesson</li>
+                            <li class="item">Save £30</li>
                             <li class="pricing-button">
                                 <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
                             </li>
@@ -393,17 +365,18 @@
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
                     <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
-                        <h2>Body Workshop</h2>
+                        <h2>6 Lessons Gift</h2>
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">£ 5</span>
+                            <span class="amount">£ 185</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
-                            <li class="item">Body Workshop "Strong, Sexy, Flexible, Free"</li>
-                            <li class="item">1 session / 60 min</li>
-                            <li class="item">Save £2</li>
+                            <li class="item">Wedding dance in 6 lessons gift</li>
+                            <li class="item">6 lessons</li>
+                            <li class="item">60 min / lesson</li>
+                            <li class="item">Certificate on completion</li>
                             <li class="pricing-button">
                                 <a href="#" class="btn btn-primary btn-square btn-raised">Book</a>
                             </li>
@@ -435,7 +408,9 @@
         <div class="row">
             <div class="col-lg-6" data-scrollreveal="enter left over 1.5s">
                 <h2 class="text-dark">Contact Me</h2>
-                <p>Contact me to arrange comfortable time and see you in dancing class!</p>
+                <p>If you still hesitate or have any questions just give me a call or write an e-mail!
+                    I'm looking forward to lead you to the magic and spectacular world of dance!
+                    See you in dancing class!</p>
             </div>
             <div class="col-lg-5 col-lg-offset-1" data-scrollreveal="enter right over 1.5s">
                 <br>

@@ -956,7 +956,7 @@ a.light-text:hover, a.light-text:focus {
 }
 
 .blog-1 .blog-col .blog-preview-img .caption {
-    background: rgba(62, 68, 77, .9);
+    background: rgba(141, 199, 184, .9);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1466,7 +1466,7 @@ a.light-text:hover, a.light-text:focus {
 }
 
 .portfolio-1 .portfolio-item .portfolio-link .caption {
-    background: rgba(62, 68, 77, .9);
+    background: rgba(220, 87, 78, .9);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -2889,7 +2889,7 @@ ul.button-list li:first-child {
 }
 
 .footer-1 .upper .footer-links li a:hover {
-    color: #8DC7B8
+    color: #DC574E
 }
 
 .footer-1 .lower {
@@ -2988,4 +2988,17 @@ p.demo-text {
     border-radius: 10px;
     padding: 20px;
     border: solid 5px #fff;
+}
+
+a.light-link {
+    color: #fff;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out
+}
+
+a.light-link:hover, a.light-link:focus {
+    text-decoration: none;
+    color: #F7E4A2;
+    outline: 0
 }
