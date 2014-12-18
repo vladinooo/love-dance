@@ -20,7 +20,7 @@
                                                     <i class="fa fa-search fa-3x"></i>
                                                 </div>
                                             </div>
-                                            <img src="/static/spectrum/assets/img/demo-blog/1.jpg" class="img-responsive" alt="">
+                                            <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/1.jpg" class="img-responsive" alt="">
                                         </a>
                                         <div class="blog-preview-content">
                                             <h3>
@@ -43,7 +43,7 @@
                                                     <i class="fa fa-search fa-3x"></i>
                                                 </div>
                                             </div>
-                                            <img src="/static/spectrum/assets/img/demo-blog/2.jpg" class="img-responsive" alt="">
+                                            <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/2.jpg" class="img-responsive" alt="">
                                         </a>
                                         <div class="blog-preview-content">
                                             <h3>
@@ -66,7 +66,7 @@
                                                     <i class="fa fa-search fa-3x"></i>
                                                 </div>
                                             </div>
-                                            <img src="/static/spectrum/assets/img/demo-blog/3.jpg" class="img-responsive" alt="">
+                                            <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/3.jpg" class="img-responsive" alt="">
                                         </a>
                                         <div class="blog-preview-content">
                                             <h3>

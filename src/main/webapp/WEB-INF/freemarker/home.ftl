@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring />
 <#import "common/default.ftl" as layout>
 <@layout.default "Welcome to Love Dance">
-<header class="intro-img intro-dark-bg" style="background-image: url(/static/spectrum/assets/img/demo-bgs/demo-bg-4.jpg)" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="50">
+<header class="intro-img intro-dark-bg" style="background-image: url(${rc.contextPath}/static/spectrum/assets/img/demo-bgs/demo-bg-4.jpg)" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="50">
     <div class="overlay"></div>
     <div class="intro-body" data-scrollreveal="move 0 over 1.5s">
         <div class="container">
@@ -43,7 +43,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-1">
-                <img src="/static/spectrum/assets/img/demo-portraits/portrait-8.jpg" class="img-circle img-responsive img-centered dark-faded-border" alt="">
+                <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portraits/portrait-8.jpg" class="img-circle img-responsive img-centered dark-faded-border" alt="">
             </div>
             <div class="col-lg-5 text-center">
                 <h2 class="text-dark">About ME</h2>
@@ -159,53 +159,53 @@
         <div class="row" data-scrollreveal="enter bottom over 1s" data-sr-init="true" data-sr-complete="true">
             <div class="isotope">
                 <div class="col-sm-4 portfolio-item photo">
-                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-1.jpg" class="portfolio-link gallery-item">
+                    <a href="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-1.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-1.jpg" class="img-centered" alt="">
+                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-1.jpg" class="img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item photo">
-                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-2.jpg" class="portfolio-link gallery-item">
+                    <a href="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-2.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-2.jpg" class="img-centered" alt="">
+                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-2.jpg" class="img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item photo">
-                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-3.jpg" class="portfolio-link gallery-item">
+                    <a href="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-3.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-3.jpg" class="img-centered" alt="">
+                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-3.jpg" class="img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item photo">
-                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-4.jpg" class="portfolio-link gallery-item">
+                    <a href="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-4.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-4.jpg" class="img-centered" alt="">
+                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-4.jpg" class="img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item photo">
-                    <a href="/static/spectrum/assets/img/demo-portfolio/couple-5.jpg" class="portfolio-link gallery-item">
+                    <a href="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-5.jpg" class="portfolio-link gallery-item">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-5.jpg" class="img-centered" alt="">
+                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-5.jpg" class="img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item video">
@@ -215,7 +215,7 @@
                                 <i class="fa fa-play-circle-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/static/spectrum/assets/img/demo-portfolio/couple-6.jpg" class="img-centered" alt="" />
+                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-portfolio/couple-6.jpg" class="img-centered" alt="" />
                     </a>
                 </div>
             </div>
@@ -239,7 +239,7 @@
                             <i class="fa fa-search fa-3x"></i>
                         </div>
                     </div>
-                    <img src="/static/spectrum/assets/img/demo-blog/1.jpg" class="img-responsive" alt="">
+                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/1.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="blog-preview-content">
                     <h3>
@@ -262,7 +262,7 @@
                             <i class="fa fa-search fa-3x"></i>
                         </div>
                     </div>
-                    <img src="/static/spectrum/assets/img/demo-blog/2.jpg" class="img-responsive" alt="">
+                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/2.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="blog-preview-content">
                     <h3>
@@ -285,7 +285,7 @@
                             <i class="fa fa-search fa-3x"></i>
                         </div>
                     </div>
-                    <img src="/static/spectrum/assets/img/demo-blog/3.jpg" class="img-responsive" alt="">
+                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/3.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="blog-preview-content">
                     <h3>
@@ -321,7 +321,7 @@
         <div class="row">
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
-                    <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                    <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
                         <h2>Single</h2>
                     </div>
                     <div class="content">
@@ -343,7 +343,7 @@
             </div>
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
-                    <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                    <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
                         <h2>5 Lessons</h2>
                     </div>
                     <div class="content">
@@ -365,7 +365,7 @@
             </div>
             <div class="col-md-4 pricing-col" data-scrollreveal="enter left over 1.5s">
                 <div class="pricing-table">
-                    <div class="pricing-heading" style="background-image: url('/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                    <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
                         <h2>6 Lessons Gift</h2>
                     </div>
                     <div class="content">
@@ -394,7 +394,7 @@
         <div class="row text-center">
             <div class="col-lg-8 col-lg-offset-2">
 	            <span class="logo">
-	                <img src="/static/spectrum/assets/img/logo.png" alt="">
+	                <img src="${rc.contextPath}/static/spectrum/assets/img/logo.png" alt="">
 	            </span>
                 <h2 class="text-yellow">WEDDING DANCE WITH LOVE <br />FOR THOSE WHO ARE IN LOVE</h2>
                 <br>

@@ -28,6 +28,7 @@ public class FreemarkerConfig {
         viewResolver.setExposeSpringMacroHelpers(true);
         viewResolver.setExposeRequestAttributes(true);
         viewResolver.setExposeSessionAttributes(true);
+        viewResolver.setRequestContextAttribute("rc");
         return viewResolver;
     }
 

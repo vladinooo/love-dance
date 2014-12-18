@@ -35,7 +35,7 @@
 								</tbody>
 							</table>
 			
-			                <button type="submit" class="btn btn-default pull-right" onclick="window.location.href='/user/account/edit'"> Edit </button>
+			                <button type="submit" class="btn btn-default pull-right" onclick="window.location.href='${rc.contextPath}/user/account/edit'"> Edit </button>
 			                
 					</div>
 				</div>

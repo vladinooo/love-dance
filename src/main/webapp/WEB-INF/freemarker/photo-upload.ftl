@@ -15,7 +15,7 @@
 						<h2 class="page-header">Upload Photo</h2>
 						
 						<form id="photo-upload-form" class="form-horizontal" role="form"
-							action="/uploadProfilePhoto" method="POST" enctype="multipart/form-data">
+							action="${rc.contextPath}/uploadProfilePhoto" method="POST" enctype="multipart/form-data">
 						
 						
 							<#if (flashMessage)??>
@@ -30,7 +30,7 @@
 									<tr>
 										<td>
 											<div class="row">
-												<div class="col-sm-12 centered"><img class="profile-picture" src="/static/images/profile-picture.jpg" alt="Profile Picture"></div>
+												<div class="col-sm-12 centered"><img class="profile-picture" src="${rc.contextPath}/static/images/profile-picture.jpg" alt="Profile Picture"></div>
 											</div>
 										</td>
 									</tr>
@@ -61,7 +61,7 @@
 </@layout.default>
 
 <script>
-
+// customise file chooser button and show file path
 $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
         numFiles = input.get(0).files ? input.get(0).files.length : 1,

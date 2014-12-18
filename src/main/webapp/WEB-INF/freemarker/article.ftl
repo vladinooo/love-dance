@@ -12,7 +12,7 @@
                         <div class="container">
                             <div class="row blog-row">
                                 <div class="col-md-8 blog-col" data-scrollreveal="enter left over 1.5s">
-                                    <img src="/static/spectrum/assets/img/demo-blog/article-1.jpg" class="img-responsive" alt="">
+                                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-1.jpg" class="img-responsive" alt="">
                                     <div class="blog-preview-content">
                                         <h3>
                                             Lady's Body Workshop "Strong, Flexible, Sexy, Free"

@@ -9,7 +9,7 @@
             </button>
             <a class="navbar-brand" href="<#if uri?length &gt; 1><@spring.url '/#page-top'/><#else>#page-top</#if>">
 	            <span class="logo">
-	                <img src="/static/spectrum/assets/img/logo.png" alt="">
+	                <img src="${rc.contextPath}/static/spectrum/assets/img/logo.png" alt="">
 	            </span>
             </a>
         </div>
@@ -51,10 +51,10 @@
 				
 				<@sec.authorize access="isAuthenticated()">
 				<li>
-					<a style="text-transform:lowercase;" href="/user/profile"><span class="fa fa-user"></span> <@sec.authentication property="principal.user.username" /></a>
+					<a style="text-transform:lowercase;" href="<@spring.url '/user/profile'/>"><span class="fa fa-user"></span> <@sec.authentication property="principal.user.username" /></a>
 				</li>
 				<li>
-			    	<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>    	
+			    	<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>
 			       	<a href="#" onclick="document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Log Out</a>
 			    </li> 	
 				</@sec.authorize>

@@ -20,7 +20,7 @@
 									<tr>
 										<td>
 											<div class="row">
-												<div class="col-sm-3"><img class="profile-photo-thumbnail" src="/static/images/profile-picture.jpg" alt="Profile Picture"></div>
+												<div class="col-sm-3"><img class="profile-photo-thumbnail" src="${rc.contextPath}/static/images/profile-picture.jpg" alt="Profile Picture"></div>
 												<div class="col-sm-9"></div>
 											</div>
 										</td>
@@ -68,7 +68,7 @@
 								</tbody>
 							</table>
 			
-			                <button type="submit" class="btn btn-default pull-right" onclick="window.location.href='/user/profile/edit'"> Edit </button>
+			                <button type="submit" class="btn btn-default pull-right" onclick="window.location.href='${rc.contextPath}/user/profile/edit'"> Edit </button>
 			                
 					</div>
 				</div>

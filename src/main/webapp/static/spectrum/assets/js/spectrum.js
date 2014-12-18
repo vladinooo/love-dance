@@ -115,9 +115,9 @@ $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
 });
 
 // Activates Smooth Scrolling
-$(function() {
-    $.srSmoothscroll();
-});
+//$(function() {
+//    $.srSmoothscroll();
+//});
 
 // Floating label Headings for the Contact Form
 $(function() {
