@@ -1,12 +1,8 @@
 package com.vladinooo.lovedance.service;
 
+import com.vladinooo.lovedance.dto.*;
 import org.springframework.validation.BindingResult;
 
-import com.vladinooo.lovedance.dto.AccountEditForm;
-import com.vladinooo.lovedance.dto.ForgotPasswordForm;
-import com.vladinooo.lovedance.dto.ProfileEditForm;
-import com.vladinooo.lovedance.dto.ResetPasswordForm;
-import com.vladinooo.lovedance.dto.SignupForm;
 import com.vladinooo.lovedance.entity.User;
 
 public interface UserService {
@@ -25,6 +21,8 @@ public interface UserService {
 	public abstract void profileUpdate(long userId, ProfileEditForm profileEditForm);
 	
 	public abstract void accountUpdate(long userId, AccountEditForm accountEditForm);
+
+	public abstract void sendMessage(ContactForm contactForm);
 	
 
 }

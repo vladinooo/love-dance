@@ -1,21 +1,6 @@
 package com.vladinooo.lovedance.controller;
 
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import com.vladinooo.lovedance.dto.ContactForm;
 import com.vladinooo.lovedance.dto.ForgotPasswordForm;
 import com.vladinooo.lovedance.dto.ResetPasswordForm;
 import com.vladinooo.lovedance.dto.SignupForm;
@@ -24,6 +9,15 @@ import com.vladinooo.lovedance.util.Util;
 import com.vladinooo.lovedance.validators.ForgotPasswordFormValidator;
 import com.vladinooo.lovedance.validators.ResetPasswordFormValidator;
 import com.vladinooo.lovedance.validators.SignupFormValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 public class RootController {
@@ -43,7 +37,7 @@ public class RootController {
 		this.forgotPasswordFormValidator = forgotPasswordFormValidator;
 		this.resetPasswordFormValidator = resetPasswordFormValidator;
 	}
-	
+
 	@InitBinder("signupForm") 
 	protected void initSignupBinder(WebDataBinder binder) {
 		binder.setValidator(signupFormValidator);
@@ -57,6 +51,24 @@ public class RootController {
 	@InitBinder("resetPasswordForm") 
 	protected void initResetPasswordBinder(WebDataBinder binder) {
 		binder.setValidator(resetPasswordFormValidator);
+	}
+
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public String home(Model model) {
+		model.addAttribute("contactForm", new ContactForm());
+		return "home";
+	}
+
+	@RequestMapping(value="/", method = RequestMethod.POST)
+	public String home(@ModelAttribute("contactForm") @Valid ContactForm contactForm,
+						 BindingResult result, RedirectAttributes redirectAttributes) {
+
+		if (result.hasErrors()) {
+			return "/#contact";
+		}
+		userService.sendMessage(contactForm);
+		Util.flash(redirectAttributes, "success", "signupSuccess");
+		return "redirect:/#contact";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

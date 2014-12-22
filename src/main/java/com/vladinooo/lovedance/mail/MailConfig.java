@@ -1,16 +1,15 @@
 package com.vladinooo.lovedance.mail;
 
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.Session;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+
+import javax.mail.Authenticator;
+import javax.mail.Session;
+import java.util.Properties;
 
 @Configuration
 public class MailConfig {
@@ -30,13 +29,13 @@ public class MailConfig {
 		return new MockMailSender();
 	}
 
-//	@Bean
-//	@Profile("dev")
-//	public MailSender smtpMailSender() {
-//		SmtpMailSender mailSender = new SmtpMailSender();
-//		mailSender.setJavaMailSender(javaMailSender());
-//		return mailSender;
-//	}
+	@Bean
+	@Profile("prod")
+	public MailSender smtpMailSender() {
+		SmtpMailSender mailSender = new SmtpMailSender();
+		mailSender.setJavaMailSender(javaMailSender());
+		return mailSender;
+	}
 
 	@Bean
 	public JavaMailSender javaMailSender() {

@@ -1,10 +1,12 @@
 package com.vladinooo.lovedance.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.mail.MessagingException;
-
+import com.vladinooo.lovedance.dto.*;
+import com.vladinooo.lovedance.entity.User;
+import com.vladinooo.lovedance.entity.User.Role;
+import com.vladinooo.lovedance.mail.MailSender;
+import com.vladinooo.lovedance.mail.MockMailSender;
+import com.vladinooo.lovedance.repository.UserRepository;
+import com.vladinooo.lovedance.util.Util;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -21,18 +23,9 @@ import org.springframework.transaction.support.TransactionSynchronizationAdapter
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.validation.BindingResult;
 
-import com.vladinooo.lovedance.dto.AccountEditForm;
-import com.vladinooo.lovedance.dto.ForgotPasswordForm;
-import com.vladinooo.lovedance.dto.ProfileEditForm;
-import com.vladinooo.lovedance.dto.ResetPasswordForm;
-import com.vladinooo.lovedance.dto.SignupForm;
-import com.vladinooo.lovedance.dto.UserDetailsImpl;
-import com.vladinooo.lovedance.entity.User;
-import com.vladinooo.lovedance.entity.User.Role;
-import com.vladinooo.lovedance.mail.MailSender;
-import com.vladinooo.lovedance.mail.MockMailSender;
-import com.vladinooo.lovedance.repository.UserRepository;
-import com.vladinooo.lovedance.util.Util;
+import javax.mail.MessagingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 @Transactional(propagation=Propagation.SUPPORTS, readOnly = true)
@@ -185,6 +178,25 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		user.setPassword(accountEditForm.getPassword());
 		userRepository.save(user);	
 	}
-	
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly = false)
+	public void sendMessage(ContactForm contactForm) {
+		final ContactForm cf = contactForm;
+		TransactionSynchronizationManager.registerSynchronization(
+				new TransactionSynchronizationAdapter() {
+					@Override
+					public void afterCommit() {
+						try {
+							mailSender.send(cf.getName(), cf.getEmail(), cf.getMessage());
+							logger.info("Contact me content: " + cf.getName() + ": " + cf.getEmail() + ": " + cf.getMessage());
+						} catch (MessagingException e) {
+							logger.error(ExceptionUtils.getStackTrace(e));
+						}
+					}
+				});
+
+	}
+
 
 }
