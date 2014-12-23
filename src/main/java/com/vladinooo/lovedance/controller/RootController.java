@@ -76,6 +76,8 @@ public class RootController {
 		}
 		userService.sendMessage(contactForm);
 		Util.flash(redirectAttributes, "success", "signupSuccess");
+		session.removeAttribute("failedContactForm");
+		session.removeAttribute("result");
 		return "redirect:/#contact";
 	}
 

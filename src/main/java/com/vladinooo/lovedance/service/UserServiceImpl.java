@@ -12,6 +12,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,6 +33,9 @@ import java.util.Date;
 public class UserServiceImpl implements UserService, UserDetailsService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MockMailSender.class);
+
+	@Value("${smtp.authenticator.email}")
+	private String adminEmail;
 	
 	private UserRepository userRepository;
 	private PasswordEncoder passwordEncoder;
@@ -188,7 +192,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 					@Override
 					public void afterCommit() {
 						try {
-							mailSender.send(cf.getName(), cf.getEmail(), cf.getMessage());
+							mailSender.send(adminEmail, Util.getMessage("contactMeSubject", cf.getName()), Util.getMessage("contactMeMessage", cf.getName(), cf.getMessage()));
 							logger.info("Contact me content: " + cf.getName() + ": " + cf.getEmail() + ": " + cf.getMessage());
 						} catch (MessagingException e) {
 							logger.error(ExceptionUtils.getStackTrace(e));

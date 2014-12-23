@@ -421,22 +421,22 @@
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Name</label>
                             <@spring.formInput "contactForm.name", "class='form-control', placeholder='Name', id='name' required data-validation-required-message='Please enter your name.'" />
-                            <@spring.showErrors "<br />", "fieldValidationError" />
+                            <p class="help-block text-danger"><@spring.showErrors "<br />", "fieldValidationError" /></p>
                         </div>
 
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Email Address</label>
-                            <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                            <p class="help-block text-danger"></p>
+                            <@spring.formInput "contactForm.email", "class='form-control', placeholder='Email Address', id='email' required data-validation-required-message='Please enter your email address.'" />
+                            <p class="help-block text-danger"><@spring.showErrors "<br />", "fieldValidationError" /></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Message</label>
-                            <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                            <p class="help-block text-danger"></p>
+                            <@spring.formInput "contactForm.message", "class='form-control', placeholder='Message', id='message' required data-validation-required-message='Please enter a message.'" />
+                            <p class="help-block text-danger"><@spring.showErrors "<br />", "fieldValidationError" /></p>
                         </div>
                     </div>
                     <br>
