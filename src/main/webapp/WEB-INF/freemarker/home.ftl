@@ -416,7 +416,7 @@
             <div class="col-lg-5 col-lg-offset-1" data-scrollreveal="enter right over 1.5s">
                 <br>
                 <@spring.bind "contactForm"/>
-                <form method="POST" role="form">
+                <form method="POST" role="form" action="<@spring.url '/contact_me'/>">
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Name</label>

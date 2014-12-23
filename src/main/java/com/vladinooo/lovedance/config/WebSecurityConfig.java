@@ -45,6 +45,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 		"/",
                 		"/static/**",
                 		"/home",
+                        "/contact_me",
                 		"/signup",
                 		"/login",
                 		"/forgot-password",
