@@ -1,9 +1,8 @@
 package com.vladinooo.lovedance.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-
+import com.vladinooo.lovedance.entity.User;
+import com.vladinooo.lovedance.service.UserService;
+import com.vladinooo.lovedance.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.vladinooo.lovedance.entity.User;
-import com.vladinooo.lovedance.service.UserService;
-import com.vladinooo.lovedance.util.Util;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 @Controller
 public class FileUploadController {    
@@ -38,7 +37,7 @@ public class FileUploadController {
 			try {
 				byte[] bytes = file.getBytes();
 				String rootPath = "/Users/vladh/Downloads";
-				User user = userService.findOne(Util.getSessionUser().getId());
+				User user = userService.getUser(Util.getSessionUser().getId());
 				File dir = new File(rootPath + File.separator + "profile-photos");
 				if (!dir.exists())
 					dir.mkdirs();

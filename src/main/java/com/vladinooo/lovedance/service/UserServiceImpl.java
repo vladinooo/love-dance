@@ -27,6 +27,7 @@ import org.springframework.validation.BindingResult;
 import javax.mail.MessagingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional(propagation=Propagation.SUPPORTS, readOnly = true)
@@ -102,7 +103,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 	
 	@Override
-	public User findOne(long userId) {
+	public User getUser(long userId) {
 		User loggedIn = Util.getSessionUser();
 		User user = userRepository.findOne(userId);
 		if (loggedIn == null ||
@@ -112,6 +113,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	}
 
+	@Override
+	public List<User> getUsers() {
+		return userRepository.findAll();
+	}
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
@@ -161,25 +166,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public void profileUpdate(long userId, ProfileEditForm profileEditForm) {
+	public void editUser(long userId, UserEditForm userEditForm) {
 		User loggedIn = Util.getSessionUser();
 		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
 		User user = userRepository.findOne(userId);
-		user.setFirstname(profileEditForm.getFirstname());
-		user.setSurname(profileEditForm.getSurname());
-		user.setPhone(profileEditForm.getPhone());
-		user.setBiography(profileEditForm.getBiography());
-		userRepository.save(user);
-	}
-
-	@Override
-	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public void accountUpdate(long userId, AccountEditForm accountEditForm) {
-		User loggedIn = Util.getSessionUser();
-		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
-		User user = userRepository.findOne(userId);
-		user.setEmail(accountEditForm.getEmail());
-		user.setPassword(accountEditForm.getPassword());
+		user.setEmail(userEditForm.getEmail());
+		user.setPassword(userEditForm.getPassword());
 		userRepository.save(user);	
 	}
 

@@ -1,13 +1,13 @@
 package com.vladinooo.lovedance.dto;
 
+import com.vladinooo.lovedance.entity.User;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.vladinooo.lovedance.entity.User;
 
-
-public class AccountEditForm {
+public class UserEditForm {
 
 	@NotNull
 	@Size(min=5, max=User.EMAIL_MAX, message="{emailSizeError}")
