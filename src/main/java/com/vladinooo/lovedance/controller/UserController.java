@@ -1,7 +1,8 @@
 package com.vladinooo.lovedance.controller;
 
-import com.vladinooo.lovedance.dto.UserEditForm;
 import com.vladinooo.lovedance.dto.ProfileEditForm;
+import com.vladinooo.lovedance.dto.UserEditForm;
+import com.vladinooo.lovedance.entity.Profile;
 import com.vladinooo.lovedance.entity.User;
 import com.vladinooo.lovedance.service.ProfileService;
 import com.vladinooo.lovedance.service.UserService;
@@ -60,11 +61,15 @@ public class UserController {
     @RequestMapping(value = "/profile/edit")
     public String editProfile(Model model) {
 		User user = userService.getUser(Util.getSessionUser().getId());
+		if (user.getProfile() == null) {
+			Profile profile = new Profile();
+			user.setProfile(profile);
+		}
 		ProfileEditForm form = new ProfileEditForm();
-		form.setFirstname(user.getFirstname());
-		form.setSurname(user.getSurname());
-		form.setPhone(user.getPhone());
-		form.setBiography(user.getBiography());
+		form.setFirstname(user.getProfile().getFirstname());
+		form.setSurname(user.getProfile().getSurname());
+		form.setPhone(user.getProfile().getPhone());
+		form.setBiography(user.getProfile().getBiography());
     	model.addAttribute(user);
     	model.addAttribute(form);
 		return "profile-edit";

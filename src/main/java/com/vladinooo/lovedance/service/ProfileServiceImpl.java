@@ -1,6 +1,7 @@
 package com.vladinooo.lovedance.service;
 
 import com.vladinooo.lovedance.dto.ProfileEditForm;
+import com.vladinooo.lovedance.entity.Profile;
 import com.vladinooo.lovedance.entity.User;
 import com.vladinooo.lovedance.repository.UserRepository;
 import com.vladinooo.lovedance.util.Util;
@@ -26,10 +27,14 @@ public class ProfileServiceImpl implements ProfileService {
 		User loggedIn = Util.getSessionUser();
 		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == userId, "noPermissions");
 		User user = userRepository.findOne(userId);
-		user.setFirstname(profileEditForm.getFirstname());
-		user.setSurname(profileEditForm.getSurname());
-		user.setPhone(profileEditForm.getPhone());
-		user.setBiography(profileEditForm.getBiography());
+		if (user.getProfile() == null) {
+			Profile profile = new Profile();
+			user.setProfile(profile);
+		}
+		user.getProfile().setFirstname(profileEditForm.getFirstname());
+		user.getProfile().setSurname(profileEditForm.getSurname());
+		user.getProfile().setPhone(profileEditForm.getPhone());
+		user.getProfile().setBiography(profileEditForm.getBiography());
 		userRepository.save(user);
 	}
 

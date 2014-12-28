@@ -1,26 +1,26 @@
 package com.vladinooo.lovedance.dto;
 
+import com.vladinooo.lovedance.entity.Profile;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import com.vladinooo.lovedance.entity.User;
 
 
 public class ProfileEditForm {
 
-	@Size(max=User.FIRSTNAME_MAX, message="{firstnameSizeError}")
-	@Pattern(regexp=User.FIRSTNAME_PATTERN, message="{firstnamePatternError}")
+	@Size(max=Profile.FIRSTNAME_MAX, message="{firstnameSizeError}")
+	@Pattern(regexp=Profile.FIRSTNAME_PATTERN, message="{firstnamePatternError}")
 	private String firstname;
 	
-	@Size(max=User.SURNAME_MAX, message="{surnameSizeError}")
-	@Pattern(regexp=User.SURNAME_PATTERN, message="{surnamePatternError}")
+	@Size(max=Profile.SURNAME_MAX, message="{surnameSizeError}")
+	@Pattern(regexp=Profile.SURNAME_PATTERN, message="{surnamePatternError}")
 	private String surname;
 	
-	@Size(max=User.PHONE_MAX, message="{phoneSizeError}")
-	@Pattern(regexp=User.PHONE_PATTERN, message="{phonePatternError}")
+	@Size(max=Profile.PHONE_MAX, message="{phoneSizeError}")
+	@Pattern(regexp=Profile.PHONE_PATTERN, message="{phonePatternError}")
 	private String phone;
 	
-	@Size(max=User.BIOGRAPHY_MAX, message="{biographySizeError}")
+	@Size(max=Profile.BIOGRAPHY_MAX, message="{biographySizeError}")
 	private String biography;
 
 	public String getFirstname() {

@@ -37,7 +37,7 @@
 										<td>
 											<div class="row">
 												<div class="col-sm-2">Firstname:</div>
-												<div class="col-sm-10"><#if user.firstname??>${user.firstname}</#if></div>
+												<div class="col-sm-10"><#if user.profile.firstname??>${user.profile.firstname}</#if></div>
 											</div>
 										</td>
 									</tr>
@@ -45,7 +45,7 @@
 										<td>
 											<div class="row">
 												<div class="col-sm-2">Surname:</div>
-												<div class="col-sm-10"><#if user.surname??>${user.surname}</#if></div>
+												<div class="col-sm-10"><#if user.profile.surname??>${user.profile.surname}</#if></div>
 											</div>
 										</td>
 									</tr>
@@ -53,7 +53,7 @@
 										<td>
 											<div class="row">
 												<div class="col-sm-2">Phone:</div>
-												<div class="col-sm-10"><#if user.phone??>${user.phone}</#if></div>
+												<div class="col-sm-10"><#if user.profile.phone??>${user.profile.phone}</#if></div>
 											</div>
 										</td>
 									</tr>
@@ -61,7 +61,7 @@
 										<td>
 											<div class="row">
 												<div class="col-sm-2">Biography:</div>
-												<div class="col-sm-10"><#if user.biography??>${user.biography}</#if></div>
+												<div class="col-sm-10"><#if user.profile.biography??>${user.profile.biography}</#if></div>
 											</div>
 										</td>
 									</tr>
