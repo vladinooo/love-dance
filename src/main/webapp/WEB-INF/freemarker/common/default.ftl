@@ -41,7 +41,7 @@
 
     <!-- Spectrum CSS -->
     <!-- Note: spectrum.css is the default blue theme. To use another theme, uncomment the one you want and delete the rest, including the default spectrum.css! -->
-    <link href="${rc.contextPath}/static/spectrum/assets/css/spectrum-lovedance2.css" rel="stylesheet">
+    <link href="${rc.contextPath}/static/spectrum/assets/css/spectrum-lovedance.css" rel="stylesheet">
     <!-- <link href="assets/css/spectrum-aqua.css" rel="stylesheet"> -->
     <!-- <link href="assets/css/spectrum-coffee.css" rel="stylesheet"> -->
     <!-- <link href="assets/css/spectrum-coral.css" rel="stylesheet"> -->
@@ -104,6 +104,7 @@
 
     <!-- Custom JavaScript Files -->
     <script src="${rc.contextPath}/static/js/formValidation.js"></script>
+    <script src="${rc.contextPath}/static/js/custom.js"></script>
 
 </body>
 

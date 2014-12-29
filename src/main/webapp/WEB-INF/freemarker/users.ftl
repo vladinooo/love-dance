@@ -29,29 +29,29 @@
                             <tbody>
                             <#list users as user>
                                 <tr>
-                                    <td class="center">${user.username}</td>
-                                    <td class="center">${user.email}</td>
-                                    <td class="center">${user.datetimeRegistered}</td>
-                                    <td class="center">
+                                    <td class="centered">${user.username}</td>
+                                    <td class="centered">${user.email}</td>
+                                    <td class="centered">${user.datetimeRegistered}</td>
+                                    <td class="centered" style="text-transform: lowercase">
                                         <#list user.roles as role>
-                                            role
+                                            <span class="fl">${role}</span>
                                         </#list>
                                     </td>
-                                    <td class="center"><#if user.enabled == true>Active<#else>Terminated</#if></td>
-                                    <td class="center ">
+                                    <td class="centered"><#if user.enabled == true>Active<#else>Terminated</#if></td>
+                                    <td class="centered">
                                         <div class="btn-group">
-                                            <a href="#" class="btn btn-success tip" title="" data-original-title="View user"><i class="icon16 i-eye-3"></i></a>
                                             <a href="#"
-                                               class="btn btn-info tip" title="" data-original-title="Edit user"><i class="icon16 i-pencil"></i></a>
+                                               class="btn btn-default" data-original-title="View user"
+                                               onclick="captureUniqueIdentifier('${user.encodedId}')">
+                                               <i class="fa fa-eye"></i></a>
                                             <a href="#"
-                                               class="btn btn-danger tip openModalDialog" title="" data-original-title="Delete user"><i class="icon16 i-remove-4"></i></a>
-
-                                            <span class="deleteUserUrlPlaceholder" hidden="hidden">
-                                                <@spring.url '/'/>
-										    </span>
-                                            <div title="DELETE USER" class="dialog">
-                                                <p>This action will delete all user's data. Are you sure?</p>
-                                            </div>
+                                               class="btn btn-default" data-original-title="Edit user"
+                                               onclick="adminEditUser('${user.encodedId}')">
+                                               <i class="fa fa-edit"></i></a>
+                                            <a href="#"
+                                               class="btn btn-default" data-toggle="modal" data-target="#myModal"
+                                               data-original-title="Delete user"
+                                               onclick="captureUniqueIdentifier('${user.encodedId}')"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -76,61 +76,27 @@
         </div>
     </div>
 </section>
+
+
+
+<!-- Delete user modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">DELETE USER</h4>
+            </div>
+            <div class="modal-body centered" style="font-size: large">
+                This action will delete all user's data. <br />Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteUser()">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </@layout.default>
 
-
-<script>
-
-    //create unique ids
-    $(".openModalDialog").each(function(i){
-        $(this).attr("id", "openModal" + i);
-    });
-
-    // create unique ids
-    $(".dialog").each(function(i){
-        $(this).attr("id", "modal" + i);
-    });
-
-    // create unique ids
-    $(".deleteUserUrlPlaceholder").each(function(i){
-        $(this).attr("id", "deleteUserUrl" + i);
-    });
-
-
-    $(".openModalDialog").each(function(i){
-        var openModalId = $(this).attr("id");
-        $("#" + openModalId).click(function(){
-            $('#modal' + i).dialog('open');
-            return false;
-        });
-
-        // JQuery UI Modal Dialog
-        $('#modal' + i).dialog({
-            autoOpen: false,
-            modal: true,
-            dialogClass: 'dialog modalDialogWarning',
-            buttons: [
-                {
-                    text: "Delete",
-                    "class": "btn btn-danger",
-                    click: function() {
-                        var url = $("#deleteUserUrl" + i).text();
-                        window.location = url;
-                        $(this).dialog("close");
-                    }
-                },
-                {
-                    text: "Cancel",
-                    click: function() {
-                        $(this).dialog("close");
-                    }
-                }
-            ]
-        });
-
-    });
-
-
-    $("div.dialog button").addClass("btn");
-
-</script>

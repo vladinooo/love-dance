@@ -1,5 +1,6 @@
 package com.vladinooo.lovedance.entity;
 
+import com.vladinooo.lovedance.util.Base64EncoderDecoder;
 import com.vladinooo.lovedance.util.Util;
 
 import javax.persistence.*;
@@ -31,6 +32,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+
+	private String encodedId;
 	
 	@Column(nullable = false, length = USERNAME_MAX)
 	private String username;
@@ -62,6 +65,10 @@ public class User {
 
 	public long getId() {
 		return id;
+	}
+
+	public String getEncodedId() {
+		return Base64EncoderDecoder.encode(Long.toString(id));
 	}
 
 	public void setId(long id) {

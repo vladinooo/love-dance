@@ -52,11 +52,14 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 		"/reset-password/*",
                 		"/user/profile/edit",
                 		"/user/account/edit",
+                        "/user/account/delete",
                 		"/user/photo/upload",
                 		"/uploadProfilePhoto",
                         "/blog/articles",
                         "/blog/articles/article",
-                        "/users",
+                        "/admin/users",
+                        "/admin/user/edit",
+                        "/admin/user/delete",
                 		"/error").permitAll()
                 .anyRequest().authenticated();
         http
