@@ -94,14 +94,14 @@ public class UserController {
     }
 	
 	@RequestMapping(value = "/account")
-    public String getUser(Model model) {
+    public String getAccount(Model model) {
     	model.addAttribute(userService.getUser(Util.getSessionUser().getId()));
 	  	return "account";
     }
 	
     
     @RequestMapping(value = "/account/edit")
-    public String editUser(Model model) {
+    public String editAccount(Model model) {
 		User user = userService.getUser(Util.getSessionUser().getId());
 		UserEditForm form = new UserEditForm();
 		form.setEmail(user.getEmail());
@@ -110,7 +110,7 @@ public class UserController {
     }
 
 	@RequestMapping(value = "/account/edit", method = RequestMethod.POST)
-	public String editUser(@ModelAttribute("userEditForm") @Valid UserEditForm userEditForm,
+	public String editAccount(@ModelAttribute("userEditForm") @Valid UserEditForm userEditForm,
 			BindingResult result, RedirectAttributes redirectAttributes,
 			HttpServletRequest request) throws ServletException {
 
@@ -124,7 +124,7 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value="/account/delete", method = RequestMethod.POST)
-	public String deleteUser(@RequestBody Map<String, Object> userData) {
+	public String deleteAccount(@RequestBody Map<String, Object> userData) {
 
 		System.out.println("Unique Id: " + userData.get("uniqueId"));
 		return "users";

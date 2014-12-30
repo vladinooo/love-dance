@@ -39,7 +39,7 @@ public class AdminController {
     @ResponseBody
     @RequestMapping(value = "/user/edit", method = RequestMethod.POST)
     public String adminEditUser(@RequestBody Map<String, Object> userData, Model model) {
-        System.out.println("Edit user with Id: " + userData.get("uniqueId"));
+        logger.info("Edit user with Id: " + userData.get("uniqueId"));
         Long userId = Long.valueOf(Base64EncoderDecoder.decode((String)userData.get("uniqueId")));
         User user = userService.getUser(userId);
         if (user.getProfile() == null) {
@@ -60,7 +60,7 @@ public class AdminController {
     @RequestMapping(value="/user/delete", method = RequestMethod.POST)
     public String adminDeleteUser(@RequestBody Map<String, Object> userData) {
 
-        System.out.println("Unique Id: " + userData.get("uniqueId"));
+        logger.info("Unique Id: " + userData.get("uniqueId"));
         return "users";
     }
 

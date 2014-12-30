@@ -275,13 +275,13 @@ a.light-text:hover, a.light-text:focus {
 }
 
 .navbar {
-    text-transform: uppercase;
     /*font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px
 }
 
 .navbar-dark, .navbar-light {
+    text-transform: uppercase;
     background-color: #DC574E;
     margin-bottom: 0;
     border-bottom: 1px solid #c34b43
@@ -427,7 +427,7 @@ a.light-text:hover, a.light-text:focus {
     }
 
     .navbar-dark.top-nav-collapse .nav li a {
-        color: #f4f5f7
+        color: #ffffff
     }
 
     .navbar-dark.top-nav-collapse .nav li a:after {
@@ -436,7 +436,7 @@ a.light-text:hover, a.light-text:focus {
 
     .navbar-dark.top-nav-collapse .nav li a:hover, .navbar-dark.top-nav-collapse .nav li a:focus,
     .navbar-dark.top-nav-collapse .nav li a:active {
-        color: #f4f5f7
+        color: #ffffff
     }
 
     .navbar-light.top-nav-collapse {
@@ -471,6 +471,39 @@ a.light-text:hover, a.light-text:focus {
     .navbar-light.top-nav-collapse .nav li a:hover, .navbar-light.top-nav-collapse .nav li a:focus,
     .navbar-light.top-nav-collapse .nav li a:active {
         color: #DC574E
+    }
+
+
+    .subnav.top-nav-collapse {
+        background-color: #8DC7B8;
+        position: fixed;
+        top: 61px;
+        border-radius: 0;
+        border: none;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .subnav.top-nav-collapse a {
+        color: #ffffff
+    }
+
+    .subnav.top-nav-collapse li a {
+        color: #ffffff
+    }
+
+    .subnav.top-nav-collapse .nav li a {
+        color: #ffffff
+    }
+
+    .subnav.top-nav-collapse .nav li a:after {
+        background: #8DC7B8
+    }
+
+    .subnav.top-nav-collapse .nav li a:hover, .subnav.top-nav-collapse .nav li a:focus,
+    .subnav.top-nav-collapse .nav li a:active {
+        color: #DC574E;
+        background-color: #F7E4A2;
     }
 }
 
@@ -3084,4 +3117,18 @@ body.modal-open {
 
 .fl:first-letter {
     text-transform: uppercase;
+}
+
+.btn-ld-action {
+    background-color: #ffffff;
+    color: #DC574E;
+    border-color: #c34b43;
+    margin-top: 8px;
+    margin-left: 7px;
+
+    /*background-color: #F7E4A2;*/
+    /*color: #DC574E;*/
+    /*border-color: #c34b43;*/
+    /*margin-top: 8px;*/
+    /*margin-left: 7px;*/
 }

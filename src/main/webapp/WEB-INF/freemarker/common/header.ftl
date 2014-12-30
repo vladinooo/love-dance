@@ -39,27 +39,73 @@
                 <li class="page-scroll">
                     <a href="<#if uri?length &gt; 1><@spring.url '/#contact'/><#else>#contact</#if>">Contact</a>
                 </li>
-                <li style="color:#f4f5f7;padding-top: 15px;padding-bottom:15px;">|</li>
-                <@sec.authorize access="!isAuthenticated()">
                 <li>
-                 	<a href="<@spring.url '/login'/>"><i class="fa fa-sign-in"></i> Log In</a>
+                    <div class="btn-group ld-action-btn">
+                        <button type="button" class="btn btn-ld-action">Login</button>
+                        <button type="button" class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
-                	<a href="<@spring.url '/signup'/>"><i class="fa fa-arrow-circle-down"></i> Sign Up</a>
-                </li>
-				</@sec.authorize>
-				
-				<@sec.authorize access="isAuthenticated()">
-				<li>
-					<a style="text-transform:lowercase;" href="<@spring.url '/user/profile'/>"><span class="fa fa-user"></span> <@sec.authentication property="principal.user.username" /></a>
-				</li>
-				<li>
-			    	<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>
-			       	<a href="#" onclick="document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Log Out</a>
-			    </li> 	
-				</@sec.authorize>
+                <#--<li style="color:#f4f5f7;padding-top: 15px;padding-bottom:15px;">|</li>-->
+                <#--<@sec.authorize access="!isAuthenticated()">-->
+                <#--<li>-->
+                 	<#--<a href="<@spring.url '/login'/>"><i class="fa fa-sign-in"></i> Log In</a>-->
+                <#--</li>-->
+                <#--<li>-->
+                	<#--<a href="<@spring.url '/signup'/>"><i class="fa fa-arrow-circle-down"></i> Sign Up</a>-->
+                <#--</li>-->
+				<#--</@sec.authorize>-->
+
+				<#--<@sec.authorize access="isAuthenticated()">-->
+				<#--<li>-->
+					<#--<a style="text-transform:lowercase;" href="<@spring.url '/user/profile'/>"><span class="fa fa-user"></span> <@sec.authentication property="principal.user.username" /></a>-->
+				<#--</li>-->
+				<#--<li>-->
+			    	<#--<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>-->
+			       	<#--<a href="#" onclick="document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Log Out</a>-->
+			    <#--</li>-->
+				<#--</@sec.authorize>-->
               </ul>
           </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<nav class="navbar subnav top-nav-collapse" role="navigation">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="<@spring.url '/#about'/>">My Bookings</a>
+                </li>
+                <li>
+                    <a href="<@spring.url '/#about'/>">My Orders</a>
+                </li>
+                <li>
+                    <a href="<@spring.url '/#about'/>">Saved Addresses</a>
+                </li>
+                <li>
+                    <a href="<@spring.url '/#about'/>">Manage Blog</a>
+                </li>
+            </ul>
+        </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
