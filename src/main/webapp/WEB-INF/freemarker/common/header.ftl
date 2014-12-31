@@ -37,23 +37,39 @@
                     <a href="<#if uri?length &gt; 1><@spring.url '/#pricing'/><#else>#pricing</#if>">Pricing</a>
                 </li>
                 <li class="page-scroll">
+                    <a href="<#if uri?length &gt; 1><@spring.url '/#bookings'/><#else>#bookings</#if>">Bookings</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="<#if uri?length &gt; 1><@spring.url '/#shop'/><#else>#shop</#if>">Shop</a>
+                </li>
+                <li class="page-scroll">
                     <a href="<#if uri?length &gt; 1><@spring.url '/#contact'/><#else>#contact</#if>">Contact</a>
                 </li>
-                <li>
-                    <div class="btn-group ld-action-btn">
-                        <button type="button" class="btn btn-ld-action">Login</button>
-                        <button type="button" class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <li class="hidden-xs">
+                    <div class="btn-group ld-action">
+                        <a href="<@spring.url '/login'/>" class="btn btn-ld-action">
+                            <i class="fa fa-user"></i> Login
+                        </a>
+                        <a class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
-                        </button>
+                        </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">My Bookings</a></li>
+                            <li><a href="#">My Orders</a></li>
+                            <li><a href="#">Saved Addresses</a></li>
+                            <li><a href="#">Manage Blog</a></li>
+                            <li><a href="#">Manage Bookings</a></li>
+                            <li><a href="#">Manage Shop</a></li>
+                            <li><a href="#">Manage Users</a></li>
+                            <li><a href="#">Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">Log Out</a></li>
                         </ul>
                     </div>
+                </li>
+                <li class="visible-xs">
+                    <a href="#">Log Out</a>
                 </li>
                 <#--<li style="color:#f4f5f7;padding-top: 15px;padding-bottom:15px;">|</li>-->
                 <#--<@sec.authorize access="!isAuthenticated()">-->
@@ -76,36 +92,6 @@
 				<#--</@sec.authorize>-->
               </ul>
           </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-<nav class="navbar subnav top-nav-collapse" role="navigation">
-    <div class="container">
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="<@spring.url '/#about'/>">My Bookings</a>
-                </li>
-                <li>
-                    <a href="<@spring.url '/#about'/>">My Orders</a>
-                </li>
-                <li>
-                    <a href="<@spring.url '/#about'/>">Saved Addresses</a>
-                </li>
-                <li>
-                    <a href="<@spring.url '/#about'/>">Manage Blog</a>
-                </li>
-            </ul>
-        </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->

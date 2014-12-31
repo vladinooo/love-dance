@@ -21,13 +21,13 @@ var isMobile = {
     }
 };
 
-jQuery(document).ready(function() {
-    if (isMobile.any()) {
-        $('.navbar-collapse a').click(function(e) {
-            $('.navbar-collapse').collapse('toggle');
-        });
-    }
-});
+//jQuery(document).ready(function() {
+//    if (isMobile.any()) {
+//        $('.navbar-collapse a').click(function(e) {
+//            $('.navbar-collapse').collapse('toggle');
+//        });
+//    }
+//});
 
 // jQuery to collapse the navbar on scroll
 //$(window).scroll(function() {

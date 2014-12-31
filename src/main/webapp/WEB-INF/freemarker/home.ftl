@@ -389,6 +389,30 @@
     </div>
 </section>
 
+<section id="bookings" class="services-1 bg-lighter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="text-dark">Bookings</h2>
+                <hr class="primary">
+                <p>Coming Soon.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="shop" class="services-1 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2>Shop</h2>
+                <hr class="primary">
+                <p>Coming Soon.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="bg-primary">
     <div class="container">
         <div class="row text-center">
