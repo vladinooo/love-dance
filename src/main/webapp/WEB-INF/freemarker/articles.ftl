@@ -7,9 +7,6 @@
         <div class="row">
             <div class="container portfolio-modal">
                 <div class="row">
-
-
-
                         <div id="blog" class="blog-1">
                             <div class="container">
                                 <div class="row blog-row">

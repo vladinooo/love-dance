@@ -2,6 +2,7 @@
 <#import "/spring.ftl" as spring />
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
 <@layout.default "Users">
+<#include "common/navigation.ftl"/>
 <section class="portfolio-1 bg-lighter">
     <div class="container">
         <div class="row">

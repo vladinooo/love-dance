@@ -47,49 +47,46 @@
                 </li>
                 <li class="hidden-xs">
                     <div class="btn-group ld-action">
+                        <@sec.authorize access="!isAuthenticated()">
                         <a href="<@spring.url '/login'/>" class="btn btn-ld-action">
                             <i class="fa fa-user"></i> Login
                         </a>
+                        </@sec.authorize>
+                        <@sec.authorize access="isAuthenticated()">
+                            <a href="<@spring.url '/user/profile'/>" class="btn btn-ld-action" style="text-transform:lowercase;">
+                                <i class="fa fa-user"></i> <@sec.authentication property="principal.user.username" />
+                            </a>
+                        </@sec.authorize>
                         <a class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">My Bookings</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Saved Addresses</a></li>
-                            <li><a href="#">Manage Blog</a></li>
-                            <li><a href="#">Manage Bookings</a></li>
-                            <li><a href="#">Manage Shop</a></li>
-                            <li><a href="#">Manage Users</a></li>
-                            <li><a href="#">Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Log Out</a></li>
+                            <@sec.authorize access="!isAuthenticated()">
+                                <li><a href="<@spring.url '/signup'/>">Sign Up</a></li>
+                            </@sec.authorize>
+                            <@sec.authorize access="isAuthenticated()">
+                                <li><a href="#">My Bookings</a></li>
+                                <li><a href="#">My Orders</a></li>
+                                <li><a href="#">Saved Addresses</a></li>
+                                <li><a href="#">Manage Blog</a></li>
+                                <li><a href="#">Manage Bookings</a></li>
+                                <li><a href="#">Manage Shop</a></li>
+                                <li><a href="#">Manage Users</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>
+                                    <a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>
+                                </li>
+                            </@sec.authorize>
                         </ul>
                     </div>
                 </li>
                 <li class="visible-xs">
-                    <a href="#">Log Out</a>
+                    <form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>
+                    <a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>
                 </li>
-                <#--<li style="color:#f4f5f7;padding-top: 15px;padding-bottom:15px;">|</li>-->
-                <#--<@sec.authorize access="!isAuthenticated()">-->
-                <#--<li>-->
-                 	<#--<a href="<@spring.url '/login'/>"><i class="fa fa-sign-in"></i> Log In</a>-->
-                <#--</li>-->
-                <#--<li>-->
-                	<#--<a href="<@spring.url '/signup'/>"><i class="fa fa-arrow-circle-down"></i> Sign Up</a>-->
-                <#--</li>-->
-				<#--</@sec.authorize>-->
-
-				<#--<@sec.authorize access="isAuthenticated()">-->
-				<#--<li>-->
-					<#--<a style="text-transform:lowercase;" href="<@spring.url '/user/profile'/>"><span class="fa fa-user"></span> <@sec.authentication property="principal.user.username" /></a>-->
-				<#--</li>-->
-				<#--<li>-->
-			    	<#--<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>-->
-			       	<#--<a href="#" onclick="document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Log Out</a>-->
-			    <#--</li>-->
-				<#--</@sec.authorize>-->
               </ul>
           </div>
         <!-- /.navbar-collapse -->

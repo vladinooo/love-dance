@@ -477,6 +477,20 @@ a.light-text:hover, a.light-text:focus {
     }
 }
 
+.intro-img .overlay, .intro-slider .overlay, .intro-video .overlay,
+.intro-img-half .overlay, .intro-slider-half .overlay {
+    display: block;
+    width: 100%;
+    background-color: #000;
+    background-image: url(../img/diagonal-noise.png);
+    opacity: .3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
 .subnav.top-nav-collapse {
     background-color: #8DC7B8;
     border-radius: 0;
@@ -487,24 +501,18 @@ a.light-text:hover, a.light-text:focus {
     top: 61px;
 }
 
-.intro-img .overlay, .intro-slider .overlay, .intro-video .overlay, .intro-img-half .overlay, .intro-slider-half .overlay {
-    top: 50px !important;
-}
-
 @media ( max-width: 1200px) {
     .subnav.top-nav-collapse {
         top: 111px;
     }
 
-    .intro-img .overlay, .intro-slider .overlay, .intro-video .overlay, .intro-img-half .overlay, .intro-slider-half .overlay {
-        top: 100px !important;
-    }
 }
 
 @media ( max-width: 990px) {
     .subnav.top-nav-collapse {
         top: 161px;
     }
+
 }
 
 @media ( max-width: 768px) {
@@ -512,7 +520,38 @@ a.light-text:hover, a.light-text:focus {
         top: 51px;
     }
 
+    .intro-img .overlay, .intro-slider .overlay, .intro-video .overlay,
+    .intro-img-half .overlay, .intro-slider-half .overlay {
+        height: 386px;
+    }
+
+    .intro-body hr.light {
+        border-top: 3px solid !important;
+    }
+
+    .intro-body h2 {
+        font-size: 20px;
+        padding-bottom: 25px;
+    }
+
 }
+
+@media ( max-width: 657px) {
+    .intro-img .overlay, .intro-slider .overlay, .intro-video .overlay,
+    .intro-img-half .overlay, .intro-slider-half .overlay {
+        height: 419px;
+    }
+
+}
+
+@media ( max-width: 635px) {
+    .intro-img .overlay, .intro-slider .overlay, .intro-video .overlay,
+    .intro-img-half .overlay, .intro-slider-half .overlay {
+        height: 419px;
+    }
+
+}
+
 
 .subnav.top-nav-collapse a {
     color: #ffffff
@@ -563,16 +602,12 @@ a.light-text:hover, a.light-text:focus {
     position: relative
 }
 
-.intro-img .overlay, .intro-img-half .overlay, .intro-slider .overlay,
-.intro-slider-half .overlay, .intro-video .overlay {
-    display: none
-}
-
 @media ( min-width: 768px) {
+
     .intro-img .intro-welcome, .intro-slider .intro-welcome, .intro-video .intro-welcome,
     .intro-img-half .intro-welcome, .intro-slider-half .intro-welcome {
         font-size: 30px;
-        margin: 0 0 -10px
+        margin: 0 0 -10px;
     }
 
     .intro-img .brand-heading, .intro-slider .brand-heading, .intro-video .brand-heading,
@@ -588,19 +623,6 @@ a.light-text:hover, a.light-text:focus {
         bottom: 0
     }
 
-    .intro-img .overlay, .intro-slider .overlay, .intro-video .overlay,
-    .intro-img-half .overlay, .intro-slider-half .overlay {
-        display: block;
-        width: 100%;
-        background-color: #000;
-        background-image: url(../img/diagonal-noise.png);
-        opacity: .3;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0
-    }
 }
 
 @media ( min-width: 1025px) {
@@ -633,11 +655,6 @@ a.light-text:hover, a.light-text:focus {
         padding: 0;
         height: 100%;
         min-height: 0
-    }
-
-    .intro-img .overlay, .intro-slider .overlay, .intro-video .overlay,
-    .video-bg .overlay {
-        height: 100%
     }
 
     .intro-img-half {
@@ -2151,14 +2168,14 @@ ul.button-list li:first-child {
 }
 
 .btn-primary {
-    color: #f4f5f7;
+    color: #ffffff;
     background-color: #8DC7B8;
     border-color: #DC574E
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
 .btn-primary.active, .open .dropdown-toggle.btn-primary {
-    color: #f4f5f7;
+    color: #ffffff;
     background-color: #DC574E;
     border-color: #8DC7B8
 }
@@ -2430,7 +2447,7 @@ ul.button-list li:first-child {
 
 .btn-social-light {
     background-color: transparent;
-    color: #f4f5f7
+    color: #ffffff;
 }
 
 .btn-android {
@@ -3015,7 +3032,7 @@ ul.button-list li:first-child {
 }
 
 .footer-1 .upper .footer-links li a {
-    color: #f4f5f7
+    color: #ffffff;
 }
 
 .footer-1 .upper .footer-links li a:hover {

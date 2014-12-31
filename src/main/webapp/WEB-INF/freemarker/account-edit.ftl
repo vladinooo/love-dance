@@ -2,13 +2,12 @@
 <#import "/spring.ftl" as spring />
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
 <@layout.default "Edit Account">
+<#include "common/navigation.ftl"/>
 <section class="portfolio-1 bg-lighter">
 	<div class="container">
     	<div class="row">
 			<div class="container portfolio-modal">
 				<div class="row">
-				
-					<#include "common/navigation.ftl"/>
 			
 					<div class="col-sm-9">
 					
