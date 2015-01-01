@@ -6,17 +6,20 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import com.vladinooo.lovedance.dto.ForgotPasswordForm;
-import com.vladinooo.lovedance.entity.User;
-import com.vladinooo.lovedance.repository.UserRepository;
+import com.vladinooo.lovedance.entity.Account;
+import com.vladinooo.lovedance.repository.AccountRepository;
+
+import javax.validation.ParameterNameProvider;
+import javax.validation.executable.ExecutableValidator;
 
 @Component
 public class ForgotPasswordFormValidator extends LocalValidatorFactoryBean {
 	
-	private UserRepository userRepository;
+	private AccountRepository accountRepository;
 	
 	@Autowired
-	public ForgotPasswordFormValidator(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	public ForgotPasswordFormValidator(AccountRepository accountRepository) {
+		this.accountRepository = accountRepository;
 	}
 
 	@Override
@@ -31,10 +34,20 @@ public class ForgotPasswordFormValidator extends LocalValidatorFactoryBean {
 		
 		if (!errors.hasErrors()) {
 			ForgotPasswordForm forgotPasswordForm = (ForgotPasswordForm) obj;
-			User user = userRepository.findByUsername(forgotPasswordForm.getUsername());
+			Account user = accountRepository.findByUsername(forgotPasswordForm.getUsername());
 			if (user == null)
 				errors.rejectValue("username", "notFound");			
 		}
+	}
+
+	@Override
+	public ExecutableValidator forExecutables() {
+		return null;
+	}
+
+	@Override
+	public ParameterNameProvider getParameterNameProvider() {
+		return null;
 	}
 
 }

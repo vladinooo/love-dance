@@ -1,37 +1,36 @@
 package com.vladinooo.lovedance.dto;
 
-import java.util.Collection;
-import java.util.HashSet;
-
+import com.vladinooo.lovedance.entity.Account;
+import com.vladinooo.lovedance.entity.Account.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.vladinooo.lovedance.entity.User;
-import com.vladinooo.lovedance.entity.User.Role;
+import java.util.Collection;
+import java.util.HashSet;
 
-public class UserDetailsImpl implements UserDetails {
+public class AccountDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	private User user;
+	private Account account;
 	
-	public UserDetailsImpl(User user) {
-		this.user = user;
+	public AccountDetailsImpl(Account account) {
+		this.account = account;
 	}
 	
-	public User getUser() {
-		return user;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Collection<GrantedAuthority> authorities = new HashSet<GrantedAuthority>(user.getRoles().size() + 1);
-		for (Role role : user.getRoles())
+		Collection<GrantedAuthority> authorities = new HashSet<GrantedAuthority>(account.getRoles().size() + 1);
+		for (Role role : account.getRoles())
 			authorities.add(new SimpleGrantedAuthority("ROLE_" + role.name()));
 		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		return authorities;
@@ -39,12 +38,12 @@ public class UserDetailsImpl implements UserDetails {
 	
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return account.getUsername();
 	}
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return account.getPassword();
 	}
 
 	@Override

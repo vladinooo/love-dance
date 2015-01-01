@@ -1,30 +1,30 @@
 package com.vladinooo.lovedance.dto;
 
+import com.vladinooo.lovedance.entity.Account;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.vladinooo.lovedance.entity.User;
-
 public class SignupForm {
 	
 	@NotNull
-	@Size(min=5, max=User.USERNAME_MAX, message="{usernameSizeError}")
-	@Pattern(regexp=User.USERNAME_PATTERN, message="{usernamePatternError}")
+	@Size(min=5, max= Account.USERNAME_MAX, message="{usernameSizeError}")
+	@Pattern(regexp= Account.USERNAME_PATTERN, message="{usernamePatternError}")
 	private String username;
 
 	@NotNull
-	@Size(min=5, max=User.EMAIL_MAX, message="{emailSizeError}")
-	@Pattern(regexp=User.EMAIL_PATTERN, message="{emailPatternError}")
+	@Size(min=5, max= Account.EMAIL_MAX, message="{emailSizeError}")
+	@Pattern(regexp= Account.EMAIL_PATTERN, message="{emailPatternError}")
 	private String email;
 	
 	@NotNull
-	@Size(min=5, max=User.PASSWORD_MAX, message="{passwordSizeError}")
+	@Size(min=5, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
 	private String password;
 	
 	@NotNull
-	@Size(min=5, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	private String retypePassword;
+	@Size(min=5, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
+	private String confirmPassword;
 	
 	public String getUsername() {
 		return username;
@@ -50,14 +50,14 @@ public class SignupForm {
 		this.password = password;
 	}
 
-	public String getRetypePassword() {
-		return retypePassword;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setRetypePassword(String retypePassword) {
-		this.retypePassword = retypePassword;
-	}		
-	
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	@Override
 	public String toString() {
 		return "SignupForm [email=" + email + ", username=" + ", password="

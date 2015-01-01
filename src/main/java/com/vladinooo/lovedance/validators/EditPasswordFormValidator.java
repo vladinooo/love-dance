@@ -1,30 +1,29 @@
 package com.vladinooo.lovedance.validators;
 
+import com.vladinooo.lovedance.dto.EditPasswordForm;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-
-import com.vladinooo.lovedance.dto.ResetPasswordForm;
 
 import javax.validation.ParameterNameProvider;
 import javax.validation.executable.ExecutableValidator;
 
 @Component
-public class ResetPasswordFormValidator extends LocalValidatorFactoryBean {
-	
+public class EditPasswordFormValidator extends LocalValidatorFactoryBean {
+
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return clazz.isAssignableFrom(ResetPasswordForm.class);
+		return clazz.isAssignableFrom(EditPasswordForm.class);
 	}
 
 	@Override
 	public void validate(Object obj, Errors errors, final Object... validationHints) {
-		
+
 		super.validate(obj, errors, validationHints);
-		
+
 		if (!errors.hasErrors()) {
-			ResetPasswordForm resetPasswordForm = (ResetPasswordForm) obj;
-			if (!resetPasswordForm.getPassword().equals(resetPasswordForm.getConfirmPassword())) {
+			EditPasswordForm editPasswordForm = (EditPasswordForm) obj;
+			if (!editPasswordForm.getPassword().equals(editPasswordForm.getConfirmNewPassword())) {
 				errors.rejectValue("confirmPassword", "passwordsDoNotMatch");
 			}
 		}
@@ -39,4 +38,5 @@ public class ResetPasswordFormValidator extends LocalValidatorFactoryBean {
 	public ParameterNameProvider getParameterNameProvider() {
 		return null;
 	}
+
 }

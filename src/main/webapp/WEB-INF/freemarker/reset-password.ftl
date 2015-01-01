@@ -20,7 +20,7 @@
 								</div>
 					
 								<div class="form-group">
-									<@spring.formPasswordInput "resetPasswordForm.retypePassword", "class='form-control', placeholder='Re-type Password'" />
+									<@spring.formPasswordInput "resetPasswordForm.confirmPassword", "class='form-control', placeholder='Confirm Password'" />
 									<@spring.showErrors "<br />", "fieldValidationError" />
 								</div>
 			

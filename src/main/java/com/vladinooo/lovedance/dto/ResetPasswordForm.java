@@ -1,20 +1,19 @@
 package com.vladinooo.lovedance.dto;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import com.vladinooo.lovedance.entity.Account;
 
-import com.vladinooo.lovedance.entity.User;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class ResetPasswordForm {
 	
 	@NotNull
-	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
+	@Size(min=1, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
 	private String password;
 	
 	@NotNull
-	@Size(min=1, max=User.PASSWORD_MAX, message="{passwordSizeError}")
-	private String retypePassword;
+	@Size(min=1, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
+	private String confirmPassword;
 
 	public String getPassword() {
 		return password;
@@ -24,12 +23,11 @@ public class ResetPasswordForm {
 		this.password = password;
 	}
 
-	public String getRetypePassword() {
-		return retypePassword;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setRetypePassword(String retypePassword) {
-		this.retypePassword = retypePassword;
-	}		
-
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 }

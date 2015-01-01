@@ -5,19 +5,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import com.vladinooo.lovedance.dto.ResetPasswordForm;
 import com.vladinooo.lovedance.dto.SignupForm;
-import com.vladinooo.lovedance.entity.User;
-import com.vladinooo.lovedance.repository.UserRepository;
+import com.vladinooo.lovedance.entity.Account;
+import com.vladinooo.lovedance.repository.AccountRepository;
+
+import javax.validation.ParameterNameProvider;
+import javax.validation.executable.ExecutableValidator;
 
 @Component
 public class SignupFormValidator extends LocalValidatorFactoryBean {
 
-	private UserRepository userRepository;
+	private AccountRepository accountRepository;
 
 	@Autowired
-	public SignupFormValidator(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	public SignupFormValidator(AccountRepository accountRepository) {
+		this.accountRepository = accountRepository;
 	}
 
 	@Override
@@ -32,14 +34,23 @@ public class SignupFormValidator extends LocalValidatorFactoryBean {
 
 		if (!errors.hasErrors()) {
 			SignupForm signupForm = (SignupForm) obj;
-			User user = userRepository.findByUsername(signupForm.getUsername());
+			Account user = accountRepository.findByUsername(signupForm.getUsername());
 			if (user != null) {
 				errors.rejectValue("username", "usernameNotUnique");
 			}
-			if (!signupForm.getPassword().equals(signupForm.getRetypePassword())) {
-				errors.rejectValue("retypePassword", "passwordsDoNotMatch");
+			if (!signupForm.getPassword().equals(signupForm.getConfirmPassword())) {
+				errors.rejectValue("confirmPassword", "passwordsDoNotMatch");
 			}
 		}
 	}
 
+	@Override
+	public ExecutableValidator forExecutables() {
+		return null;
+	}
+
+	@Override
+	public ParameterNameProvider getParameterNameProvider() {
+		return null;
+	}
 }

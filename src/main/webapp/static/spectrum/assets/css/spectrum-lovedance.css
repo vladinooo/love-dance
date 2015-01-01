@@ -1703,7 +1703,8 @@ a.light-text:hover, a.light-text:focus {
 }
 
 .portfolio-modal .page-header {
-    margin-top: 0
+    margin: 0 0 5px 0;
+    border-bottom: none;
 }
 
 .portfolio-modal ul.project-details {
@@ -3261,4 +3262,16 @@ body.modal-open {
     .subnav .navbar-nav a>i {
         padding: 7px;
     }
+}
+
+abbr.input-validation-required {
+    color: #e74c3c;
+}
+
+.form-horizontal .control-label {
+    font-weight: normal;
+}
+
+.container .well {
+    margin-bottom: 25px;
 }

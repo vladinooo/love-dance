@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/settings'/>">
                         <i class="fa fa-cogs"></i>
                         <span class="inline hidden-xs"> Settings </span>
                     </a>

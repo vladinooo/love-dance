@@ -1,7 +1,7 @@
 package com.vladinooo.lovedance.util;
 
-import java.util.Locale;
-
+import com.vladinooo.lovedance.dto.AccountDetailsImpl;
+import com.vladinooo.lovedance.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -10,8 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.vladinooo.lovedance.dto.UserDetailsImpl;
-import com.vladinooo.lovedance.entity.User;
+import java.util.Locale;
 
 @Component
 public class Util {
@@ -59,18 +58,18 @@ public class Util {
 			throw new RuntimeException(getMessage(msgContent, args));
 	}
 
-	public static User getSessionUser() {
-		UserDetailsImpl auth = getAuth();
-		return auth == null ? null : auth.getUser();
+	public static Account getCurrentSessionAccount() {
+		AccountDetailsImpl auth = getAuth();
+		return auth == null ? null : auth.getAccount();
 	}
 
-	public static UserDetailsImpl getAuth() {
+	public static AccountDetailsImpl getAuth() {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	
 	    if (auth != null) {
 	      Object principal = auth.getPrincipal();
-	      if (principal instanceof UserDetailsImpl) {
-	        return (UserDetailsImpl) principal;
+	      if (principal instanceof AccountDetailsImpl) {
+	        return (AccountDetailsImpl) principal;
 	      }
 	    }
 	    return null;	  

@@ -4,7 +4,7 @@ import com.vladinooo.lovedance.dto.ContactForm;
 import com.vladinooo.lovedance.dto.ForgotPasswordForm;
 import com.vladinooo.lovedance.dto.ResetPasswordForm;
 import com.vladinooo.lovedance.dto.SignupForm;
-import com.vladinooo.lovedance.service.UserService;
+import com.vladinooo.lovedance.service.AccountService;
 import com.vladinooo.lovedance.util.Util;
 import com.vladinooo.lovedance.validators.ForgotPasswordFormValidator;
 import com.vladinooo.lovedance.validators.ResetPasswordFormValidator;
@@ -24,16 +24,16 @@ import javax.validation.Valid;
 public class RootController {
 
 
-	private UserService userService;
+	private AccountService accountService;
 	private SignupFormValidator signupFormValidator;
 	private ForgotPasswordFormValidator forgotPasswordFormValidator;
 	private ResetPasswordFormValidator resetPasswordFormValidator;
 
 	@Autowired
-	public RootController(UserService userService, SignupFormValidator signupFormValidator,
+	public RootController(AccountService accountService, SignupFormValidator signupFormValidator,
 			ForgotPasswordFormValidator forgotPasswordFormValidator,
 			ResetPasswordFormValidator resetPasswordFormValidator) {
-		this.userService = userService;
+		this.accountService = accountService;
 		this.signupFormValidator = signupFormValidator;
 		this.forgotPasswordFormValidator = forgotPasswordFormValidator;
 		this.resetPasswordFormValidator = resetPasswordFormValidator;
@@ -74,7 +74,7 @@ public class RootController {
             session.setAttribute("result", result);
 			return "redirect:/#contact";
 		}
-		userService.sendMessage(contactForm);
+		accountService.sendMessage(contactForm);
 		Util.flash(redirectAttributes, "success", "signupSuccess");
 		session.removeAttribute("failedContactForm");
 		session.removeAttribute("result");
@@ -110,7 +110,7 @@ public class RootController {
 		if (result.hasErrors()) {
 			return "signup";
 		}
-		userService.signup(signupForm);
+		accountService.signup(signupForm);
 		Util.flash(redirectAttributes, "success", "signupSuccess");
 		return "redirect:/login";
 	}
@@ -128,7 +128,7 @@ public class RootController {
 		if (result.hasErrors()) {
 			return "forgot-password";
 		}
-		userService.forgotPassword(forgotPasswordForm);
+		accountService.forgotPassword(forgotPasswordForm);
 		Util.flash(redirectAttributes, "info", "checkMailResetPassword");
 		return "redirect:/login";
 	}
@@ -143,7 +143,7 @@ public class RootController {
 	public String resetPassword(@PathVariable("forgotPasswordCode") String forgotPasswordCode,
 		@ModelAttribute("resetPasswordForm") @Valid ResetPasswordForm resetPasswordForm,
 		BindingResult result, RedirectAttributes redirectAttributes) {
-		userService.resetPassword(forgotPasswordCode, resetPasswordForm, result);
+		accountService.resetPassword(forgotPasswordCode, resetPasswordForm, result);
 
 		if (result.hasErrors()) {
 			return "reset-password";

@@ -29,7 +29,7 @@
 								</div>
 					
 								<div class="form-group">
-									<@spring.formPasswordInput "signupForm.retypePassword", "class='form-control', placeholder='Re-type Password'" />
+									<@spring.formPasswordInput "signupForm.confirmPassword", "class='form-control', placeholder='Confirm Password'" />
 									<@spring.showErrors "<br />", "fieldValidationError" />
 								</div>
 					

@@ -54,7 +54,7 @@
                         </@sec.authorize>
                         <@sec.authorize access="isAuthenticated()">
                             <a href="<@spring.url '/user/profile'/>" class="btn btn-ld-action" style="text-transform:lowercase;">
-                                <i class="fa fa-user"></i> <@sec.authentication property="principal.user.username" />
+                                <i class="fa fa-user"></i> <@sec.authentication property="principal.account.username" />
                             </a>
                         </@sec.authorize>
                         <a class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown">
@@ -73,7 +73,7 @@
                                 <li><a href="#">Manage Bookings</a></li>
                                 <li><a href="#">Manage Shop</a></li>
                                 <li><a href="#">Manage Users</a></li>
-                                <li><a href="#">Settings</a></li>
+                                <li><a href="<@spring.url '/account/settings'/>">Settings</a></li>
                                 <li class="divider"></li>
                                 <li>
                                     <form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>

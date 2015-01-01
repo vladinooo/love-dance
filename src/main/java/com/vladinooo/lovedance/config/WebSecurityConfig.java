@@ -50,16 +50,12 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 		"/login",
                 		"/forgot-password",
                 		"/reset-password/*",
-                		"/user/profile/edit",
-                		"/user/account/edit",
-                        "/user/account/delete",
-                		"/user/photo/upload",
-                		"/uploadProfilePhoto",
+                		"/account/settings/edit-account-details",
+                        "/account/settings/edit-account-password",
+                        "/account/settings/delete-account",
                         "/blog/articles",
                         "/blog/articles/article",
-                        "/admin/users",
-                        "/admin/user/edit",
-                        "/admin/user/delete",
+                        "/account/manage-accounts",
                 		"/error").permitAll()
                 .anyRequest().authenticated();
         http
