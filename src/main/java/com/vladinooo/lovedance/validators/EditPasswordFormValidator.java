@@ -1,6 +1,11 @@
 package com.vladinooo.lovedance.validators;
 
 import com.vladinooo.lovedance.dto.EditPasswordForm;
+import com.vladinooo.lovedance.entity.Account;
+import com.vladinooo.lovedance.service.AccountService;
+import com.vladinooo.lovedance.util.Util;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -10,6 +15,15 @@ import javax.validation.executable.ExecutableValidator;
 
 @Component
 public class EditPasswordFormValidator extends LocalValidatorFactoryBean {
+
+	private AccountService accountService;
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	public EditPasswordFormValidator(AccountService accountService, PasswordEncoder passwordEncoder) {
+		this.accountService = accountService;
+		this.passwordEncoder = passwordEncoder;
+	}
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -23,8 +37,12 @@ public class EditPasswordFormValidator extends LocalValidatorFactoryBean {
 
 		if (!errors.hasErrors()) {
 			EditPasswordForm editPasswordForm = (EditPasswordForm) obj;
-			if (!editPasswordForm.getPassword().equals(editPasswordForm.getConfirmNewPassword())) {
-				errors.rejectValue("confirmPassword", "passwordsDoNotMatch");
+			Account account = accountService.getAccount(Util.getCurrentSessionAccount().getId());
+			if (!passwordEncoder.matches(editPasswordForm.getPassword(), account.getPassword())) {
+				errors.rejectValue("password", "invalidPassword");
+			}
+			if (!editPasswordForm.getNewPassword().equals(editPasswordForm.getConfirmNewPassword())) {
+				errors.rejectValue("confirmNewPassword", "passwordsDoNotMatch");
 			}
 		}
 	}

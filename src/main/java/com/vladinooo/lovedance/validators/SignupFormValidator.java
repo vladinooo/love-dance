@@ -34,8 +34,8 @@ public class SignupFormValidator extends LocalValidatorFactoryBean {
 
 		if (!errors.hasErrors()) {
 			SignupForm signupForm = (SignupForm) obj;
-			Account user = accountRepository.findByUsername(signupForm.getUsername());
-			if (user != null) {
+			Account account = accountRepository.findByUsername(signupForm.getUsername());
+			if (account != null) {
 				errors.rejectValue("username", "usernameNotUnique");
 			}
 			if (!signupForm.getPassword().equals(signupForm.getConfirmPassword())) {

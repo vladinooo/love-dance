@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MockMailSender.class);
 
-	@Value("${smtp.authenticator.email}")
+	@Value("${spring.mail.username}")
 	private String adminEmail;
 	
 	private AccountRepository accountRepository;
@@ -70,7 +70,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 			        public void afterCommit() {
 			    		try {
 			    			String verifyLink = Util.hostUrl() + "/accounts/" + account.getVerificationCode() + "/verify";
-			    			mailSender.send(account.getEmail(), Util.getMessage("verifySubject"), Util.getMessage("verifyEmail", verifyLink));
+			    			mailSender.send(account.getEmail(), Util.getMessage("verifySubject"), Util.getMessage("verifyEmail", account.getUsername(), verifyLink));
 			    			logger.info("Verification mail to " + account.getEmail() + " queued.");
 						} catch (MessagingException e) {
 							logger.error(ExceptionUtils.getStackTrace(e));
@@ -183,7 +183,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 		Account loggedIn = Util.getCurrentSessionAccount();
 		Util.validate(loggedIn.isAdmin() || loggedIn.getId() == accountId, "noPermissions");
 		Account account = accountRepository.findOne(accountId);
-		account.setPassword(editPasswordForm.getNewPassword());
+		account.setPassword(passwordEncoder.encode(editPasswordForm.getNewPassword()));
 		accountRepository.save(account);
 	}
 

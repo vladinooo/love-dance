@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label for="username" class="col-sm-3 control-label">Username:</label>
                                     <div class="col-sm-6">
-                                        <p class="form-control-static"><#if account.username??>${account.username}</#if></p>
+                                        <#--<p class="form-control-static"><#if account.username??>${account.username}</#if></p>-->
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -73,41 +73,41 @@
 
                         <div class="well">
 
-                            <@spring.bind "editPasswordForm"/>
-                            <form class="form-horizontal" role="form" method="POST">
-                                <div class="form-group">
-                                    <label for="currentPassword" class="col-sm-3 control-label">Current Password <abbr
-                                            class="input-validation-required"
-                                            title="This information is required.">*</abbr></label>
-                                    <div class="col-sm-6">
-                                        <@spring.formPasswordInput "editPasswordForm.password", "class='form-control', placeholder='Current Password'" />
-                                        <@spring.showErrors "<br />", "fieldValidationError" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="newPassword" class="col-sm-3 control-label">New Password <abbr
-                                            class="input-validation-required"
-                                            title="This information is required.">*</abbr></label>
-                                    <div class="col-sm-6">
-                                        <@spring.formPasswordInput "editPasswordForm.newPassword", "class='form-control', placeholder='New Password'" />
-                                        <@spring.showErrors "<br />", "fieldValidationError" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirmNewPassword" class="col-sm-3 control-label">Confirm New Password <abbr
-                                            class="input-validation-required"
-                                            title="This information is required.">*</abbr></label>
-                                    <div class="col-sm-6">
-                                        <@spring.formPasswordInput "editPasswordForm.confirmNewPassword", "class='form-control', placeholder='Confirm New Password'" />
-                                        <@spring.showErrors "<br />", "fieldValidationError" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <#--<@spring.bind "editPasswordForm"/>-->
+                            <#--<form class="form-horizontal" role="form" method="POST" action="<@spring.url '/account/settings/edit-account-password'/>">-->
+                                <#--<div class="form-group">-->
+                                    <#--<label for="currentPassword" class="col-sm-3 control-label">Current Password <abbr-->
+                                            <#--class="input-validation-required"-->
+                                            <#--title="This information is required.">*</abbr></label>-->
+                                    <#--<div class="col-sm-6">-->
+                                        <#--<@spring.formPasswordInput "editPasswordForm.password", "class='form-control', placeholder='Current Password'" />-->
+                                        <#--<@spring.showErrors "<br />", "fieldValidationError" />-->
+                                    <#--</div>-->
+                                <#--</div>-->
+                                <#--<div class="form-group">-->
+                                    <#--<label for="newPassword" class="col-sm-3 control-label">New Password <abbr-->
+                                            <#--class="input-validation-required"-->
+                                            <#--title="This information is required.">*</abbr></label>-->
+                                    <#--<div class="col-sm-6">-->
+                                        <#--<@spring.formPasswordInput "editPasswordForm.newPassword", "class='form-control', placeholder='New Password'" />-->
+                                        <#--<@spring.showErrors "<br />", "fieldValidationError" />-->
+                                    <#--</div>-->
+                                <#--</div>-->
+                                <#--<div class="form-group">-->
+                                    <#--<label for="confirmNewPassword" class="col-sm-3 control-label">Confirm New Password <abbr-->
+                                            <#--class="input-validation-required"-->
+                                            <#--title="This information is required.">*</abbr></label>-->
+                                    <#--<div class="col-sm-6">-->
+                                        <#--<@spring.formPasswordInput "editPasswordForm.confirmNewPassword", "class='form-control', placeholder='Confirm New Password'" />-->
+                                        <#--<@spring.showErrors "<br />", "fieldValidationError" />-->
+                                    <#--</div>-->
+                                <#--</div>-->
+                                <#--<div class="form-group">-->
+                                    <#--<div class="col-sm-offset-3 col-sm-6">-->
+                                        <#--<button type="submit" class="btn btn-primary">Update</button>-->
+                                    <#--</div>-->
+                                <#--</div>-->
+                            <#--</form>-->
 
                         </div>
 

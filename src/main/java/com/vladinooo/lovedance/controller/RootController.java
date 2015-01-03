@@ -65,22 +65,6 @@ public class RootController {
 		return "home";
 	}
 
-	@RequestMapping(value="/contact_me", method = RequestMethod.POST)
-	public String contactMe(@Valid @ModelAttribute("contactForm") ContactForm contactForm,
-						 BindingResult result, RedirectAttributes redirectAttributes, HttpSession session) {
-
-		if (result.hasErrors()) {
-            session.setAttribute("failedContactForm", contactForm);
-            session.setAttribute("result", result);
-			return "redirect:/#contact";
-		}
-		accountService.sendMessage(contactForm);
-		Util.flash(redirectAttributes, "success", "signupSuccess");
-		session.removeAttribute("failedContactForm");
-		session.removeAttribute("result");
-		return "redirect:/#contact";
-	}
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,
@@ -133,7 +117,7 @@ public class RootController {
 		return "redirect:/login";
 	}
 
-	@RequestMapping(value = "/reset-password/{forgotPasswordCode}")
+	@RequestMapping(value = "/reset-password/{forgotPasswordCode}", method = RequestMethod.GET)
     public String resetPassword(@PathVariable("forgotPasswordCode") String forgotPasswordCode, Model model) {
      	model.addAttribute(new ResetPasswordForm());
     	return "reset-password";
@@ -150,6 +134,22 @@ public class RootController {
 		}
 		Util.flash(redirectAttributes, "success", "passwordChanged");
 		return "redirect:/login";
+	}
+
+	@RequestMapping(value="/contact_me", method = RequestMethod.POST)
+	public String contactMe(@Valid @ModelAttribute("contactForm") ContactForm contactForm,
+							BindingResult result, RedirectAttributes redirectAttributes, HttpSession session) {
+
+		if (result.hasErrors()) {
+			session.setAttribute("failedContactForm", contactForm);
+			session.setAttribute("result", result);
+			return "redirect:/#contact";
+		}
+		accountService.sendMessage(contactForm);
+		Util.flash(redirectAttributes, "success", "messageSentSuccess");
+		session.removeAttribute("failedContactForm");
+		session.removeAttribute("result");
+		return "redirect:/#contact";
 	}
 
 

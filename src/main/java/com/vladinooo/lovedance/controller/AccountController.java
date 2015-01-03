@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Map;
 
@@ -41,7 +42,7 @@ public class AccountController {
 		binder.setValidator(editPasswordFormValidator);
 	}
 	
-	@RequestMapping("/{verificationCode}/verify")
+	@RequestMapping(value = "/{verificationCode}/verify", method = RequestMethod.GET)
 	public String verify(@PathVariable("verificationCode") String verificationCode,
 			RedirectAttributes redirectAttributes,
 			HttpServletRequest request) throws ServletException {
@@ -53,41 +54,53 @@ public class AccountController {
 		return "redirect:/login";
 	}
 
-    @RequestMapping(value = "/settings")
-    public String getSettings(Model model) {
+    @RequestMapping(value = "/settings", method = RequestMethod.GET)
+    public String getSettings(Model model, HttpSession session) {
 		Account account = accountService.getAccount(Util.getCurrentSessionAccount().getId());
-		EditAccountForm editAccountForm = new EditAccountForm();
-		editAccountForm.setEmail(account.getEmail());
-		editAccountForm.setFirstname(account.getFirstname());
-		editAccountForm.setSurname(account.getSurname());
-		editAccountForm.setPhone(account.getPhone());
-		editAccountForm.setBiography(account.getBiography());
+		if (session.getAttribute("failedEditAccountForm") == null) {
+			model.addAttribute(new EditAccountForm());
+		} else {
+			EditAccountForm editAccountForm = (EditAccountForm)session.getAttribute("failedEditAccountForm");
+			editAccountForm.setEmail(account.getEmail());
+			editAccountForm.setFirstname(account.getFirstname());
+			editAccountForm.setSurname(account.getSurname());
+			editAccountForm.setPhone(account.getPhone());
+			editAccountForm.setBiography(account.getBiography());
+			model.addAttribute(editAccountForm);
+			model.addAttribute("org.springframework.validation.BindingResult.contactForm", session.getAttribute("result"));
+		}
 
-		EditPasswordForm editPasswordForm = new EditPasswordForm();
-		editPasswordForm.setPassword(account.getPassword());
+
+
+
+//		EditPasswordForm editPasswordForm = new EditPasswordForm();
+//		editPasswordForm.setPassword(account.getPassword());
     	model.addAttribute(account);
-    	model.addAttribute(editAccountForm);
-		model.addAttribute(editPasswordForm);
+		//model.addAttribute(editPasswordForm);
 		return "settings";
     }
 
 	@RequestMapping(value = "/settings/edit-account-details", method = RequestMethod.POST)
 	public String editAccountDetails(@ModelAttribute("editAccountForm") @Valid EditAccountForm editAccountForm,
 			BindingResult result, RedirectAttributes redirectAttributes,
-			HttpServletRequest request) throws ServletException {
+			HttpSession session) throws ServletException {
 
 		if (result.hasErrors()) {
-			return "settings";
+			session.setAttribute("failedEditAccountForm", editAccountForm);
+			session.setAttribute("result", result);
+			return "redirect:/account/settings";
 		}
 		accountService.editAccount(Util.getCurrentSessionAccount().getId(), editAccountForm);
 		Util.flash(redirectAttributes, "success", "editSuccessful");
+		session.removeAttribute("failedEditAccountForm");
+		session.removeAttribute("result");
 		return "redirect:/account/settings";
 	}
 
 	@RequestMapping(value = "/settings/edit-account-password", method = RequestMethod.POST)
 	public String editAccountPassword(@ModelAttribute("editPasswordForm") @Valid EditPasswordForm editPasswordForm,
-									   BindingResult result, RedirectAttributes redirectAttributes,
-									   HttpServletRequest request) throws ServletException {
+			BindingResult result, RedirectAttributes redirectAttributes,
+			HttpSession session) throws ServletException {
 
 		if (result.hasErrors()) {
 			return "settings";

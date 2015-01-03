@@ -1,6 +1,5 @@
 package com.vladinooo.lovedance.dto;
 
-import com.vladinooo.lovedance.entity.Profile;
 import com.vladinooo.lovedance.entity.Account;
 
 import javax.validation.constraints.NotNull;
@@ -10,8 +9,8 @@ import javax.validation.constraints.Size;
 
 public class ContactForm {
 
-    @Size(max=Profile.FIRSTNAME_MAX, message="{nameSizeError}")
-    @Pattern(regexp=Profile.FIRSTNAME_PATTERN, message="{namePatternError}")
+    @Size(max=Account.FIRSTNAME_MAX, message="{nameSizeError}")
+    @Pattern(regexp=Account.FIRSTNAME_PATTERN, message="{namePatternError}")
     private String name;
 
     @NotNull
