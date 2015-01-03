@@ -59,3 +59,43 @@ $( document ).ready(function() {
         }
     });
 });
+
+// ajax form submission and validation
+function collectFormData(fields) {
+    var data = {};
+    for (var i = 0; i < fields.length; i++) {
+        var $item = $(fields[i]);
+        data[$item.attr('name')] = $item.val();
+    }
+    return data;
+}
+
+function showValidationErrors(form, postUri) {
+    var url = window.location.protocol + "//" + window.location.host + postUri;
+    var $form = form;
+    $form.bind('submit', function (e) {
+
+        var $inputs = $form.find('input');
+        var data = collectFormData($inputs);
+
+        $.post(url, data, function (response) {
+            $form.find('.form-group').removeClass('error');
+            $form.find('.help-inline').empty();
+
+            if (response.status == 'FAIL') {
+                for (var i = 0; i < response.errorMessageList.length; i++) {
+                    var item = response.errorMessageList[i];
+                    var $formGroup = $('#' + item.fieldName);
+                    $formGroup.addClass('error');
+                    $formGroup.find('.help-inline').html(item.message);
+                }
+            } else {
+                $form.unbind('submit');
+                $form.submit();
+            }
+        }, 'json');
+
+        e.preventDefault();
+        return false;
+    });
+}

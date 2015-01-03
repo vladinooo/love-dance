@@ -138,7 +138,7 @@ public class RootController {
 
 	@RequestMapping(value="/contact_me", method = RequestMethod.POST)
 	public String contactMe(@Valid @ModelAttribute("contactForm") ContactForm contactForm,
-							BindingResult result, RedirectAttributes redirectAttributes, HttpSession session) {
+		BindingResult result, RedirectAttributes redirectAttributes, HttpSession session) {
 
 		if (result.hasErrors()) {
 			session.setAttribute("failedContactForm", contactForm);
