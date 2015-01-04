@@ -121,9 +121,21 @@
 </section>
 
 <script>
-    $(document).ready(function() {
-        showValidationErrors($('#edit-account-details-form'), "/account/settings/edit-account-details.json");
-        showValidationErrors($('#edit-account-password-form'), "/account/settings/edit-account-password.json");
+    $(document).ready(function () {
+        var editAccountDetailsForm = {
+            $form: $('#edit-account-details-form'),
+            validationPostUri: "/account/settings/edit-account-details.json",
+            formPostUri: "/account/settings/edit-account-details",
+            type: "basic"
+        };
+        var editAccountPasswordForm = {
+            $form: $('#edit-account-password-form'),
+            validationPostUri: "/account/settings/edit-account-password.json",
+            formPostUri: "/account/settings/edit-account-password",
+            type: "password"
+        };
+        showValidationErrors(editAccountDetailsForm);
+        showValidationErrors(editAccountPasswordForm);
     });
 </script>
 

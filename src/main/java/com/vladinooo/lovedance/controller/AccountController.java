@@ -4,6 +4,7 @@ import com.vladinooo.lovedance.dto.EditAccountForm;
 import com.vladinooo.lovedance.dto.EditPasswordForm;
 import com.vladinooo.lovedance.dto.ErrorMessage;
 import com.vladinooo.lovedance.dto.ValidationResponse;
+import com.vladinooo.lovedance.dto.PostResponse;
 import com.vladinooo.lovedance.entity.Account;
 import com.vladinooo.lovedance.service.AccountService;
 import com.vladinooo.lovedance.util.Util;
@@ -77,14 +78,20 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/settings/edit-account-details", method = RequestMethod.POST)
-    public String editAccountDetails(@ModelAttribute(value = "editAccountForm") @Valid EditAccountForm editAccountForm,
+    public @ResponseBody
+    PostResponse editAccountDetails(@ModelAttribute(value = "editAccountForm") @Valid EditAccountForm editAccountForm,
             BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "settings";
+        PostResponse postResponse = new PostResponse();
+        if (!result.hasErrors()) {
+            accountService.editAccount(Util.getCurrentSessionAccount().getId(), editAccountForm);
+            postResponse.setStatus("SUCCESS");
+            postResponse.setMessage("Edit Successful");
+        } else {
+            postResponse.setStatus("FAIL");
+            postResponse.setMessage("Edit Failed");
         }
-        accountService.editAccount(Util.getCurrentSessionAccount().getId(), editAccountForm);
-        return "redirect:/account/settings";
+
+        return postResponse;
     }
 
     @RequestMapping(value = "/settings/edit-account-details.json", method = RequestMethod.POST)
@@ -100,7 +107,7 @@ public class AccountController {
             List<FieldError> allErrors = result.getFieldErrors();
             List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
             for (FieldError objectError : allErrors) {
-                errorMesages.add(new ErrorMessage(objectError.getField(), objectError.getField() + "  " + objectError.getDefaultMessage()));
+                errorMesages.add(new ErrorMessage(objectError.getField(), objectError.getDefaultMessage()));
             }
             validationResponse.setErrorMessageList(errorMesages);
         }
@@ -108,14 +115,21 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/settings/edit-account-password", method = RequestMethod.POST)
-    public String editAccountPassword(@ModelAttribute(value = "editPasswordForm") @Valid EditPasswordForm editPasswordForm,
+    public @ResponseBody
+    PostResponse editAccountPassword(@ModelAttribute(value = "editPasswordForm") @Valid EditPasswordForm editPasswordForm,
             BindingResult result) {
 
-        if (result.hasErrors()) {
-            return "settings";
+        PostResponse postResponse = new PostResponse();
+        if (!result.hasErrors()) {
+            accountService.editPassword(Util.getCurrentSessionAccount().getId(), editPasswordForm);
+            postResponse.setStatus("SUCCESS");
+            postResponse.setMessage("Edit Successful");
+        } else {
+            postResponse.setStatus("FAIL");
+            postResponse.setMessage("Edit Failed");
         }
-        accountService.editPassword(Util.getCurrentSessionAccount().getId(), editPasswordForm);
-        return "redirect:/account/settings";
+
+        return postResponse;
     }
 
     @RequestMapping(value = "/settings/edit-account-password.json", method = RequestMethod.POST)
@@ -131,7 +145,7 @@ public class AccountController {
             List<FieldError> allErrors = result.getFieldErrors();
             List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
             for (FieldError objectError : allErrors) {
-                errorMesages.add(new ErrorMessage(objectError.getField(), objectError.getField() + "  " + objectError.getDefaultMessage()));
+                errorMesages.add(new ErrorMessage(objectError.getField(), objectError.getDefaultMessage()));
             }
             validationResponse.setErrorMessageList(errorMesages);
         }

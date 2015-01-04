@@ -70,17 +70,19 @@ function collectFormData(fields) {
     return data;
 }
 
-function showValidationErrors(form, postUri) {
-    var url = window.location.protocol + "//" + window.location.host + postUri;
-    var $form = form;
-    $form.bind('submit', function (e) {
+function showValidationErrors(formObj) {
+    var validationUrl = window.location.protocol + "//" + window.location.host + formObj.validationPostUri;
+    var formUrl = window.location.protocol + "//" + window.location.host + formObj.formPostUri;
+    var formType = formObj.type;
+    var form = formObj.$form;
+    form.bind('submit', function (e) {
 
-        var $inputs = $form.find('input');
+        var $inputs = form.find('input');
         var data = collectFormData($inputs);
-
-        $.post(url, data, function (response) {
-            $form.find('.form-group').removeClass('error');
-            $form.find('.help-inline').empty();
+        // do ajax validation
+        $.post(validationUrl, data, function (response) {
+            form.find('.form-group').removeClass('error');
+            form.find('.help-inline').empty();
 
             if (response.status == 'FAIL') {
                 for (var i = 0; i < response.errorMessageList.length; i++) {
@@ -90,12 +92,26 @@ function showValidationErrors(form, postUri) {
                     $formGroup.find('.help-inline').html(item.message);
                 }
             } else {
-                $form.unbind('submit');
-                $form.submit();
+                doAjaxPost(formUrl, formType, form);
             }
         }, 'json');
 
         e.preventDefault();
         return false;
     });
+}
+
+function doAjaxPost(formUrl, formType, form) {
+    $.post(formUrl, form.serialize(), function(response) {
+        if (response.status == 'FAIL') {
+            console.log("fail");
+        } else {
+            console.log("success");
+        }
+        if (formType == 'password') {
+            $('#password .form-control').val("");
+            $('#newPassword .form-control').val("");
+            $('#confirmNewPassword .form-control').val("");
+        }
+    }, 'json');
 }

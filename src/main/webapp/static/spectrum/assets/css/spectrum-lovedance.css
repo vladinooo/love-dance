@@ -2168,14 +2168,14 @@ ul.button-list li:first-child {
     background-color: #DC574E
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:active, .btn-primary:focus,
+.btn-primary.active, .open .dropdown-toggle.btn-primary {
     color: #ffffff;
     background-color: #8DC7B8;
     border-color: #DC574E
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-.btn-primary.active, .open .dropdown-toggle.btn-primary {
+.btn-primary:hover {
     color: #ffffff;
     background-color: #DC574E;
     border-color: #8DC7B8
