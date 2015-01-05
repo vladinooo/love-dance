@@ -18,5 +18,4 @@ public class ValidationResponse {
     public void setErrorMessageList(List<ErrorMessage> errorMessageList) {
         this.errorMessageList = errorMessageList;
     }
-
 }

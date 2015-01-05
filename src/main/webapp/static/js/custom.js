@@ -81,16 +81,23 @@ function showValidationErrors(formObj) {
         var data = collectFormData($inputs);
         // do ajax validation
         $.post(validationUrl, data, function (response) {
-            form.find('.form-group').removeClass('error');
-            form.find('.help-inline').empty();
+            form.find('.form-group').removeClass('validation-error');
+            form.find('.validation-summary').empty();
+            form.find('.validation-summary').addClass('hidden');
 
             if (response.status == 'FAIL') {
+                var errorMessages = new Array();
                 for (var i = 0; i < response.errorMessageList.length; i++) {
                     var item = response.errorMessageList[i];
-                    var $formGroup = $('#' + item.fieldName);
-                    $formGroup.addClass('error');
-                    $formGroup.find('.help-inline').html(item.message);
+                    var error = {
+                        index: form.find('#' + item.fieldName).index(),
+                        fieldName: form.find('#' + item.fieldName).attr('id'),
+                        message: item.message
+                    };
+                    errorMessages.push(error);
                 }
+                errorMessages.sort(sortBy('index', false));
+                createValidationSummary(form, errorMessages);
             } else {
                 doAjaxPost(formUrl, formType, form);
             }
@@ -101,12 +108,26 @@ function showValidationErrors(formObj) {
     });
 }
 
+
+function createValidationSummary(form, errorMessages) {
+    for (var i = 0; i < errorMessages.length; i++) {
+        var item = errorMessages[i];
+        form.find('#' + item.fieldName).addClass('validation-error');
+        form.find('.validation-summary').append('<li>' + item.message + '</li>');
+    }
+    form.find('.validation-summary').removeClass('hidden');
+}
+
 function doAjaxPost(formUrl, formType, form) {
+    form.find('.update-success').addClass('hidden');
+    form.find('.update-success').empty();
     $.post(formUrl, form.serialize(), function(response) {
         if (response.status == 'FAIL') {
             console.log("fail");
         } else {
             console.log("success");
+            form.find('.update-success').append('<p>' + response.message + '</p>');
+            form.find('.update-success').removeClass('hidden');
         }
         if (formType == 'password') {
             $('#password .form-control').val("");
@@ -114,4 +135,45 @@ function doAjaxPost(formUrl, formType, form) {
             $('#confirmNewPassword .form-control').val("");
         }
     }, 'json');
+}
+
+
+/**
+ * @description
+ * Returns a function which will sort an
+ * array of objects by the given key.
+ *
+ * @param  {String}  key
+ * @param  {Boolean} reverse
+ * @return {Function}
+ */
+function sortBy(key, reverse) {
+
+    // Move smaller items towards the front
+    // or back of the array depending on if
+    // we want to sort the array in reverse
+    // order or not.
+    var moveSmaller = reverse ? 1 : -1;
+
+    // Move larger items towards the front
+    // or back of the array depending on if
+    // we want to sort the array in reverse
+    // order or not.
+    var moveLarger = reverse ? -1 : 1;
+
+    /**
+     * @param  {*} a
+     * @param  {*} b
+     * @return {Number}
+     */
+    return function(a, b) {
+        if (a[key] < b[key]) {
+            return moveSmaller;
+        }
+        if (a[key] > b[key]) {
+            return moveLarger;
+        }
+        return 0;
+    };
+
 }

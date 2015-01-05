@@ -132,7 +132,7 @@ public class RootController {
 		if (result.hasErrors()) {
 			return "reset-password";
 		}
-		Util.flash(redirectAttributes, "success", "passwordChanged");
+		Util.flash(redirectAttributes, "success", "passwordReset");
 		return "redirect:/login";
 	}
 

@@ -3275,3 +3275,29 @@ abbr.input-validation-required {
 .container .well {
     margin-bottom: 25px;
 }
+
+/* form validation */
+.alert-danger {
+    background-color: #fae9e8;
+    border-color: #f6d2d6;
+    color: #e74c3c;
+}
+
+.validation-error {
+    color: #e74c3c;
+}
+
+.validation-error input {
+    background-color: #fae9e8;
+    border-color: #e74c3c;
+}
+
+.alert-success {
+    background-color: #ffffff;
+    border-color: #8DC7B8;
+    color: #8DC7B8;
+}
+
+.alert-success p {
+    font-size: 16px;
+}

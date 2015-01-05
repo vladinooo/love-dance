@@ -70,7 +70,7 @@ public class AccountController {
         editAccountForm.setPhone(account.getPhone());
         editAccountForm.setBiography(account.getBiography());
 
-        editPasswordForm.setPassword(account.getPassword());
+        editPasswordForm.setCurrentPassword(account.getPassword());
         model.addAttribute(account);
         model.addAttribute(editAccountForm);
         model.addAttribute(editPasswordForm);
@@ -85,7 +85,7 @@ public class AccountController {
         if (!result.hasErrors()) {
             accountService.editAccount(Util.getCurrentSessionAccount().getId(), editAccountForm);
             postResponse.setStatus("SUCCESS");
-            postResponse.setMessage("Edit Successful");
+            postResponse.setMessage(Util.getMessage("accountDetailsUpdateSuccess"));
         } else {
             postResponse.setStatus("FAIL");
             postResponse.setMessage("Edit Failed");
@@ -107,7 +107,11 @@ public class AccountController {
             List<FieldError> allErrors = result.getFieldErrors();
             List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
             for (FieldError objectError : allErrors) {
-                errorMesages.add(new ErrorMessage(objectError.getField(), objectError.getDefaultMessage()));
+                String message = objectError.getDefaultMessage();
+                if (message == null) {
+                    message = Util.getMessage(objectError.getCode());
+                }
+                errorMesages.add(new ErrorMessage(objectError.getField(), message));
             }
             validationResponse.setErrorMessageList(errorMesages);
         }
@@ -123,7 +127,7 @@ public class AccountController {
         if (!result.hasErrors()) {
             accountService.editPassword(Util.getCurrentSessionAccount().getId(), editPasswordForm);
             postResponse.setStatus("SUCCESS");
-            postResponse.setMessage("Edit Successful");
+            postResponse.setMessage(Util.getMessage("passwordUpdateSuccess"));
         } else {
             postResponse.setStatus("FAIL");
             postResponse.setMessage("Edit Failed");
@@ -145,7 +149,11 @@ public class AccountController {
             List<FieldError> allErrors = result.getFieldErrors();
             List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
             for (FieldError objectError : allErrors) {
-                errorMesages.add(new ErrorMessage(objectError.getField(), objectError.getDefaultMessage()));
+                String message = objectError.getDefaultMessage();
+                if (message == null) {
+                    message = Util.getMessage(objectError.getCode());
+                }
+                errorMesages.add(new ErrorMessage(objectError.getField(), message));
             }
             validationResponse.setErrorMessageList(errorMesages);
         }

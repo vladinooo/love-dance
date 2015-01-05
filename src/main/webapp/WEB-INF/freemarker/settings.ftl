@@ -30,41 +30,46 @@
                                             title="This information is required.">*</abbr></label>
                                     <div class="col-sm-6">
                                         <@spring.formInput "editAccountForm.Email", "class='form-control', placeholder='Email'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div id="firstname" class="form-group">
                                     <label for="firstname" class="col-sm-3 control-label">First Name:</label>
                                     <div class="col-sm-6">
                                         <@spring.formInput "editAccountForm.firstname", "class='form-control', placeholder='First Name'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div id="surname" class="form-group">
                                     <label for="surname" class="col-sm-3 control-label">Surname:</label>
                                     <div class="col-sm-6">
                                         <@spring.formInput "editAccountForm.surname", "class='form-control', placeholder='Surname'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div id="phone" class="form-group">
                                     <label for="phone" class="col-sm-3 control-label">Phone:</label>
                                     <div class="col-sm-6">
                                         <@spring.formInput "editAccountForm.phone", "class='form-control', placeholder='Phone'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div id="biography" class="form-group">
                                     <label for="biography" class="col-sm-3 control-label">Biography:</label>
                                     <div class="col-sm-6">
                                         <@spring.formTextarea "editAccountForm.biography", "class='form-control', placeholder='Biography', rows='3'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
+                                </div>
+                                <div class="alert alert-danger validation-summary hidden">
+                                    <ul></ul>
+                                </div>
+                                <div class="alert alert-success update-success hidden">
                                 </div>
                             </form>
 
@@ -77,13 +82,13 @@
                             <@spring.bind "editPasswordForm"/>
                             <form id="edit-account-password-form" class="form-horizontal" role="form" method="POST"
                                   action="<@spring.url '/account/settings/edit-account-password'/>">
-                                <div id="password" class="form-group">
+                                <div id="currentPassword" class="form-group">
                                     <label for="currentPassword" class="col-sm-3 control-label">Current Password <abbr
                                             class="input-validation-required"
                                             title="This information is required.">*</abbr></label>
                                     <div class="col-sm-6">
-                                        <@spring.formPasswordInput "editPasswordForm.password", "class='form-control', placeholder='Current Password'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.formPasswordInput "editPasswordForm.currentPassword", "class='form-control', placeholder='Current Password'" />
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div id="newPassword" class="form-group">
@@ -92,7 +97,7 @@
                                             title="This information is required.">*</abbr></label>
                                     <div class="col-sm-6">
                                         <@spring.formPasswordInput "editPasswordForm.newPassword", "class='form-control', placeholder='New Password'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div id="confirmNewPassword" class="form-group">
@@ -101,13 +106,18 @@
                                             title="This information is required.">*</abbr></label>
                                     <div class="col-sm-6">
                                         <@spring.formPasswordInput "editPasswordForm.confirmNewPassword", "class='form-control', placeholder='Confirm New Password'" />
-                                        <span class="help-inline"><@spring.showErrors "<br />", "fieldValidationError" /></span>
+                                        <@spring.showErrors "<br />", "fieldValidationError" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
+                                </div>
+                                <div class="alert alert-danger validation-summary hidden">
+                                    <ul></ul>
+                                </div>
+                                <div class="alert alert-success update-success hidden">
                                 </div>
                             </form>
 

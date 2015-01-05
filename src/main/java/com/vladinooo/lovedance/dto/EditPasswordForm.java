@@ -9,23 +9,23 @@ import javax.validation.constraints.Size;
 public class EditPasswordForm {
 
 	@NotNull
-	@Size(min=5, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
-	private String password;
+	@Size(min=5, max= Account.PASSWORD_MAX, message="{currentPasswordSizeError}")
+	private String currentPassword;
 	
 	@NotNull
-	@Size(min=5, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
+	@Size(min=5, max= Account.PASSWORD_MAX, message="{newPasswordSizeError}")
 	private String newPassword;
 	
 	@NotNull
-	@Size(min=5, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
+	@Size(min=5, max= Account.PASSWORD_MAX, message="{confirmNewPasswordSizeError}")
 	private String confirmNewPassword;
 
-	public String getPassword() {
-		return password;
+	public String getCurrentPassword() {
+		return currentPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCurrentPassword(String currentPassword) {
+		this.currentPassword = currentPassword;
 	}
 
 	public String getNewPassword() {

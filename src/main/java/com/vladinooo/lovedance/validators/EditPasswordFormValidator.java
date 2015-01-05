@@ -38,8 +38,8 @@ public class EditPasswordFormValidator extends LocalValidatorFactoryBean {
 		if (!errors.hasErrors()) {
 			EditPasswordForm editPasswordForm = (EditPasswordForm) obj;
 			Account account = accountService.getAccount(Util.getCurrentSessionAccount().getId());
-			if (!passwordEncoder.matches(editPasswordForm.getPassword(), account.getPassword())) {
-				errors.rejectValue("password", "invalidPassword");
+			if (!passwordEncoder.matches(editPasswordForm.getCurrentPassword(), account.getPassword())) {
+				errors.rejectValue("currentPassword", "invalidCurrentPassword");
 			}
 			if (!editPasswordForm.getNewPassword().equals(editPasswordForm.getConfirmNewPassword())) {
 				errors.rejectValue("confirmNewPassword", "passwordsDoNotMatch");
