@@ -124,7 +124,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     /*font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif*/
-    font-family: 'Architects Daughter', cursive;
+    /*font-family: 'Architects Daughter', cursive;*/
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
@@ -1291,7 +1292,8 @@ a.light-text:hover, a.light-text:focus {
 
 .contact-1 form .floating-label-form-group-with-value label, .contact-2 form .floating-label-form-group-with-value label {
     top: 0;
-    opacity: 1
+    opacity: 1;
+    color: #8DC7B8
 }
 
 .contact-1 form .floating-label-form-group-with-focus label, .contact-2 form .floating-label-form-group-with-focus label {
@@ -3300,4 +3302,8 @@ abbr.input-validation-required {
 
 .alert-success p {
     font-size: 16px;
+}
+
+.validation-error-contact {
+    background-color: #fae9e8;
 }

@@ -440,45 +440,53 @@
             <div class="col-lg-5 col-lg-offset-1" data-scrollreveal="enter right over 1.5s">
                 <br>
                 <@spring.bind "contactForm"/>
-                <form method="POST" role="form" action="<@spring.url '/contact_me'/>">
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                <form id="contact-form" method="POST" role="form" action="<@spring.url '/contact-me'/>">
+                    <div id="name" class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group">
                             <label>Name</label>
-                            <@spring.formInput "contactForm.name", "class='form-control', placeholder='Name', id='name' required data-validation-required-message='Please enter your name.'" />
-                            <p class="help-block text-danger"><@spring.showErrors "<br />", "fieldValidationError" /></p>
+                            <@spring.formInput "contactForm.name", "class='form-control', placeholder='Name'" />
+                            <@spring.showErrors "<br />", "fieldValidationError" />
                         </div>
 
                     </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div id="email" class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group">
                             <label>Email Address</label>
-                            <@spring.formInput "contactForm.email", "class='form-control', placeholder='Email Address', id='email' required data-validation-required-message='Please enter your email address.'" />
-                            <p class="help-block text-danger"><@spring.showErrors "<br />", "fieldValidationError" /></p>
+                            <@spring.formInput "contactForm.email", "class='form-control', placeholder='Email Address'" />
+                            <@spring.showErrors "<br />", "fieldValidationError" />
                         </div>
                     </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div id="message" class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group">
                             <label>Message</label>
-                            <@spring.formInput "contactForm.message", "class='form-control', placeholder='Message', id='message' required data-validation-required-message='Please enter a message.'" />
-                            <p class="help-block text-danger"><@spring.showErrors "<br />", "fieldValidationError" /></p>
+                            <@spring.formInput "contactForm.message", "class='form-control', placeholder='Message'" />
+                            <@spring.showErrors "<br />", "fieldValidationError" />
                         </div>
                     </div>
                     <br>
-                    <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <button type="submit" class="btn btn-lg btn-primary btn-square btn-raised">Send</button>
                         </div>
                     </div>
-                </form>
-                <#if (flashMessage)??>
-                    <div class="alert alert-${flashKind} alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    ${flashMessage}
+                    <div class="alert response-summary hidden">
                     </div>
-                </#if>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        var contactForm = {
+            $form: $('#contact-form'),
+            validationPostUri: "/contact-me.json",
+            formPostUri: "/contact-me",
+            type: "contact"
+        };
+        submitFormByAjax(contactForm);
+    });
+</script>
+
 </@layout.default>

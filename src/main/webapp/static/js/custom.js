@@ -60,7 +60,7 @@ $( document ).ready(function() {
     });
 });
 
-// ajax form submission and validation
+/***** ajax form submission and validation *****/
 function collectFormData(fields) {
     var data = {};
     for (var i = 0; i < fields.length; i++) {
@@ -70,7 +70,7 @@ function collectFormData(fields) {
     return data;
 }
 
-function showValidationErrors(formObj) {
+function submitFormByAjax(formObj) {
     var validationUrl = window.location.protocol + "//" + window.location.host + formObj.validationPostUri;
     var formUrl = window.location.protocol + "//" + window.location.host + formObj.formPostUri;
     var formType = formObj.type;
@@ -81,10 +81,8 @@ function showValidationErrors(formObj) {
         var data = collectFormData($inputs);
         // do ajax validation
         $.post(validationUrl, data, function (response) {
-            form.find('.form-group').removeClass('validation-error');
-            form.find('.validation-summary').empty();
-            form.find('.validation-summary').addClass('hidden');
-
+        form.find('.form-group').removeClass('validation-error');
+        if (formType == 'contact') form.find('.form-group').removeClass('validation-error-contact');
             if (response.status == 'FAIL') {
                 var errorMessages = new Array();
                 for (var i = 0; i < response.errorMessageList.length; i++) {
@@ -97,7 +95,7 @@ function showValidationErrors(formObj) {
                     errorMessages.push(error);
                 }
                 errorMessages.sort(sortBy('index', false));
-                createValidationSummary(form, errorMessages);
+                showErrors(form, formType, errorMessages);
             } else {
                 doAjaxPost(formUrl, formType, form);
             }
@@ -108,31 +106,42 @@ function showValidationErrors(formObj) {
     });
 }
 
-
-function createValidationSummary(form, errorMessages) {
+function showErrors(form, formType, errorMessages) {
+    form.find('.response-summary').empty();
     for (var i = 0; i < errorMessages.length; i++) {
         var item = errorMessages[i];
         form.find('#' + item.fieldName).addClass('validation-error');
-        form.find('.validation-summary').append('<li>' + item.message + '</li>');
+        if (formType == 'contact') form.find('#' + item.fieldName + ' .form-group').addClass('validation-error-contact');
+        form.find('.response-summary').append('<ul><li>' + item.message + '</li></ul>');
     }
-    form.find('.validation-summary').removeClass('hidden');
+    form.find('.response-summary').removeClass('alert-success');
+    form.find('.response-summary').addClass('alert-danger');
+    form.find('.response-summary').removeClass('hidden');
 }
 
 function doAjaxPost(formUrl, formType, form) {
-    form.find('.update-success').addClass('hidden');
-    form.find('.update-success').empty();
     $.post(formUrl, form.serialize(), function(response) {
         if (response.status == 'FAIL') {
-            console.log("fail");
         } else {
-            console.log("success");
-            form.find('.update-success').append('<p>' + response.message + '</p>');
-            form.find('.update-success').removeClass('hidden');
+
+            form.find('.response-summary').empty();
+            form.find('.response-summary').append('<p>' + response.message + '</p>');
+            form.find('.response-summary').removeClass('alert-danger');
+            form.find('.response-summary').addClass('alert-success');
+            form.find('.response-summary').removeClass('hidden');
         }
         if (formType == 'password') {
-            $('#password .form-control').val("");
+            $('#currentPassword .form-control').val("");
             $('#newPassword .form-control').val("");
             $('#confirmNewPassword .form-control').val("");
+        }
+        if (formType == 'contact') {
+            $('#name .form-control').val("");
+            $('#email .form-control').val("");
+            $('#message .form-control').val("");
+            $('#name .form-group').removeClass("floating-label-form-group-with-value");
+            $('#email .form-group').removeClass("floating-label-form-group-with-value");
+            $('#message .form-group').removeClass("floating-label-form-group-with-value");
         }
     }, 'json');
 }
@@ -149,16 +158,8 @@ function doAjaxPost(formUrl, formType, form) {
  */
 function sortBy(key, reverse) {
 
-    // Move smaller items towards the front
-    // or back of the array depending on if
-    // we want to sort the array in reverse
-    // order or not.
     var moveSmaller = reverse ? 1 : -1;
 
-    // Move larger items towards the front
-    // or back of the array depending on if
-    // we want to sort the array in reverse
-    // order or not.
     var moveLarger = reverse ? -1 : 1;
 
     /**

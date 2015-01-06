@@ -8,7 +8,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 						<div class="sign-form">
-							<h3 class="first-child">Log In To Your Account</h3>
+							<h2 class="first-child">Login</h2>
 							<hr>
 							<#if (flashMessage)??>
 								<div class="alert alert-${flashKind} alert-dismissable">

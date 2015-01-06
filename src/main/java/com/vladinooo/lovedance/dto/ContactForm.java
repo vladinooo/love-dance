@@ -19,7 +19,7 @@ public class ContactForm {
     private String email;
 
     @NotNull
-    @Size(max=1000, message="{messageSizeError}")
+    @Size(min=10, max=1000, message="{messageSizeError}")
     private String message;
 
     public String getName() {

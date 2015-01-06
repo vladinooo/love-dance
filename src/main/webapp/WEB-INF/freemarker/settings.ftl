@@ -66,10 +66,7 @@
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
-                                <div class="alert alert-danger validation-summary hidden">
-                                    <ul></ul>
-                                </div>
-                                <div class="alert alert-success update-success hidden">
+                                <div class="alert response-summary hidden">
                                 </div>
                             </form>
 
@@ -114,10 +111,7 @@
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
-                                <div class="alert alert-danger validation-summary hidden">
-                                    <ul></ul>
-                                </div>
-                                <div class="alert alert-success update-success hidden">
+                                <div class="alert response-summary hidden">
                                 </div>
                             </form>
 
@@ -144,8 +138,8 @@
             formPostUri: "/account/settings/edit-account-password",
             type: "password"
         };
-        showValidationErrors(editAccountDetailsForm);
-        showValidationErrors(editAccountPasswordForm);
+        submitFormByAjax(editAccountDetailsForm);
+        submitFormByAjax(editAccountPasswordForm);
     });
 </script>
 

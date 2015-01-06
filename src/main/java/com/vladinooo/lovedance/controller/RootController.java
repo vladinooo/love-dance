@@ -1,9 +1,6 @@
 package com.vladinooo.lovedance.controller;
 
-import com.vladinooo.lovedance.dto.ContactForm;
-import com.vladinooo.lovedance.dto.ForgotPasswordForm;
-import com.vladinooo.lovedance.dto.ResetPasswordForm;
-import com.vladinooo.lovedance.dto.SignupForm;
+import com.vladinooo.lovedance.dto.*;
 import com.vladinooo.lovedance.service.AccountService;
 import com.vladinooo.lovedance.util.Util;
 import com.vladinooo.lovedance.validators.ForgotPasswordFormValidator;
@@ -13,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RootController {
@@ -54,15 +53,49 @@ public class RootController {
 		binder.setValidator(resetPasswordFormValidator);
 	}
 
-	@RequestMapping(value="/", method = RequestMethod.GET)
-	public String home(Model model, HttpSession session) {
-        if (session.getAttribute("failedContactForm") == null) {
-            model.addAttribute("contactForm", new ContactForm());
-        } else {
-            model.addAttribute("contactForm", session.getAttribute("failedContactForm"));
-            model.addAttribute("org.springframework.validation.BindingResult.contactForm", session.getAttribute("result"));
-        }
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Model model) {
+		model.addAttribute("contactForm", new ContactForm());
 		return "home";
+	}
+
+	@RequestMapping(value = "/contact-me", method = RequestMethod.POST)
+	public @ResponseBody
+	PostResponse contactMe(@ModelAttribute(value = "contactForm") @Valid ContactForm contactForm, BindingResult result) {
+		PostResponse postResponse = new PostResponse();
+		if (!result.hasErrors()) {
+			accountService.sendMessage(contactForm);
+			postResponse.setStatus("SUCCESS");
+			postResponse.setMessage(Util.getMessage("messageSentSuccess"));
+		} else {
+			postResponse.setStatus("FAIL");
+			postResponse.setMessage("Edit Failed");
+		}
+
+		return postResponse;
+	}
+
+	@RequestMapping(value = "/contact-me.json", method = RequestMethod.POST)
+	public @ResponseBody
+	ValidationResponse contactMeAjax(@ModelAttribute(value = "contactForm") @Valid ContactForm contactForm, BindingResult result) {
+
+		ValidationResponse validationResponse = new ValidationResponse();
+		if (!result.hasErrors()) {
+			validationResponse.setStatus("SUCCESS");
+		} else {
+			validationResponse.setStatus("FAIL");
+			List<FieldError> allErrors = result.getFieldErrors();
+			List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
+			for (FieldError objectError : allErrors) {
+				String message = objectError.getDefaultMessage();
+				if (message == null) {
+					message = Util.getMessage(objectError.getCode());
+				}
+				errorMesages.add(new ErrorMessage(objectError.getField(), message));
+			}
+			validationResponse.setErrorMessageList(errorMesages);
+		}
+		return validationResponse;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -136,21 +169,7 @@ public class RootController {
 		return "redirect:/login";
 	}
 
-	@RequestMapping(value="/contact_me", method = RequestMethod.POST)
-	public String contactMe(@Valid @ModelAttribute("contactForm") ContactForm contactForm,
-		BindingResult result, RedirectAttributes redirectAttributes, HttpSession session) {
 
-		if (result.hasErrors()) {
-			session.setAttribute("failedContactForm", contactForm);
-			session.setAttribute("result", result);
-			return "redirect:/#contact";
-		}
-		accountService.sendMessage(contactForm);
-		Util.flash(redirectAttributes, "success", "messageSentSuccess");
-		session.removeAttribute("failedContactForm");
-		session.removeAttribute("result");
-		return "redirect:/#contact";
-	}
 
 
 }
