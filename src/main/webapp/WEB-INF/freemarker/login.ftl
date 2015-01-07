@@ -7,43 +7,55 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-						<div class="sign-form">
-							<h2 class="first-child">Login</h2>
-							<hr>
-							<#if (flashMessage)??>
-								<div class="alert alert-${flashKind} alert-dismissable">
-									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-									${flashMessage}
+
+                        <h2 class="first-child">Login</h2>
+
+						<div class="sign-form col-md-12">
+
+							<form id="login-form" class="form-horizontal" role="form" method="POST"
+								  action="<@spring.url '/login'/>">
+
+								<div id="username" class="form-group">
+									<hr>
+									<div class="input-group">
+										<div class="input-group-addon"><i class="fa fa-user"></i></div>
+										<input class="form-control" type="text" name="username" placeholder="Username" />
+									</div>
 								</div>
-							</#if>
-			
-							<form role="form" id="login-form" method="POST">
-					
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input class="form-control" type="text" name="username" placeholder="Username">
+
+								<div id="password" class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon"><i class="fa fa-lock"></i></div>
+										<input class="form-control" type="password" name="password" placeholder="Password" />
+									</div>
 								</div>
-					
-								<br>
-					
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input class="form-control" type="password" name="password" placeholder="Password">
+
+								<div class="form-group">
+									<div class="checkbox">
+										<label> <input type="checkbox" name="_spring_security_remember_me"> Remember me</label>
+									</div>
 								</div>
-					
-								<div class="checkbox">
-									<label> <input type="checkbox" name="_spring_security_remember_me"> Remember me</label>
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Login</button>
 								</div>
-					
-								<button type="submit" class="btn btn-color">Login</button>
-								
-								<hr>
+
+								<div class="form-group">
+									<hr>
+									<a href="<@spring.url '/forgot-password'/>">Forgot password</a>
+									<a class="pull-right" href="<@spring.url '/signup'/>">Sign up</a>
+								</div>
+
+								<div class="form-group">
+									<#if (flashMessage)??>
+										<div class="alert ${flashKind} response-summary">
+										${flashMessage}
+										</div>
+									</#if>
+								</div>
+
 							</form>
-					
-							<p>
-								<a href="<@spring.url '/forgot-password'/>">Forgot password</a>
-								<a class="pull-right" href="<@spring.url '/signup'/>">Sign up</a>
-							</p>
+
 						</div>
 					</div>
 				</div> <!-- / .row -->
@@ -51,4 +63,5 @@
     	</div>
 	</div>
 </section>
+
 </@layout.default>

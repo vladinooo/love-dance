@@ -104,11 +104,11 @@ public class RootController {
 			RedirectAttributes redirectAttributes) {
 
 		if (error != null) {
-			Util.flash(redirectAttributes, "danger", "loginError");
+			Util.flash(redirectAttributes, "alert-danger", "loginError");
 			return "redirect:/login";
 		}
 		if (logout != null) {
-			Util.flash(redirectAttributes, "success", "logoutSuccess");
+			Util.flash(redirectAttributes, "alert-success", "logoutSuccess");
 			return "redirect:/login";
 		}
 		return "login";
@@ -120,22 +120,79 @@ public class RootController {
 		return "signup";
 	}
 
-	@RequestMapping(value="/signup", method = RequestMethod.POST)
-	public String signup(@ModelAttribute("signupForm") @Valid SignupForm signupForm,
-			BindingResult result, RedirectAttributes redirectAttributes) {
-
-		if (result.hasErrors()) {
-			return "signup";
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public @ResponseBody
+	PostResponse signup(@ModelAttribute(value = "signupForm") @Valid SignupForm signupForm, BindingResult result) {
+		PostResponse postResponse = new PostResponse();
+		if (!result.hasErrors()) {
+			accountService.signup(signupForm);
+			postResponse.setStatus("SUCCESS");
+			postResponse.setMessage(Util.getMessage("signupSuccess"));
+		} else {
+			postResponse.setStatus("FAIL");
+			postResponse.setMessage("Signup Failed");
 		}
-		accountService.signup(signupForm);
-		Util.flash(redirectAttributes, "success", "signupSuccess");
-		return "redirect:/login";
+
+		return postResponse;
 	}
+
+	@RequestMapping(value = "/signup.json", method = RequestMethod.POST)
+	public @ResponseBody
+	ValidationResponse signupAjax(@ModelAttribute(value = "signupForm") @Valid SignupForm signupForm,
+			BindingResult result) {
+
+		ValidationResponse validationResponse = new ValidationResponse();
+		if (!result.hasErrors()) {
+			validationResponse.setStatus("SUCCESS");
+		} else {
+			validationResponse.setStatus("FAIL");
+			List<FieldError> allErrors = result.getFieldErrors();
+			List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
+			for (FieldError objectError : allErrors) {
+				String message = objectError.getDefaultMessage();
+				if (message == null) {
+					message = Util.getMessage(objectError.getCode());
+				}
+				errorMesages.add(new ErrorMessage(objectError.getField(), message));
+			}
+			validationResponse.setErrorMessageList(errorMesages);
+		}
+		return validationResponse;
+	}
+
+//	@RequestMapping(value="/signup", method = RequestMethod.POST)
+//	public String signup(@ModelAttribute("signupForm") @Valid SignupForm signupForm,
+//			BindingResult result, RedirectAttributes redirectAttributes) {
+//
+//		if (result.hasErrors()) {
+//			return "signup";
+//		}
+//		accountService.signup(signupForm);
+//		Util.flash(redirectAttributes, "success", "signupSuccess");
+//		return "redirect:/login";
+//	}
 
 	@RequestMapping(value = "/forgot-password", method = RequestMethod.GET)
 	public String forgotPassword(Model model) {
 		model.addAttribute(new ForgotPasswordForm());
 		return "forgot-password";
+	}
+
+	@RequestMapping(value = "/forgot-password", method = RequestMethod.POST)
+	public @ResponseBody
+	PostResponse forgotPassword(@ModelAttribute(value = "forgotPasswordForm") @Valid ForgotPasswordForm forgotPasswordForm,
+			BindingResult result) {
+		PostResponse postResponse = new PostResponse();
+		if (!result.hasErrors()) {
+			accountService.forgotPassword(forgotPasswordForm);
+			postResponse.setStatus("SUCCESS");
+			postResponse.setMessage(Util.getMessage("checkMailResetPassword"));
+		} else {
+			postResponse.setStatus("FAIL");
+			postResponse.setMessage("Forgot password Failed");
+		}
+
+		return postResponse;
 	}
 
 	@RequestMapping(value = "/forgot-password", method = RequestMethod.POST)

@@ -7,12 +7,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-						<div class="sign-form">
-							<h3 class="first-child">Forgot Password</h3>
-							<hr>
-							
+
+                        <h2 class="first-child">Forgot Password</h2>
+
+						<div class="sign-form col-md-12">
+
 							<@spring.bind "resetPasswordForm"/>
-							<form role="form" method="POST">
+							<form id="reset-password-form" class="form-horizontal" role="form" method="POST"
+                                  action="<@spring.url '/reset-password'/>">
 			
 								<div class="form-group">
 									<@spring.formPasswordInput "resetPasswordForm.password", "class='form-control', placeholder='Password'" />
