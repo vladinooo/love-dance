@@ -160,18 +160,6 @@ public class RootController {
 		return validationResponse;
 	}
 
-//	@RequestMapping(value="/signup", method = RequestMethod.POST)
-//	public String signup(@ModelAttribute("signupForm") @Valid SignupForm signupForm,
-//			BindingResult result, RedirectAttributes redirectAttributes) {
-//
-//		if (result.hasErrors()) {
-//			return "signup";
-//		}
-//		accountService.signup(signupForm);
-//		Util.flash(redirectAttributes, "success", "signupSuccess");
-//		return "redirect:/login";
-//	}
-
 	@RequestMapping(value = "/forgot-password", method = RequestMethod.GET)
 	public String forgotPassword(Model model) {
 		model.addAttribute(new ForgotPasswordForm());
@@ -181,7 +169,7 @@ public class RootController {
 	@RequestMapping(value = "/forgot-password", method = RequestMethod.POST)
 	public @ResponseBody
 	PostResponse forgotPassword(@ModelAttribute(value = "forgotPasswordForm") @Valid ForgotPasswordForm forgotPasswordForm,
-			BindingResult result) {
+								BindingResult result) {
 		PostResponse postResponse = new PostResponse();
 		if (!result.hasErrors()) {
 			accountService.forgotPassword(forgotPasswordForm);
@@ -189,44 +177,79 @@ public class RootController {
 			postResponse.setMessage(Util.getMessage("checkMailResetPassword"));
 		} else {
 			postResponse.setStatus("FAIL");
-			postResponse.setMessage("Forgot password Failed");
+			postResponse.setMessage("Forgot Password Failed");
 		}
-
 		return postResponse;
 	}
 
-	@RequestMapping(value = "/forgot-password", method = RequestMethod.POST)
-	public String forgotPassword(@ModelAttribute("forgotPasswordForm") @Valid ForgotPasswordForm forgotPasswordForm,
-		BindingResult result, RedirectAttributes redirectAttributes) {
+	@RequestMapping(value = "/forgot-password.json", method = RequestMethod.POST)
+	public @ResponseBody
+	ValidationResponse forgotPasswordAjax(@ModelAttribute(value = "forgotPasswordForm") @Valid ForgotPasswordForm forgotPasswordForm,
+								  BindingResult result) {
 
-		if (result.hasErrors()) {
-			return "forgot-password";
+		ValidationResponse validationResponse = new ValidationResponse();
+		if (!result.hasErrors()) {
+			validationResponse.setStatus("SUCCESS");
+		} else {
+			validationResponse.setStatus("FAIL");
+			List<FieldError> allErrors = result.getFieldErrors();
+			List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
+			for (FieldError objectError : allErrors) {
+				String message = objectError.getDefaultMessage();
+				if (message == null) {
+					message = Util.getMessage(objectError.getCode());
+				}
+				errorMesages.add(new ErrorMessage(objectError.getField(), message));
+			}
+			validationResponse.setErrorMessageList(errorMesages);
 		}
-		accountService.forgotPassword(forgotPasswordForm);
-		Util.flash(redirectAttributes, "info", "checkMailResetPassword");
-		return "redirect:/login";
+		return validationResponse;
 	}
 
 	@RequestMapping(value = "/reset-password/{forgotPasswordCode}", method = RequestMethod.GET)
-    public String resetPassword(@PathVariable("forgotPasswordCode") String forgotPasswordCode, Model model) {
+    public String resetPassword(Model model) {
      	model.addAttribute(new ResetPasswordForm());
     	return "reset-password";
     }
 
 	@RequestMapping(value = "/reset-password/{forgotPasswordCode}", method = RequestMethod.POST)
-	public String resetPassword(@PathVariable("forgotPasswordCode") String forgotPasswordCode,
-		@ModelAttribute("resetPasswordForm") @Valid ResetPasswordForm resetPasswordForm,
-		BindingResult result, RedirectAttributes redirectAttributes) {
+	public @ResponseBody
+	PostResponse resetPassword(@PathVariable("forgotPasswordCode") String forgotPasswordCode,
+			@ModelAttribute("resetPasswordForm") @Valid ResetPasswordForm resetPasswordForm, BindingResult result) {
 		accountService.resetPassword(forgotPasswordCode, resetPasswordForm, result);
-
-		if (result.hasErrors()) {
-			return "reset-password";
+		PostResponse postResponse = new PostResponse();
+		if (!result.hasErrors()) {
+			postResponse.setStatus("SUCCESS");
+			postResponse.setMessage(Util.getMessage("passwordResetSuccess"));
+		} else {
+			postResponse.setStatus("FAIL");
+			postResponse.setMessage(Util.getMessage(result.getAllErrors().get(0).getCode()));
 		}
-		Util.flash(redirectAttributes, "success", "passwordReset");
-		return "redirect:/login";
+		return postResponse;
 	}
 
+	@RequestMapping(value = "/reset-password.json", method = RequestMethod.POST)
+	public @ResponseBody
+	ValidationResponse resetPasswordAjax(@ModelAttribute("resetPasswordForm") @Valid ResetPasswordForm resetPasswordForm,
+			BindingResult result) {
 
-
+		ValidationResponse validationResponse = new ValidationResponse();
+		if (!result.hasErrors()) {
+			validationResponse.setStatus("SUCCESS");
+		} else {
+			validationResponse.setStatus("FAIL");
+			List<FieldError> allErrors = result.getFieldErrors();
+			List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
+			for (FieldError objectError : allErrors) {
+				String message = objectError.getDefaultMessage();
+				if (message == null) {
+					message = Util.getMessage(objectError.getCode());
+				}
+				errorMesages.add(new ErrorMessage(objectError.getField(), message));
+			}
+			validationResponse.setErrorMessageList(errorMesages);
+		}
+		return validationResponse;
+	}
 
 }

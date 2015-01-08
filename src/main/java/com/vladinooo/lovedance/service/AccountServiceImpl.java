@@ -158,7 +158,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 			return;
 		}
 		account.setForgotPasswordCode(null);
-		account.setPassword(passwordEncoder.encode(resetPasswordForm.getPassword().trim()));
+		account.setPassword(passwordEncoder.encode(resetPasswordForm.getNewPassword().trim()));
 		accountRepository.save(account);
 	}
 

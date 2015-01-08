@@ -49,7 +49,11 @@
 								<div class="form-group">
 									<#if (flashMessage)??>
 										<div class="alert ${flashKind} response-summary">
-										${flashMessage}
+											<#if (flashKind)?contains("alert-danger")>
+    											<ul><li>${flashMessage}</li></ul>
+												<#else>
+												${flashMessage}
+											</#if>
 										</div>
 									</#if>
 								</div>

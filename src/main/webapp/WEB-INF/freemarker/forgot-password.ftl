@@ -18,10 +18,7 @@
 
                                 <div id="username" class="form-group">
                                     <hr>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-										<@spring.formInput "forgotPasswordForm.username", "class='form-control', placeholder='Enter your username'" />
-                                    </div>
+									<@spring.formInput "forgotPasswordForm.username", "class='form-control', placeholder='Enter your username'" />
                                 </div>
 
                                 <div class="form-group">
@@ -50,7 +47,7 @@
             $form: $('#forgot-password-form'),
             validationPostUri: "/forgot-password.json",
             formPostUri: "/forgot-password",
-            type: "basic"
+            type: "forgotPassword"
         };
         submitFormByAjax(forgotPasswordForm);
     });

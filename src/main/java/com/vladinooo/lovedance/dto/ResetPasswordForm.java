@@ -8,26 +8,26 @@ import javax.validation.constraints.Size;
 public class ResetPasswordForm {
 	
 	@NotNull
-	@Size(min=1, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
-	private String password;
+	@Size(min=1, max= Account.PASSWORD_MAX, message="{newPasswordSizeError}")
+	private String newPassword;
 	
 	@NotNull
-	@Size(min=1, max= Account.PASSWORD_MAX, message="{passwordSizeError}")
-	private String confirmPassword;
+	@Size(min=1, max= Account.PASSWORD_MAX, message="{confirmNewPasswordSizeError}")
+	private String confirmNewPassword;
 
-	public String getPassword() {
-		return password;
+	public String getNewPassword() {
+		return newPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public String getConfirmNewPassword() {
+		return confirmNewPassword;
 	}
 
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setConfirmNewPassword(String confirmNewPassword) {
+		this.confirmNewPassword = confirmNewPassword;
 	}
 }

@@ -81,8 +81,9 @@ function submitFormByAjax(formObj) {
         var data = collectFormData($inputs);
         // do ajax validation
         $.post(validationUrl, data, function (response) {
-        form.find('.form-group').removeClass('validation-error');
-        if (formType == 'contact') form.find('.form-group').removeClass('validation-error-contact');
+
+            removeErrorHighlights(form, formType);
+
             if (response.status == 'FAIL') {
                 var errorMessages = new Array();
                 for (var i = 0; i < response.errorMessageList.length; i++) {
@@ -94,8 +95,10 @@ function submitFormByAjax(formObj) {
                     };
                     errorMessages.push(error);
                 }
+
                 errorMessages.sort(sortBy('index', false));
-                showErrors(form, formType, errorMessages);
+                highlightErrors(response.status, form, formType, errorMessages);
+
             } else {
                 doAjaxPost(formUrl, formType, form);
             }
@@ -106,44 +109,110 @@ function submitFormByAjax(formObj) {
     });
 }
 
-function showErrors(form, formType, errorMessages) {
+function highlightErrors(status, form, formType, errorMessages) {
     form.find('.response-summary').empty();
     for (var i = 0; i < errorMessages.length; i++) {
         var item = errorMessages[i];
-        form.find('#' + item.fieldName).addClass('validation-error');
-        if (formType == 'contact') form.find('#' + item.fieldName + ' .form-group').addClass('validation-error-contact');
-        form.find('.response-summary').append('<ul><li>' + item.message + '</li></ul>');
+
+        switch(formType) {
+            case 'contact':
+                form.find('#' + item.fieldName + ' .form-group').addClass('validation-error-contact');
+                break;
+
+            default:
+                form.find('#' + item.fieldName).addClass('validation-error');
+        }
     }
-    form.find('.response-summary').removeClass('alert-success');
-    form.find('.response-summary').addClass('alert-danger');
-    form.find('.response-summary').removeClass('hidden');
+    showResponseSummary(status, form, errorMessages);
+}
+
+function removeErrorHighlights(form, formType) {
+    switch(formType) {
+        case 'contact':
+            form.find('.form-group').removeClass('validation-error-contact');
+            break;
+
+        default:
+            form.find('.form-group').removeClass('validation-error');
+    }
 }
 
 function doAjaxPost(formUrl, formType, form) {
     $.post(formUrl, form.serialize(), function(response) {
         if (response.status == 'FAIL') {
+            console.log(response.status + ": " + response.message);
+            showResponseSummarySimple(form, response.message);
         } else {
-
-            form.find('.response-summary').empty();
-            form.find('.response-summary').append('<p>' + response.message + '</p>');
-            form.find('.response-summary').removeClass('alert-danger');
-            form.find('.response-summary').addClass('alert-success');
-            form.find('.response-summary').removeClass('hidden');
+            showResponseSummary(response.status, form, response.message);
+            onPostResponseSuccessAction(formType);
         }
-        if (formType == 'password') {
+    }, 'json');
+}
+
+function showResponseSummarySimple(form, message) {
+    form.find('.response-summary').empty();
+    form.find('.response-summary').append('<li>' + message + '</li>');
+    form.find('.response-summary').removeClass('alert-success');
+    form.find('.response-summary').addClass('alert-danger');
+    form.find('.response-summary').removeClass('hidden');
+}
+
+function showResponseSummary(status, form, messages) {
+    if (status == 'FAIL') {
+        form.find('.response-summary').append('<ul></ul>');
+        for (var i = 0; i < messages.length; i++) {
+            var item = messages[i];
+            form.find('.response-summary').append('<li>' + item.message + '</li>');
+        }
+        form.find('.response-summary').removeClass('alert-success');
+        form.find('.response-summary').addClass('alert-danger');
+        form.find('.response-summary').removeClass('hidden');
+    }
+    if (status == 'SUCCESS') {
+        form.find('.response-summary').empty();
+        form.find('.response-summary').removeClass('alert-danger');
+        form.find('.response-summary').addClass('alert-success');
+        form.find('.response-summary').append('<p>' + messages + '</p>');
+        form.find('.response-summary').removeClass('hidden');
+    }
+}
+
+function onPostResponseSuccessAction(formType) {
+    switch(formType) {
+        case 'password':
             $('#currentPassword .form-control').val("");
             $('#newPassword .form-control').val("");
             $('#confirmNewPassword .form-control').val("");
-        }
-        if (formType == 'contact') {
+            break;
+
+        case 'contact':
             $('#name .form-control').val("");
             $('#email .form-control').val("");
             $('#message .form-control').val("");
             $('#name .form-group').removeClass("floating-label-form-group-with-value");
             $('#email .form-group').removeClass("floating-label-form-group-with-value");
             $('#message .form-group').removeClass("floating-label-form-group-with-value");
-        }
-    }, 'json');
+            break;
+
+        case 'forgotPassword':
+            $('#username .form-control').val("");
+            setTimeout(function(){
+                var url = window.location.protocol + "//" + window.location.host + "/login";
+                window.location.href = url;
+            }, 10000);
+            break;
+
+        case 'resetPassword':
+            $('#newPassword .form-control').val("");
+            $('#confirmNewPassword .form-control').val("");
+            setTimeout(function(){
+                var url = window.location.protocol + "//" + window.location.host + "/login";
+                window.location.href = url;
+            }, 10000);
+            break;
+
+        default:
+    }
 }
 
 

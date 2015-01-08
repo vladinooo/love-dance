@@ -44,11 +44,15 @@ public class Util {
     	return activeProfiles.equals("dev");
     }
     
-    public static String hostUrl() {
-		return (isDev() ? "http://" : "https://") + hostAndPort;
+//    public static String hostUrl() {
+//		return (isDev() ? "http://" : "https://") + hostAndPort;
+//	}
+
+	public static String hostUrl() {
+		return "http://" + hostAndPort;
 	}
-	
-	
+
+
 	public static String getMessage(String messageKey, Object... args) {
 		return messageSource.getMessage(messageKey, args, Locale.getDefault());
 	}
