@@ -97,10 +97,10 @@ function submitFormByAjax(formObj) {
                 }
 
                 errorMessages.sort(sortBy('index', false));
-                highlightErrors(response.status, form, formType, errorMessages);
+                highlightErrors(form, formType, errorMessages);
 
             } else {
-                doAjaxPost(formUrl, formType, form);
+                doAjaxSubmit(formUrl, formType, form);
             }
         }, 'json');
 
@@ -109,7 +109,7 @@ function submitFormByAjax(formObj) {
     });
 }
 
-function highlightErrors(status, form, formType, errorMessages) {
+function highlightErrors(form, formType, errorMessages) {
     form.find('.response-summary').empty();
     for (var i = 0; i < errorMessages.length; i++) {
         var item = errorMessages[i];
@@ -123,7 +123,7 @@ function highlightErrors(status, form, formType, errorMessages) {
                 form.find('#' + item.fieldName).addClass('validation-error');
         }
     }
-    showResponseSummary(status, form, errorMessages);
+    showFormValidationErrorSummary(form, errorMessages);
 }
 
 function removeErrorHighlights(form, formType) {
@@ -137,33 +137,33 @@ function removeErrorHighlights(form, formType) {
     }
 }
 
-function doAjaxPost(formUrl, formType, form) {
+function doAjaxSubmit(formUrl, formType, form) {
     $.post(formUrl, form.serialize(), function(response) {
         if (response.status == 'FAIL') {
             console.log(response.status + ": " + response.message);
-            showResponseSummarySimple(form, response.message);
+            showSubmitResponse(response.status, form, response.message);
         } else {
-            showResponseSummary(response.status, form, response.message);
-            onPostResponseSuccessAction(formType);
+            showSubmitResponse(response.status, form, response.message);
+            onSubmitSuccessAction(formType);
         }
     }, 'json');
 }
 
-function showResponseSummarySimple(form, message) {
-    form.find('.response-summary').empty();
-    form.find('.response-summary').append('<li>' + message + '</li>');
+function showFormValidationErrorSummary(form, messages) {
+    form.find('.response-summary').append('<ul></ul>');
+    for (var i = 0; i < messages.length; i++) {
+        var item = messages[i];
+        form.find('.response-summary').append('<li>' + item.message + '</li>');
+    }
     form.find('.response-summary').removeClass('alert-success');
     form.find('.response-summary').addClass('alert-danger');
     form.find('.response-summary').removeClass('hidden');
 }
 
-function showResponseSummary(status, form, messages) {
+function showSubmitResponse(status, form, message) {
     if (status == 'FAIL') {
-        form.find('.response-summary').append('<ul></ul>');
-        for (var i = 0; i < messages.length; i++) {
-            var item = messages[i];
-            form.find('.response-summary').append('<li>' + item.message + '</li>');
-        }
+        form.find('.response-summary').empty();
+        form.find('.response-summary').append('<li>' + message + '</li>');
         form.find('.response-summary').removeClass('alert-success');
         form.find('.response-summary').addClass('alert-danger');
         form.find('.response-summary').removeClass('hidden');
@@ -172,12 +172,12 @@ function showResponseSummary(status, form, messages) {
         form.find('.response-summary').empty();
         form.find('.response-summary').removeClass('alert-danger');
         form.find('.response-summary').addClass('alert-success');
-        form.find('.response-summary').append('<p>' + messages + '</p>');
+        form.find('.response-summary').append('<p>' + message + '</p>');
         form.find('.response-summary').removeClass('hidden');
     }
 }
 
-function onPostResponseSuccessAction(formType) {
+function onSubmitSuccessAction(formType) {
     switch(formType) {
         case 'password':
             $('#currentPassword .form-control').val("");
@@ -209,6 +209,15 @@ function onPostResponseSuccessAction(formType) {
                 var url = window.location.protocol + "//" + window.location.host + "/login";
                 window.location.href = url;
             }, 10000);
+            break;
+
+        case 'signup':
+            $('#username .form-control').val("");
+            $('#email .form-control').val("");
+            $('#password .form-control').val("");
+            $('#confirmPassword .form-control').val("");
+            var url = window.location.protocol + "//" + window.location.host + "/signup/confirm";
+            window.location.href = url;
             break;
 
         default:

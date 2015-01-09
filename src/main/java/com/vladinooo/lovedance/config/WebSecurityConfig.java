@@ -48,6 +48,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                         "/contact-me",
                         "/contact-me.json",
                 		"/signup",
+                        "/signup/confirm",
                         "/signup.json",
                 		"/login",
                         "/login.json",

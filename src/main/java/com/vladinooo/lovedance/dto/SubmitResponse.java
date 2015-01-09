@@ -1,6 +1,6 @@
 package com.vladinooo.lovedance.dto;
 
-public class PostResponse {
+public class SubmitResponse {
     private String status;
     private String message;
 

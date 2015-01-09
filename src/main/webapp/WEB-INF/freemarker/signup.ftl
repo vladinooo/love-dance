@@ -75,7 +75,7 @@
             $form: $('#signup-form'),
             validationPostUri: "/signup.json",
             formPostUri: "/signup",
-            type: "basic"
+            type: "signup"
         };
         submitFormByAjax(signupForm);
     });

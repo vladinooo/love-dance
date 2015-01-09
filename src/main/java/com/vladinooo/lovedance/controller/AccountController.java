@@ -2,11 +2,11 @@ package com.vladinooo.lovedance.controller;
 
 import com.vladinooo.lovedance.dto.EditAccountForm;
 import com.vladinooo.lovedance.dto.EditPasswordForm;
-import com.vladinooo.lovedance.dto.ErrorMessage;
+import com.vladinooo.lovedance.dto.SubmitResponse;
 import com.vladinooo.lovedance.dto.ValidationResponse;
-import com.vladinooo.lovedance.dto.PostResponse;
 import com.vladinooo.lovedance.entity.Account;
 import com.vladinooo.lovedance.service.AccountService;
+import com.vladinooo.lovedance.util.ResponseBuilder;
 import com.vladinooo.lovedance.util.Util;
 import com.vladinooo.lovedance.validators.EditPasswordFormValidator;
 import org.slf4j.Logger;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -23,8 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -77,91 +74,37 @@ public class AccountController {
         return "settings";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/settings/edit-account-details", method = RequestMethod.POST)
-    public @ResponseBody
-    PostResponse editAccountDetails(@ModelAttribute(value = "editAccountForm") @Valid EditAccountForm editAccountForm,
-            BindingResult result) {
-        PostResponse postResponse = new PostResponse();
-        if (!result.hasErrors()) {
-            accountService.editAccount(Util.getCurrentSessionAccount().getId(), editAccountForm);
-            postResponse.setStatus("SUCCESS");
-            postResponse.setMessage(Util.getMessage("accountDetailsUpdateSuccess"));
-        } else {
-            postResponse.setStatus("FAIL");
-            postResponse.setMessage("Edit Failed");
-        }
-
-        return postResponse;
+    public SubmitResponse editAccountDetails(@ModelAttribute(value = "editAccountForm") @Valid EditAccountForm editAccountForm,
+                                             BindingResult result) {
+        accountService.editAccount(Util.getCurrentSessionAccount().getId(), editAccountForm);
+        String submitSuccessMsgCode = "accountDetailsUpdateSuccess";
+        return ResponseBuilder.createSubmitResponse(result, submitSuccessMsgCode);
     }
 
+    @ResponseBody
     @RequestMapping(value = "/settings/edit-account-details.json", method = RequestMethod.POST)
-    public @ResponseBody
-    ValidationResponse editAccountDetailsAjax(@ModelAttribute(value = "editAccountForm") @Valid EditAccountForm editAccountForm,
-            BindingResult result) {
-
-        ValidationResponse validationResponse = new ValidationResponse();
-        if (!result.hasErrors()) {
-            validationResponse.setStatus("SUCCESS");
-        } else {
-            validationResponse.setStatus("FAIL");
-            List<FieldError> allErrors = result.getFieldErrors();
-            List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
-            for (FieldError objectError : allErrors) {
-                String message = objectError.getDefaultMessage();
-                if (message == null) {
-                    message = Util.getMessage(objectError.getCode());
-                }
-                errorMesages.add(new ErrorMessage(objectError.getField(), message));
-            }
-            validationResponse.setErrorMessageList(errorMesages);
-        }
-        return validationResponse;
+    public ValidationResponse editAccountDetailsAjax(@ModelAttribute(value = "editAccountForm") @Valid EditAccountForm editAccountForm,
+                                                     BindingResult result) {
+        return ResponseBuilder.createValidationResponse(result);
     }
 
+    @ResponseBody
     @RequestMapping(value = "/settings/edit-account-password", method = RequestMethod.POST)
-    public @ResponseBody
-    PostResponse editAccountPassword(@ModelAttribute(value = "editPasswordForm") @Valid EditPasswordForm editPasswordForm,
-            BindingResult result) {
-
-        PostResponse postResponse = new PostResponse();
-        if (!result.hasErrors()) {
-            accountService.editPassword(Util.getCurrentSessionAccount().getId(), editPasswordForm);
-            postResponse.setStatus("SUCCESS");
-            postResponse.setMessage(Util.getMessage("passwordUpdateSuccess"));
-        } else {
-            postResponse.setStatus("FAIL");
-            postResponse.setMessage("Edit Failed");
-        }
-
-        return postResponse;
+    public SubmitResponse editAccountPassword(@ModelAttribute(value = "editPasswordForm") @Valid EditPasswordForm editPasswordForm,
+                                              BindingResult result) {
+        accountService.editPassword(Util.getCurrentSessionAccount().getId(), editPasswordForm);
+        String submitSuccessMsgCode = "passwordUpdateSuccess";
+        return ResponseBuilder.createSubmitResponse(result, submitSuccessMsgCode);
     }
 
+    @ResponseBody
     @RequestMapping(value = "/settings/edit-account-password.json", method = RequestMethod.POST)
-    public @ResponseBody
-    ValidationResponse editAccountPasswordAjax(@ModelAttribute(value = "editPasswordForm") @Valid EditPasswordForm editPasswordForm,
-            BindingResult result) {
-
-        ValidationResponse validationResponse = new ValidationResponse();
-        if (!result.hasErrors()) {
-            validationResponse.setStatus("SUCCESS");
-        } else {
-            validationResponse.setStatus("FAIL");
-            List<FieldError> allErrors = result.getFieldErrors();
-            List<ErrorMessage> errorMesages = new ArrayList<ErrorMessage>();
-            for (FieldError objectError : allErrors) {
-                String message = objectError.getDefaultMessage();
-                if (message == null) {
-                    message = Util.getMessage(objectError.getCode());
-                }
-                errorMesages.add(new ErrorMessage(objectError.getField(), message));
-            }
-            validationResponse.setErrorMessageList(errorMesages);
-        }
-        return validationResponse;
+    public ValidationResponse editAccountPasswordAjax(@ModelAttribute(value = "editPasswordForm") @Valid EditPasswordForm editPasswordForm,
+                                                      BindingResult result) {
+        return ResponseBuilder.createValidationResponse(result);
     }
-
-
-
 
 
     @ResponseBody
