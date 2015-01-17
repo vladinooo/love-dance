@@ -34,14 +34,14 @@ public class ResponseBuilder {
     }
 
     public static SubmitResponse createSubmitResponse(BindingResult result, String submitSuccessMsgCode) {
-        SubmitResponse postResponse = new SubmitResponse();
+        SubmitResponse submitResponse = new SubmitResponse();
         if (result.hasErrors()) {
-            postResponse.setStatus("FAIL");
-            postResponse.setMessage(Util.getMessage(result.getAllErrors().get(0).getCode()));
+            submitResponse.setStatus("FAIL");
+            submitResponse.setMessage(Util.getMessage(result.getAllErrors().get(0).getCode()));
         } else {
-            postResponse.setStatus("SUCCESS");
-            postResponse.setMessage(Util.getMessage(submitSuccessMsgCode));
+            submitResponse.setStatus("SUCCESS");
+            submitResponse.setMessage(Util.getMessage(submitSuccessMsgCode));
         }
-        return postResponse;
+        return submitResponse;
     }
 }

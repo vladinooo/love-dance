@@ -57,9 +57,9 @@ public class Util {
 		return messageSource.getMessage(messageKey, args, Locale.getDefault());
 	}
 
-	public static void validate(boolean valid, String msgContent, Object... args) {
+	public static void validate(boolean valid, String messageKey) {
 		if (!valid)
-			throw new RuntimeException(getMessage(msgContent, args));
+			throw new RuntimeException(messageKey);
 	}
 
 	public static Account getCurrentSessionAccount() {

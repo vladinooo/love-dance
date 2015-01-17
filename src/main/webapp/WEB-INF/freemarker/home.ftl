@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2>About LOVE DANCE</h2>
+                <h2>About LOVE DANCE - in Brighton</h2>
                 <hr class="primary">
                 <div class="alert lovedance-info" role="alert">Have you ever wanted to move easily, softly, fly on the dancing floor and enjoy every step? Then you are in a right place.</div>
                 <div class="alert lovedance-info" role="alert">LOVE DANCE is a project which helps people not only to learn dancing movements but actually start dancing naturally and magically</div>

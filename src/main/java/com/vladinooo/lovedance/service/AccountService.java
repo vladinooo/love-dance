@@ -5,14 +5,17 @@ import org.springframework.validation.BindingResult;
 
 import com.vladinooo.lovedance.entity.Account;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface AccountService {
 	
-	public abstract void signup(SignupForm signupForm);
+	public abstract void signup(SignupForm signupForm, HttpSession session);
 	
-	public abstract void verify(String verificationCode);
-	
+	public abstract void confirmEmail(String confirmationCode);
+
+	public abstract void sendEmailConfirmLink(Account account);
+
 	public abstract Account getAccount(long accountId);
 
 	public abstract List<Account> getAccounts();

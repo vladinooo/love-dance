@@ -25,6 +25,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import org.springframework.validation.BindingResult;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -52,7 +53,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly = false)
-	public void signup(SignupForm signupForm) {
+	public void signup(SignupForm signupForm, HttpSession session) {
 		final Account account = new Account();
 		account.setUsername(signupForm.getUsername());
 		account.setEmail(signupForm.getEmail());
@@ -62,32 +63,38 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 		account.setDatetimeRegistered(dateFormat.format(datetimeRegistered));
 		account.setEnabled(true);
 		account.getRoles().add(Role.UNVERIFIED);
-		account.setVerificationCode(RandomStringUtils.randomAlphanumeric(16));
+		account.setEmailConfirmCode(RandomStringUtils.randomAlphanumeric(16));
 		accountRepository.save(account);
+		session.setAttribute("account", account);
 		TransactionSynchronizationManager.registerSynchronization(
-			    new TransactionSynchronizationAdapter() {
-			        @Override
-			        public void afterCommit() {
-			    		try {
-			    			String verifyLink = Util.hostUrl() + "/accounts/" + account.getVerificationCode() + "/verify";
-			    			mailSender.send(account.getEmail(), Util.getMessage("verifySubject"), Util.getMessage("verifyEmail", account.getUsername(), verifyLink));
-			    			logger.info("Verification mail to " + account.getEmail() + " queued.");
-						} catch (MessagingException e) {
-							logger.error(ExceptionUtils.getStackTrace(e));
-						}
-			        }
-		    });
+				new TransactionSynchronizationAdapter() {
+					@Override
+					public void afterCommit() {
+						sendEmailConfirmLink(account);
+					}
+				});
+	}
+
+	@Override
+	public void sendEmailConfirmLink(Account account) {
+		try {
+			String emailConfirmLink = Util.hostUrl() + "/" + account.getEmailConfirmCode() + "/confirm";
+			mailSender.send(account.getEmail(), Util.getMessage("emailConfirmSubject"), Util.getMessage("emailConfirmBody", account.getUsername(), emailConfirmLink));
+			logger.info("Confirmation mail to " + account.getEmail() + " queued.");
+		} catch (MessagingException e) {
+			logger.error(ExceptionUtils.getStackTrace(e));
+		}
 	}
 	
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public void verify(String verificationCode) {
+	public void confirmEmail(String emailConfirmCode) {
 		long loggedInUserId = Util.getCurrentSessionAccount().getId();
 		Account account = accountRepository.findOne(loggedInUserId);
-		Util.validate(account.getRoles().contains(Role.UNVERIFIED), "alreadyVerified");
-		Util.validate(account.getVerificationCode().equals(verificationCode), "incorrect", "verification code");
+		Util.validate(account.getRoles().contains(Role.UNVERIFIED), "emailAlreadyConfirmed");
+		Util.validate(account.getEmailConfirmCode().equals(emailConfirmCode), "incorrectEmailConfirmCode");
 		account.getRoles().remove(Role.UNVERIFIED);
-		account.setVerificationCode(null);
+		account.setEmailConfirmCode(null);
 		accountRepository.save(account);
 	}
 

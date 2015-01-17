@@ -17,6 +17,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="${rc.contextPath}/static/spectrum/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="${rc.contextPath}/static/spectrum/assets/img/favicon.png?v=2">
+
     <!-- Fonts -->
     <link href="${rc.contextPath}/static/spectrum/assets/css/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>

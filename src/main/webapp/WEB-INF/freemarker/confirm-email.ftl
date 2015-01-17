@@ -12,20 +12,35 @@
 
 						<div class="sign-form col-md-12">
 
-							<form id="resend-confirm-email-form" class="form-horizontal" role="form" method="POST"
-								  action="<@spring.url '/login'/>">
+							<@spring.bind "resendEmailConfirmForm"/>
+							<form id="resend-email-confirm-form" class="form-horizontal" role="form" method="POST"
+								  action="<@spring.url '/signup/confirm'/>">
+
+                                <div id="email" class="form-group hidden">
+                                    <div class="input-group">
+										<@spring.formInput "resendEmailConfirmForm.email", "class='form-control', placeholder='Email'" />
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <hr>
 									<div class="well">
-										<#if (verifyEmailInfo)??>${verifyEmailInfo}</#if>
+										<#if (emailConfirmInfo)??>${emailConfirmInfo}</#if>
 									</div>
                                     <hr>
 								</div>
 
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary pull-right">Resend Confirmation Email</button>
-								</div>
+								<#if (account)??>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary pull-right">Resend Confirmation Email</button>
+                                    </div>
+								</#if>
+
+
+                                <div class="form-group">
+                                    <div class="alert response-summary hidden">
+                                    </div>
+                                </div>
 
 							</form>
 
@@ -39,13 +54,13 @@
 
 <script>
     $(document).ready(function () {
-        var resendConfirmEmailForm = {
-            $form: $('#resend-confirm-email-form'),
-            validationPostUri: "/signup.json",
-            formPostUri: "/signup",
+        var resendEmailConfirmForm = {
+            $form: $('#resend-email-confirm-form'),
+            validationPostUri: "/signup/confirm.json",
+            formPostUri: "/signup/confirm",
             type: "basic"
         };
-        submitFormByAjax(resendConfirmEmailForm);
+        submitFormByAjax(resendEmailConfirmForm);
     });
 </script>
 

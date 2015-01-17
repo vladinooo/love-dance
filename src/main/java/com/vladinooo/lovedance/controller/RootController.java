@@ -1,6 +1,7 @@
 package com.vladinooo.lovedance.controller;
 
 import com.vladinooo.lovedance.dto.*;
+import com.vladinooo.lovedance.entity.Account;
 import com.vladinooo.lovedance.service.AccountService;
 import com.vladinooo.lovedance.util.ResponseBuilder;
 import com.vladinooo.lovedance.util.Util;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -98,8 +101,7 @@ public class RootController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public SubmitResponse signup(@ModelAttribute(value = "signupForm") @Valid SignupForm signupForm, BindingResult result,
                                  HttpSession session) {
-        accountService.signup(signupForm);
-        session.setAttribute("email", signupForm.getEmail());
+        accountService.signup(signupForm, session);
         String submitSuccessMsgCode = "signupSuccess";
         return ResponseBuilder.createSubmitResponse(result, submitSuccessMsgCode);
     }
@@ -113,8 +115,50 @@ public class RootController {
 
     @RequestMapping(value = "/signup/confirm", method = RequestMethod.GET)
     public String confirmEmail(Model model, HttpSession session) {
-        model.addAttribute("verifyEmailInfo", Util.getMessage("verifyEmailInfo", session.getAttribute("email")));
+        ResendEmailConfirmForm resendEmailConfirmForm = new ResendEmailConfirmForm();
+        if (session.getAttribute("account") == null) {
+            model.addAttribute("emailConfirmInfo", Util.getMessage("emailConfirmInvalid"));
+        } else {
+            Account account = (Account)session.getAttribute("account");
+            resendEmailConfirmForm.setEmail(account.getEmail());
+            model.addAttribute("emailConfirmInfo", Util.getMessage("emailConfirmInfo", account.getEmail()));
+        }
+        model.addAttribute(resendEmailConfirmForm);
         return "confirm-email";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/signup/confirm", method = RequestMethod.POST)
+    public SubmitResponse confirmEmail(@ModelAttribute(value = "resendEmailConfirmForm") @Valid ResendEmailConfirmForm resendEmailConfirmForm,
+                                       BindingResult result, HttpSession session) {
+        Account account = (Account)session.getAttribute("account");
+        accountService.sendEmailConfirmLink(account);
+        String submitSuccessMsgCode = "resendEmailConfirmSuccess";
+        return ResponseBuilder.createSubmitResponse(result, submitSuccessMsgCode);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/signup/confirm.json", method = RequestMethod.POST)
+    public ValidationResponse confirmEmailAjax(@ModelAttribute(value = "resendEmailConfirmForm") @Valid ResendEmailConfirmForm resendEmailConfirmForm,
+                                         BindingResult result) {
+        return ResponseBuilder.createValidationResponse(result);
+    }
+
+    @RequestMapping(value = "/{emailConfirmCode}/confirm", method = RequestMethod.GET)
+    public String confirmEmail(@PathVariable("emailConfirmCode") String emailConfirmCode,
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest request) throws ServletException {
+
+        try {
+            accountService.confirmEmail(emailConfirmCode);
+        } catch (RuntimeException e) {
+            Util.flash(redirectAttributes, "alert-danger", e.getMessage());
+            request.logout();
+            return "redirect:/login";
+        }
+        Util.flash(redirectAttributes, "alert-success", "emailConfirmSuccess");
+        request.logout();
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/forgot-password", method = RequestMethod.GET)

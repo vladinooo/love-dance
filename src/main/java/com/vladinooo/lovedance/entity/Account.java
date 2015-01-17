@@ -77,7 +77,7 @@ public class Account {
 	private Set<Role> roles = new HashSet<Role>();
 	
 	@Column(length = RANDOM_CODE_LENGTH)
-	private String verificationCode;
+	private String emailConfirmCode;
 	
 	@Column(length = RANDOM_CODE_LENGTH)
 	private String forgotPasswordCode;
@@ -173,15 +173,19 @@ public class Account {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-	public String getVerificationCode() {
-		return verificationCode;
+
+	public void setEncodedId(String encodedId) {
+		this.encodedId = encodedId;
 	}
 
-	public void setVerificationCode(String verificationCode) {
-		this.verificationCode = verificationCode;
+	public String getEmailConfirmCode() {
+		return emailConfirmCode;
 	}
-	
+
+	public void setEmailConfirmCode(String emailConfirmCode) {
+		this.emailConfirmCode = emailConfirmCode;
+	}
+
 	public boolean isAdmin() {
 		return roles.contains(Role.ADMIN);
 	}

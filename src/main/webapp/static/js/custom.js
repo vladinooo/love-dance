@@ -143,8 +143,7 @@ function doAjaxSubmit(formUrl, formType, form) {
             console.log(response.status + ": " + response.message);
             showSubmitResponse(response.status, form, response.message);
         } else {
-            showSubmitResponse(response.status, form, response.message);
-            onSubmitSuccessAction(formType);
+            onSubmitSuccessAction(formType, form, response.status, response.message);
         }
     }, 'json');
 }
@@ -158,6 +157,55 @@ function showFormValidationErrorSummary(form, messages) {
     form.find('.response-summary').removeClass('alert-success');
     form.find('.response-summary').addClass('alert-danger');
     form.find('.response-summary').removeClass('hidden');
+}
+
+function onSubmitSuccessAction(formType, form, status, message) {
+    switch(formType) {
+        case 'password':
+            showSubmitResponse(status, form, message);
+            $('#currentPassword .form-control').val("");
+            $('#newPassword .form-control').val("");
+            $('#confirmNewPassword .form-control').val("");
+            break;
+
+        case 'contact':
+            showSubmitResponse(status, form, message);
+            $('#name .form-control').val("");
+            $('#email .form-control').val("");
+            $('#message .form-control').val("");
+            $('#name .form-group').removeClass("floating-label-form-group-with-value");
+            $('#email .form-group').removeClass("floating-label-form-group-with-value");
+            $('#message .form-group').removeClass("floating-label-form-group-with-value");
+            break;
+
+        case 'forgotPassword':
+            showSubmitResponse(status, form, message);
+            $('#username .form-control').val("");
+            var url = window.location.protocol + "//" + window.location.host + "/login";
+            doRedirect(10000, url);
+            break;
+
+        case 'resetPassword':
+            showSubmitResponse(status, form, message);
+            $('#newPassword .form-control').val("");
+            $('#confirmNewPassword .form-control').val("");
+            var url = window.location.protocol + "//" + window.location.host + "/login";
+            doRedirect(10000, url);
+            break;
+
+        case 'signup':
+            $('#username .form-control').val("");
+            $('#email .form-control').val("");
+            $('#password .form-control').val("");
+            $('#confirmPassword .form-control').val("");
+            var url = window.location.protocol + "//" + window.location.host + "/signup/confirm";
+            doRedirect(0, url);
+            break;
+
+        default:
+            showSubmitResponse(status, form, message);
+            break;
+    }
 }
 
 function showSubmitResponse(status, form, message) {
@@ -177,50 +225,14 @@ function showSubmitResponse(status, form, message) {
     }
 }
 
-function onSubmitSuccessAction(formType) {
-    switch(formType) {
-        case 'password':
-            $('#currentPassword .form-control').val("");
-            $('#newPassword .form-control').val("");
-            $('#confirmNewPassword .form-control').val("");
-            break;
 
-        case 'contact':
-            $('#name .form-control').val("");
-            $('#email .form-control').val("");
-            $('#message .form-control').val("");
-            $('#name .form-group').removeClass("floating-label-form-group-with-value");
-            $('#email .form-group').removeClass("floating-label-form-group-with-value");
-            $('#message .form-group').removeClass("floating-label-form-group-with-value");
-            break;
-
-        case 'forgotPassword':
-            $('#username .form-control').val("");
-            setTimeout(function(){
-                var url = window.location.protocol + "//" + window.location.host + "/login";
-                window.location.href = url;
-            }, 10000);
-            break;
-
-        case 'resetPassword':
-            $('#newPassword .form-control').val("");
-            $('#confirmNewPassword .form-control').val("");
-            setTimeout(function(){
-                var url = window.location.protocol + "//" + window.location.host + "/login";
-                window.location.href = url;
-            }, 10000);
-            break;
-
-        case 'signup':
-            $('#username .form-control').val("");
-            $('#email .form-control').val("");
-            $('#password .form-control').val("");
-            $('#confirmPassword .form-control').val("");
-            var url = window.location.protocol + "//" + window.location.host + "/signup/confirm";
+function doRedirect(delay, url) {
+    if (delay == 0) {
+        window.location.href = url;
+    } else {
+        setTimeout(function(){
             window.location.href = url;
-            break;
-
-        default:
+        }, delay);
     }
 }
 

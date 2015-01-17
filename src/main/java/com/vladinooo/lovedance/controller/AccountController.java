@@ -17,10 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Map;
 
@@ -42,18 +39,6 @@ public class AccountController {
     @InitBinder("editPasswordForm")
     protected void initEditPasswordBinder(WebDataBinder binder) {
         binder.setValidator(editPasswordFormValidator);
-    }
-
-    @RequestMapping(value = "/{verificationCode}/verify", method = RequestMethod.GET)
-    public String verify(@PathVariable("verificationCode") String verificationCode,
-                         RedirectAttributes redirectAttributes,
-                         HttpServletRequest request) throws ServletException {
-
-        accountService.verify(verificationCode);
-        Util.flash(redirectAttributes, "success", "verificationSuccess");
-        logger.info("Verification successfull!");
-        request.logout();
-        return "redirect:/login";
     }
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
