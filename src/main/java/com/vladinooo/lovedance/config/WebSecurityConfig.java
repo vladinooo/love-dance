@@ -57,17 +57,14 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                         "/forgot-password.json",
                 		"/reset-password/*",
                         "/reset-password.json",
-                		"/account/settings/edit-account-details",
-                        "/account/settings/edit-account-password",
-                        "/account/settings/delete-account",
                         "/blog/articles",
                         "/blog/articles/article",
-                        "/account/manage-accounts",
                 		"/error").permitAll()
                 .anyRequest().authenticated();
         http
             .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/account/bookings")
                 .permitAll().and()
                 .rememberMe().key(rememberMeKey).rememberMeServices(rememberMeServices()).and()
             .logout()

@@ -13,12 +13,12 @@ public class BlogController {
 
 
     @RequestMapping(value = "/articles")
-    public String getArticles() {
+    public String articles() {
         return "articles";
     }
 
     @RequestMapping(value = "/articles/article")
-    public String getArticle() {
+    public String article() {
         return "article";
     }
 

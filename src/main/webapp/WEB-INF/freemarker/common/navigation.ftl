@@ -5,49 +5,49 @@
         <div>
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/bookings'/>" class="<#if uri?matches('(\b|^)/account/bookings(\b|$)')>subnav-btn-active</#if>">
                         <i class="fa fa-calendar"></i>
                         <span class="inline hidden-xs"> My Bookings </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/orders'/>" class="<#if uri?contains('orders')>subnav-btn-active</#if>">
                         <i class="fa fa-th-list"></i>
                         <span class="inline hidden-xs"> My Orders </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/addresses'/>" class="<#if uri?contains('addresses')>subnav-btn-active</#if>">
                         <i class="fa fa-map-marker"></i>
                         <span class="inline hidden-xs"> Saved Addresses </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/manage-blog'/>" class="<#if uri?contains('manage-blog')>subnav-btn-active</#if>">
                         <i class="fa fa-book"></i>
                         <span class="inline hidden-xs"> Manage Blog </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/manage-bookings'/>" class="<#if uri?matches('(\b|^)/account/manage-bookings(\b|$)')>subnav-btn-active</#if>">
                         <i class="fa fa-th"></i>
                         <span class="inline hidden-xs"> Manage Bookings </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/manage-shop'/>" class="<#if uri?contains('manage-shop')>subnav-btn-active</#if>">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="inline hidden-xs"> Manage Shop </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<@spring.url '/account/manage-users'/>" class="<#if uri?contains('manage-users')>subnav-btn-active</#if>">
                         <i class="fa fa-users"></i>
                         <span class="inline hidden-xs"> Manage Users </span>
                     </a>
                 </li>
                 <li>
-                    <a href="<@spring.url '/account/settings'/>">
+                    <a href="<@spring.url '/account/settings'/>" class="<#if uri?contains('settings')>subnav-btn-active</#if>">
                         <i class="fa fa-cogs"></i>
                         <span class="inline hidden-xs"> Settings </span>
                     </a>

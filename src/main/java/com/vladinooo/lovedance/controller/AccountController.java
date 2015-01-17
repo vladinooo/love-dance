@@ -42,7 +42,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
-    public String getSettings(Model model) {
+    public String settings(Model model) {
         EditAccountForm editAccountForm = new EditAccountForm();
         EditPasswordForm editPasswordForm = new EditPasswordForm();
         Account account = accountService.getAccount(Util.getCurrentSessionAccount().getId());
