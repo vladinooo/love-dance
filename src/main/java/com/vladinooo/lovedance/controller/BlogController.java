@@ -17,9 +17,44 @@ public class BlogController {
         return "articles";
     }
 
-    @RequestMapping(value = "/articles/article")
-    public String article() {
-        return "article";
+    @RequestMapping(value = "/articles/article-01")
+    public String article_01() {
+        return "article-01";
+    }
+
+    @RequestMapping(value = "/articles/article-02")
+    public String article_02() {
+        return "article-02";
+    }
+
+    @RequestMapping(value = "/articles/article-03")
+    public String article_03() {
+        return "article-03";
+    }
+
+    @RequestMapping(value = "/articles/article-04")
+    public String article_04() {
+        return "article-04";
+    }
+
+    @RequestMapping(value = "/articles/article-05")
+    public String article_05() {
+        return "article-05";
+    }
+
+    @RequestMapping(value = "/articles/article-06")
+    public String article_06() {
+        return "article-06";
+    }
+
+    @RequestMapping(value = "/articles/article-07")
+    public String article_07() {
+        return "article-07";
+    }
+
+    @RequestMapping(value = "/articles/article-08")
+    public String article_08() {
+        return "article-08";
     }
 
 

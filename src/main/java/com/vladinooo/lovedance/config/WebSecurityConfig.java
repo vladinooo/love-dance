@@ -58,7 +58,14 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 		"/reset-password/*",
                         "/reset-password.json",
                         "/blog/articles",
-                        "/blog/articles/article",
+                        "/blog/articles/article-01",
+                        "/blog/articles/article-02",
+                        "/blog/articles/article-03",
+                        "/blog/articles/article-04",
+                        "/blog/articles/article-05",
+                        "/blog/articles/article-06",
+                        "/blog/articles/article-07",
+                        "/blog/articles/article-08",
                 		"/error").permitAll()
                 .anyRequest().authenticated();
         http

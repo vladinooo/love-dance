@@ -28,9 +28,15 @@ section, aside {
     padding: 50px 0
 }
 
-@media ( min-width: 767px) {
+@media ( min-width: 768px) {
     section {
         padding: 100px 0
+    }
+}
+
+@media ( max-width: 767px) {
+    section {
+        padding: 80px 0
     }
 }
 
@@ -126,6 +132,10 @@ h1, h2, h3, h4, h5, h6 {
     /*font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif*/
     /*font-family: 'Architects Daughter', cursive;*/
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+.font-decorated {
+    font-family: 'Architects Daughter', cursive;
 }
 
 h1 {
@@ -1083,6 +1093,10 @@ a.light-text:hover, a.light-text:focus {
     margin-bottom: 15px
 }
 
+.tight-fit {
+    margin-bottom: 0 !important;
+}
+
 .single-article .blog-col .blog-preview-content h3 {
     margin: 0 0 10px
 }
@@ -1091,14 +1105,26 @@ a.light-text:hover, a.light-text:focus {
     color: #DC574E
 }
 
+.single-article .blog-col .blog-preview-content h4 {
+    font-size: 20px;
+}
+
 .single-article .blog-col .blog-preview-content h3 a:hover {
     color: #8DC7B8
 }
 
 .single-article .blog-col .blog-preview-content p {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
     padding-bottom: 5px
+}
+
+.single-article .blog-col .blog-preview-content .article-o-list li {
+    font-size: 18px;
+}
+
+.single-article .blog-col .blog-preview-content .article-u-list li {
+    font-size: 18px;
 }
 
 .single-article .blog-col .blog-preview-content ul.meta {
@@ -1172,7 +1198,8 @@ a.light-text:hover, a.light-text:focus {
 .blog-1 .blog-col .blog-preview-content p {
     font-size: 16px;
     margin: 0;
-    padding-bottom: 5px
+    padding-bottom: 5px;
+    color: #555;
 }
 
 .blog-1 .blog-col .blog-preview-content ul.meta {
@@ -3133,12 +3160,12 @@ p.demo-text {
 }
 
 .lovedance-info {
-    background-color: #F7E4A2;
+    padding-top: 20px;
+}
+
+.lovedance-info h2, .lovedance-info h3 {
     color: #DC574E;
-    border-radius: 10px;
-    padding: 20px;
-    border: solid 5px #fff;
-    font-size: large;
+    line-height: inherit;
 }
 
 a.light-link {
@@ -3311,4 +3338,44 @@ abbr.input-validation-required {
 .subnav-btn-active {
     color: #DC574E !important;
     background-color: #F7E4A2;
+}
+
+.article-text {
+    color: #555;
+}
+
+.article-o-list li {
+    padding-bottom: 20px;
+    color: #DC574E;
+    font-weight: bold;
+}
+
+.article-o-list span {
+    padding-bottom: 20px;
+    color: #555;
+    font-weight: normal;
+}
+
+h4.article-quote {
+    font-size: 18px !important;
+    text-align: center;
+}
+
+.article-u-list li {
+    color: #DC574E;
+    font-weight: bold;
+}
+
+.article-u-list span {
+    color: #555;
+    font-weight: normal;
+}
+
+.kissing-couple img {
+    border-radius: 6px;
+}
+
+.more-classes-badge {
+    display: inline;
+    padding: 20px;
 }
