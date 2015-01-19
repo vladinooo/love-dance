@@ -32,15 +32,18 @@
                                         </ul>
                                     </div>
                                     <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-04a.jpg" class="img-responsive" alt="">
-                                    <div class="blog-preview-content">
+                                    <div class="blog-preview-content tight-fit">
                                         <br />
                                         <div class="centered">
-                                            <h3 class="text-dark">Pricing</h3>
-                                            <h4 class="article-text">1 month before wedding - £69</h4>
-                                            <h4 class="article-text">2 month before wedding - £129</h4>
-                                            <h4 class="article-text">3 month before wedding - £179</h4>
+                                            <h2 class="text-dark">Pricing</h2>
+                                            <h3 class="article-text">1 month before wedding - £69</h3>
+                                            <h3 class="article-text">2 month before wedding - £129</h3>
+                                            <h3 class="article-text">3 month before wedding - £179</h3>
                                         </div>
                                         <br />
+                                    </div>
+                                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-04b.jpg" class="img-responsive" alt="">
+                                    <div class="blog-preview-content">
                                         <br />
                                         <h3 class="centered">OUR BOOTS CAMP STARTS ON the 1st OF MARCH!<br />BOOK YOUR PLACE!</h3>
                                         <br />

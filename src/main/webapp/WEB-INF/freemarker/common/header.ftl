@@ -40,7 +40,7 @@
                     <a href="<#if uri?length &gt; 1><@spring.url '/#bookings'/><#else>#bookings</#if>">Bookings</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="<#if uri?length &gt; 1><@spring.url '/#shop'/><#else>#shop</#if>">Shop</a>
+                    <a href="<#if uri?length &gt; 1><@spring.url '/#more'/><#else>#more</#if>">More</a>
                 </li>
                 <li class="page-scroll">
                     <a href="<#if uri?length &gt; 1><@spring.url '/#contact'/><#else>#contact</#if>">Contact</a>

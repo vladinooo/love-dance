@@ -1,7 +1,7 @@
 <#import "common/default.ftl" as layout>
 <#import "/spring.ftl" as spring />
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
-<@layout.default "When a girl dance with a girl...">
+<@layout.default "When a girl dances with a girl...">
 <section class="portfolio-1 bg-lighter">
     <div class="container">
         <div class="row">
@@ -12,13 +12,13 @@
                         <div class="container">
                             <div class="row blog-row">
                                 <div class="col-md-8 blog-col" data-scrollreveal="enter left over 1.5s">
-                                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-07.jpg" class="img-responsive" alt="">
+                                    <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-08.jpg" class="img-responsive" alt="">
                                     <div class="blog-preview-content">
                                         <h2 style="text-align: center">
-                                            When a girl dance with a girl...
+                                            When a girl dances with a girl...
                                         </h2>
                                         <br />
-                                        <p class="article-text">When I lived in Ukraine where LGBT movement was still not strong and rights are not declared I somehow managed to teach girls-couples to dance ballroom dances.</p>
+                                        <p class="article-text">When I lived in Ukraine where LGBT movement was still not strong and rights are not declared I somehow managed to teach girl-couples to dance ballroom dance.</p>
                                         <br />
                                         <p class="article-text">That was a new experience for me which then I absolutely loved for the incredible beauty of it.</p>
                                         <br />

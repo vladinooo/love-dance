@@ -166,6 +166,27 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <div class="col-md-4 blog-col" data-scrollreveal="enter left over 1.5s">
+                                    <a href="<@spring.url '/blog/articles/article-08'/>" class="blog-preview-img">
+                                        <div class="caption">
+                                            <div class="caption-content">
+                                                <i class="fa fa-search fa-3x"></i>
+                                            </div>
+                                        </div>
+                                        <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-08-sm.jpg" class="img-responsive" alt="">
+                                    </a>
+                                    <div class="blog-preview-content">
+                                        <h3>
+                                            <a href="<@spring.url '/blog/articles/article-08'/>">When a girl dances with a girl...</a>
+                                        </h3>
+                                        <p>When I lived in Ukraine where LGBT movement was still not strong and rights are not declared I somehow managed to teach girl-couples to dance ballroom dance.</p>
+                                        <div class="continue"><a href="<@spring.url '/blog/articles/article-08'/>">Continue Reading &rarr;</a>
+                                        </div>
+                                        <ul class="meta list-inline">
+                                            <li>17 January 2015</li>
+                                        </ul>
+                                    </div>
+                                </div>
 
 
                             </div>

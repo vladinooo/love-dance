@@ -22,19 +22,14 @@
                     <h4>Social</h4>
                     <ul class="list-inline">
                         <li>
-                            <a href="#" class="btn btn-social-light btn-facebook"><i
-                                    class="fa fa-fw fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/lovedancebrighton" target="_blank" class="btn btn-social-light btn-facebook">
+                                <i class="fa fa-fw fa-facebook"></i>
+                            </a>
                         </li>
                         <li>
-                            <a href="#" class="btn btn-social-light btn-twitter"><i class="fa fa-fw fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-social-light btn-dribbble"><i
-                                    class="fa fa-fw fa-dribbble"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-social-light btn-google-plus"><i
-                                    class="fa fa-fw fa-google-plus"></i></a>
+                            <a href="http://www.pinterest.com/love_dance/" target="_blank" class="btn btn-social-light btn-pinterest">
+                                <i class="fa fa-fw fa-pinterest"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

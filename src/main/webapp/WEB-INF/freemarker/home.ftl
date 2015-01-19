@@ -62,25 +62,25 @@
                     so I do understand how you feel!</p>
                 <ul class="list-inline">
                     <li>
-                        <a href="#" class="btn btn-social-dark btn-facebook">
+                        <a href="https://www.facebook.com/inessa.cukrova" target="_blank" class="btn btn-social-dark btn-facebook">
                             <i class="fa fa-fw fa-facebook"></i>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="btn btn-social-dark btn-linkedin">
-                            <i class="fa fa-fw fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-social-dark btn-twitter">
-                            <i class="fa fa-fw fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-social-dark btn-dribbble">
-                            <i class="fa fa-fw fa-dribbble"></i>
-                        </a>
-                    </li>
+                    <#--<li>-->
+                        <#--<a href="http://www.pinterest.com/love_dance/" target="_blank" class="btn btn-social-dark btn-pinterest">-->
+                            <#--<i class="fa fa-fw fa-pinterest"></i>-->
+                        <#--</a>-->
+                    <#--</li>-->
+                    <#--<li>-->
+                        <#--<a href="#" class="btn btn-social-dark btn-twitter">-->
+                            <#--<i class="fa fa-fw fa-twitter"></i>-->
+                        <#--</a>-->
+                    <#--</li>-->
+                    <#--<li>-->
+                        <#--<a href="#" class="btn btn-social-dark btn-dribbble">-->
+                            <#--<i class="fa fa-fw fa-dribbble"></i>-->
+                        <#--</a>-->
+                    <#--</li>-->
                 </ul>
             </div>
         </div>
@@ -92,7 +92,7 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2 class="font-decorated">Every couple is unique</h2>
+                    <h2 class="font-decorated text-yellow">I taught more than 100 couples</h2>
                     <hr class="light">
                     <p style="font-size:24px">Every couple is unique, and therefore each needs a unique dance. I never know for
                         sure what dance should it be before I meet and talk to the couple - this is where the beautiful
@@ -399,18 +399,6 @@
     </div>
 </section>
 
-<section id="shop" class="services-1 bg-dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="font-decorated">Shop</h2>
-                <hr class="primary">
-                <p>Coming Soon.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="bg-primary">
     <div class="container">
         <div class="row text-center">
@@ -426,7 +414,7 @@
     </div>
 </section>
 
-<section id="shop" class="services-1 bg-lighter">
+<section id="more" class="services-1 bg-lighter">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">

@@ -2732,6 +2732,24 @@ ul.button-list li:first-child {
     background-color: #007fb1
 }
 
+.btn-pinterest {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transitino: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 37px
+}
+
+.btn-pinterest:hover, .btn-pinterest:focus {
+    outline: 0;
+    color: #f4f5f7;
+    background-color: #C92228;
+}
+
 .btn-linux {
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -3163,7 +3181,12 @@ p.demo-text {
     padding-top: 20px;
 }
 
-.lovedance-info h2, .lovedance-info h3 {
+.lovedance-info h3 {
+    color: #555;
+    line-height: inherit;
+}
+
+.lovedance-info h2 {
     color: #DC574E;
     line-height: inherit;
 }
