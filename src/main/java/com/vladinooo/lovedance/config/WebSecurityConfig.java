@@ -42,8 +42,9 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         	.csrf().disable()
             .authorizeRequests()
                 .antMatchers(
-                		"/",
+                		"/**",
                 		"/static/**",
+                        "/error/**",
                 		"/home",
                         "/contact-me",
                         "/contact-me.json",
@@ -65,8 +66,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                         "/blog/articles/article-05",
                         "/blog/articles/article-06",
                         "/blog/articles/article-07",
-                        "/blog/articles/article-08",
-                		"/error").permitAll()
+                        "/blog/articles/article-08").permitAll()
                 .anyRequest().authenticated();
         http
             .formLogin()
