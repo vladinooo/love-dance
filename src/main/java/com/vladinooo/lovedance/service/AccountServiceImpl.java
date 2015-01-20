@@ -203,7 +203,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 					@Override
 					public void afterCommit() {
 						try {
-							mailSender.send(adminEmail, Util.getMessage("contactMeSubject", cf.getName()), Util.getMessage("contactMeMessage", cf.getName(), cf.getMessage()));
+							mailSender.send(adminEmail, Util.getMessage("contactMeSubject", cf.getName()), Util.getMessage("contactMeMessage", cf.getName(), cf.getEmail(), cf.getMessage()));
 							logger.info("Contact me content: " + cf.getName() + ": " + cf.getEmail() + ": " + cf.getMessage());
 							mailSender.send(cf.getEmail(), Util.getMessage("contactMeThankUSubject"), Util.getMessage("contactMeThankUMessage", cf.getName()));
 							logger.info("Confirmation to: " + cf.getEmail() + " sent successfully");
