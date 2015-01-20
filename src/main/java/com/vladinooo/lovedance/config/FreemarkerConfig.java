@@ -13,7 +13,7 @@ public class FreemarkerConfig {
     @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer() {
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
-        configurer.setTemplateLoaderPaths("/WEB-INF/freemarker/", "/WEB-INF/freemarker/common/", "/WEB-INF/freemarker/error/");
+        configurer.setTemplateLoaderPaths("/WEB-INF/freemarker/", "/WEB-INF/freemarker/common/");
         configurer.setDefaultEncoding("UTF-8");
         return configurer;
     }

@@ -16,69 +16,46 @@ import org.springframework.security.web.authentication.rememberme.TokenBasedReme
 
 @Configuration
 @EnableWebMvcSecurity
-public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
-	
-	
-	@Value("${rememberMe.privateKey}")
-	private String rememberMeKey;
-	
-	@Autowired
-	private UserDetailsService userService;
-		
-	@Bean
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+
+    @Value("${rememberMe.privateKey}")
+    private String rememberMeKey;
+
+    @Autowired
+    private UserDetailsService userService;
+
+    @Bean
     public PasswordEncoder passwordEncoder() {
-      return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
-	
-	@Bean
+
+    @Bean
     public RememberMeServices rememberMeServices() {
         TokenBasedRememberMeServices rememberMeServices = new TokenBasedRememberMeServices(rememberMeKey, userService);
-        return rememberMeServices;   
+        return rememberMeServices;
     }
-	
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-        	.csrf().disable()
-            .authorizeRequests()
-                .antMatchers(
-                		"/**",
-                		"/static/**",
-                        "/error/**",
-                		"/home",
-                        "/contact-me",
-                        "/contact-me.json",
-                		"/signup",
-                        "/signup.json",
-                        "/signup/confirm",
-                        "/signup/confirm.json",
-                		"/login",
-                        "/login.json",
-                		"/forgot-password",
-                        "/forgot-password.json",
-                		"/reset-password/*",
-                        "/reset-password.json",
-                        "/blog/articles",
-                        "/blog/articles/article-01",
-                        "/blog/articles/article-02",
-                        "/blog/articles/article-03",
-                        "/blog/articles/article-04",
-                        "/blog/articles/article-05",
-                        "/blog/articles/article-06",
-                        "/blog/articles/article-07",
-                        "/blog/articles/article-08").permitAll()
-                .anyRequest().authenticated();
+
         http
             .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/account/bookings")
                 .permitAll().and()
                 .rememberMe().key(rememberMeKey).rememberMeServices(rememberMeServices()).and()
-            .logout()
-                .permitAll();
+                .logout().permitAll();
+        http
+            .csrf().disable()
+            .authorizeRequests()
+                .antMatchers("/account/**").hasRole("USER")
+                .antMatchers("/", "/**/").permitAll()
+                .anyRequest().authenticated();
+
     }
-    
-	@Autowired
+
+    @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
         authManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());

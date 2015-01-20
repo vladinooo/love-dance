@@ -3402,3 +3402,17 @@ h4.article-quote {
     display: inline;
     padding: 20px;
 }
+
+.errorPage {
+    text-align: center;
+    padding: 30px 20px 50px 20px;
+}
+
+.errorPage h1 {
+    font-size: 50px;
+}
+
+.errorPage h3 {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
