@@ -45,48 +45,48 @@
                 <li class="page-scroll">
                     <a href="<#if uri?length &gt; 1><@spring.url '/#contact'/><#else>#contact</#if>">Contact</a>
                 </li>
-                <li class="hidden-xs">
-                    <div class="btn-group ld-action">
-                        <@sec.authorize access="!isAuthenticated()">
-                        <a href="<@spring.url '/login'/>" class="btn btn-ld-action">
-                            <i class="fa fa-user"></i> Login
-                        </a>
-                        </@sec.authorize>
-                        <@sec.authorize access="isAuthenticated()">
-                            <a href="<@spring.url '/account/bookings'/>" class="btn btn-ld-action" style="text-transform:lowercase;">
-                                <i class="fa fa-user"></i> <@sec.authentication property="principal.account.username" />
-                            </a>
-                        </@sec.authorize>
-                        <a class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <@sec.authorize access="!isAuthenticated()">
-                                <li><a href="<@spring.url '/signup'/>">Sign Up</a></li>
-                            </@sec.authorize>
-                            <@sec.authorize access="isAuthenticated()">
-                                <li><a href="<@spring.url '/account/bookings'/>" class="<#if uri?matches('(\b|^)/account/bookings(\b|$)')>subnav-btn-active</#if>">My Bookings</a></li>
-                                <li><a href="<@spring.url '/account/orders'/>" class="<#if uri?contains('orders')>subnav-btn-active</#if>">My Orders</a></li>
-                                <li><a href="<@spring.url '/account/addresses'/>" class="<#if uri?contains('addresses')>subnav-btn-active</#if>">Saved Addresses</a></li>
-                                <li><a href="<@spring.url '/account/manage-blog'/>" class="<#if uri?contains('manage-blog')>subnav-btn-active</#if>">Manage Blog</a></li>
-                                <li><a href="<@spring.url '/account/manage-bookings'/>" class="<#if uri?matches('(\b|^)/account/manage-bookings(\b|$)')>subnav-btn-active</#if>">Manage Bookings</a></li>
-                                <li><a href="<@spring.url '/account/manage-shop'/>" class="<#if uri?contains('manage-shop')>subnav-btn-active</#if>">Manage Shop</a></li>
-                                <li><a href="<@spring.url '/account/manage-users'/>" class="<#if uri?contains('manage-users')>subnav-btn-active</#if>">Manage Users</a></li>
-                                <li><a href="<@spring.url '/account/settings'/>" class="<#if uri?contains('settings')>subnav-btn-active</#if>">Settings</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>
-                                    <a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>
-                                </li>
-                            </@sec.authorize>
-                        </ul>
-                    </div>
-                </li>
-                <li class="visible-xs">
-                    <form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>
-                    <a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>
-                </li>
+                <#--<li class="hidden-xs">-->
+                    <#--<div class="btn-group ld-action">-->
+                        <#--<@sec.authorize access="!isAuthenticated()">-->
+                        <#--<a href="<@spring.url '/login'/>" class="btn btn-ld-action">-->
+                            <#--<i class="fa fa-user"></i> Login-->
+                        <#--</a>-->
+                        <#--</@sec.authorize>-->
+                        <#--<@sec.authorize access="isAuthenticated()">-->
+                            <#--<a href="<@spring.url '/account/bookings'/>" class="btn btn-ld-action" style="text-transform:lowercase;">-->
+                                <#--<i class="fa fa-user"></i> <@sec.authentication property="principal.account.username" />-->
+                            <#--</a>-->
+                        <#--</@sec.authorize>-->
+                        <#--<a class="btn btn-ld-action dropdown-toggle" data-toggle="dropdown">-->
+                            <#--<span class="caret"></span>-->
+                            <#--<span class="sr-only">Toggle Dropdown</span>-->
+                        <#--</a>-->
+                        <#--<ul class="dropdown-menu" role="menu">-->
+                            <#--<@sec.authorize access="!isAuthenticated()">-->
+                                <#--<li><a href="<@spring.url '/signup'/>">Sign Up</a></li>-->
+                            <#--</@sec.authorize>-->
+                            <#--<@sec.authorize access="isAuthenticated()">-->
+                                <#--<li><a href="<@spring.url '/account/bookings'/>" class="<#if uri?matches('(\b|^)/account/bookings(\b|$)')>subnav-btn-active</#if>">My Bookings</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/orders'/>" class="<#if uri?contains('orders')>subnav-btn-active</#if>">My Orders</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/addresses'/>" class="<#if uri?contains('addresses')>subnav-btn-active</#if>">Saved Addresses</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/manage-blog'/>" class="<#if uri?contains('manage-blog')>subnav-btn-active</#if>">Manage Blog</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/manage-bookings'/>" class="<#if uri?matches('(\b|^)/account/manage-bookings(\b|$)')>subnav-btn-active</#if>">Manage Bookings</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/manage-shop'/>" class="<#if uri?contains('manage-shop')>subnav-btn-active</#if>">Manage Shop</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/manage-users'/>" class="<#if uri?contains('manage-users')>subnav-btn-active</#if>">Manage Users</a></li>-->
+                                <#--<li><a href="<@spring.url '/account/settings'/>" class="<#if uri?contains('settings')>subnav-btn-active</#if>">Settings</a></li>-->
+                                <#--<li class="divider"></li>-->
+                                <#--<li>-->
+                                    <#--<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>-->
+                                    <#--<a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>-->
+                                <#--</li>-->
+                            <#--</@sec.authorize>-->
+                        <#--</ul>-->
+                    <#--</div>-->
+                <#--</li>-->
+                <#--<li class="visible-xs">-->
+                    <#--<form id="logoutForm" action="<@spring.url '/logout'/>" method="post"></form>-->
+                    <#--<a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>-->
+                <#--</li>-->
               </ul>
           </div>
         <!-- /.navbar-collapse -->
