@@ -1,7 +1,9 @@
 package com.vladinooo.lovedance.controller;
 
+import com.vladinooo.lovedance.service.BlogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,6 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BlogController {
 
     private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
+
+    private BlogService blogService;
+
+    @Autowired
+    public BlogController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
 
     @RequestMapping(value = "/articles")
