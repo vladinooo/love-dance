@@ -324,7 +324,7 @@
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">£ 35</span>
+                            <span class="amount">£ 39</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
@@ -346,14 +346,14 @@
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">£ 145</span>
+                            <span class="amount">£ 179</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">
                             <li class="item">Complete Wedding Dance package</li>
                             <li class="item">5 lessons</li>
                             <li class="item">60 min / lesson</li>
-                            <li class="item">Save £30</li>
+                            <li class="item">Save £16</li>
                             <li class="pricing-button">
                                 <a href="<@spring.url '/#contact'/>" class="btn btn-primary btn-square btn-raised">Book</a>
                             </li>
@@ -368,7 +368,7 @@
                     </div>
                     <div class="content">
                         <div class="price">
-                            <span class="amount">£ 185</span>
+                            <span class="amount">£ 199</span>
                             <span class="period">one time</span>
                         </div>
                         <ul class="pricing-items list-unstyled text-center">

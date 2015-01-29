@@ -11,7 +11,7 @@
                     <div id="blog" class="single-article">
                         <div class="container">
                             <div class="row blog-row">
-                                <div class="col-md-8 blog-col" data-scrollreveal="enter left over 1.5s">
+                                <div class="col-md-8 blog-col">
                                     <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-06.jpg" class="img-responsive" alt="">
                                     <div class="blog-preview-content">
                                         <h2 style="text-align: center">
@@ -31,7 +31,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 pricing-col" data-scrollreveal="enter left over 1.5s">
+                                            <div class="col-md-6 pricing-col">
                                                 <div class="pricing-table">
                                                     <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
                                                         <h2>Dancing Master class at your party</h2>
@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 pricing-col" data-scrollreveal="enter left over 1.5s">
+                                            <div class="col-md-6 pricing-col">
                                                 <div class="pricing-table">
                                                     <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
                                                         <h2>Dancing Master class for a group of friends</h2>
@@ -74,9 +74,6 @@
                                         <h3 class="centered">Feel free to call me and I will be glad to help you!</h3>
                                         <br />
                                         <h2 class="text-dark centered">Phone: 07476495494</h2>
-                                        <br />
-
-                                        <h4 class="article-quote">LOVE DANCE – is the best Wedding Dance in Brighton and Hove, don’t trust, just TRY!</h4>
                                         <br />
                                         <ul class="meta list-inline">
                                             <li>17 January 2015</li>
