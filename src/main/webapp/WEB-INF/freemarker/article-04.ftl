@@ -11,7 +11,7 @@
                     <div id="blog" class="single-article">
                         <div class="container">
                             <div class="row blog-row">
-                                <div class="col-md-8 blog-col" data-scrollreveal="enter left over 1.5s">
+                                <div class="col-md-8 blog-col">
                                     <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-04.jpg" class="img-responsive" alt="">
                                     <div class="blog-preview-content tight-fit">
                                         <h2 style="text-align: center">
@@ -34,12 +34,77 @@
                                     <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-04a.jpg" class="img-responsive" alt="">
                                     <div class="blog-preview-content tight-fit">
                                         <br />
-                                        <div class="centered">
-                                            <h2 class="text-dark">Pricing</h2>
-                                            <h3 class="article-text">1 month before wedding - £69</h3>
-                                            <h3 class="article-text">2 month before wedding - £129</h3>
-                                            <h3 class="article-text">3 month before wedding - £179</h3>
+
+
+                                        <div class="row">
+                                            <div class="col-md-4 pricing-col">
+                                                <div class="pricing-table">
+                                                    <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                                                        <h2>1 month before</h2>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="price">
+                                                            <span class="amount">£ 69</span>
+                                                            <span class="period">one time</span>
+                                                        </div>
+                                                        <ul class="pricing-items list-unstyled text-center">
+                                                            <li class="item">1 month before wedding</li>
+                                                            <li class="item">20 workouts</li>
+                                                            <li class="item">50 min / workout</li>
+                                                            <li class="pricing-button">
+                                                                <a href="<@spring.url '/#contact'/>" class="btn btn-primary btn-square btn-raised">Book</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pricing-col">
+                                                <div class="pricing-table">
+                                                    <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                                                        <h2>2 months before</h2>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="price">
+                                                            <span class="amount">£ 129</span>
+                                                            <span class="period">one time</span>
+                                                        </div>
+                                                        <ul class="pricing-items list-unstyled text-center">
+                                                            <li class="item">2 months before wedding</li>
+                                                            <li class="item">40 workouts</li>
+                                                            <li class="item">50 min / workout</li>
+                                                            <li class="pricing-button">
+                                                                <a href="<@spring.url '/#contact'/>" class="btn btn-primary btn-square btn-raised">Book</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pricing-col">
+                                                <div class="pricing-table">
+                                                    <div class="pricing-heading" style="background-image: url('${rc.contextPath}/static/spectrum/assets/img/demo-pricing/1.jpg')">
+                                                        <h2>3 months before</h2>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="price">
+                                                            <span class="amount">£ 179</span>
+                                                            <span class="period">one time</span>
+                                                        </div>
+                                                        <ul class="pricing-items list-unstyled text-center">
+                                                            <li class="item">3 months before wedding</li>
+                                                            <li class="item">60 workouts</li>
+                                                            <li class="item">50 min / workout</li>
+                                                            <li class="pricing-button">
+                                                                <a href="<@spring.url '/#contact'/>" class="btn btn-primary btn-square btn-raised">Book</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <br />
+
+                                        <p class="article-text centered">Private training is available if you are not a big fan of group workouts!<br />Contact me to find out more!</p>
+
                                         <br />
                                     </div>
                                     <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-04b.jpg" class="img-responsive" alt="">

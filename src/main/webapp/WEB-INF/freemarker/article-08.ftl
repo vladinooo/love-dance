@@ -11,7 +11,7 @@
                     <div id="blog" class="single-article">
                         <div class="container">
                             <div class="row blog-row">
-                                <div class="col-md-8 blog-col" data-scrollreveal="enter left over 1.5s">
+                                <div class="col-md-8 blog-col">
                                     <img src="${rc.contextPath}/static/spectrum/assets/img/demo-blog/article-08.jpg" class="img-responsive" alt="">
                                     <div class="blog-preview-content">
                                         <h2 style="text-align: center">
@@ -36,8 +36,6 @@
                                         <h3 class="centered">Don’t hesitate to ask any questions and book your place in the class!</h3>
                                         <br />
                                         <h2 class="text-dark centered">Phone: 07476495494</h2>
-                                        <br />
-                                        <h4 class="article-quote">LOVE DANCE – is the best Wedding Dance in Brighton and Hove, don’t trust, just TRY!</h4>
                                         <br />
                                         <ul class="meta list-inline">
                                             <li>17 January 2015</li>
