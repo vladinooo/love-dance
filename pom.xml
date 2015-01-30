@@ -101,4 +101,23 @@
 		</plugins>
 	</build>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Internal Releases</name>
+            <url>http://vladinooo.info/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Internal Releases</name>
+            <url>http://vladinooo.info/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/vladinooo/love-dance.git</connection>
+        <url>http://github.com/vladinooo/love-dance</url>
+        <developerConnection>scm:git:https://github.com/vladinooo/love-dance.git</developerConnection>
+    </scm>
+
 </project>
