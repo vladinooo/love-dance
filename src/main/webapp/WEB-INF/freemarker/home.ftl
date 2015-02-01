@@ -52,7 +52,7 @@
             <div class="col-lg-5 text-center">
                 <h2 class="text-dark font-decorated">About ME</h2>
                 <hr class="primary">
-                <p class="article-text">I'm a choreographer with 10 year of experience, fitness coach and actress. I found myself passionate
+                <p class="article-text">I'm a choreographer with 10 years of experience, fitness coach and actress. I found myself passionate
                     about
                     making WEDDING DANCE because seeing two people in love and help them to make their
                     special day really exiting and unforgettable is amazing. I brought all my knowledge from Ukraine,
